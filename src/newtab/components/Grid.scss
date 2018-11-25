@@ -1,0 +1,17 @@
+@import '../styles/themeColours';
+
+.text {
+  color: $font-dark;
+  font-family: 'Ubuntu', 'Arial';
+  width: 100vw;
+  text-align: center;
+  margin-top: 10px;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+}
