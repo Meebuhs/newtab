@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Grid } from './components/Grid'
+
+import { Grid } from './components/Display/Grid'
 declare let module: any
 
 ReactDOM.render(

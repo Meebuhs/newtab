@@ -1,0 +1,18 @@
+@import '../../styles/themeColours';
+
+@mixin text($font-size) {
+  color: $font-dark;
+  font-family: 'Ubuntu', 'Arial';
+  width: 100vw;
+  text-align: center;
+  margin-top: 10px;
+  font-size: $font-size;
+}
+
+.title {
+  @include text(3rem);
+}
+
+.text {
+  @include text(1rem);
+}

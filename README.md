@@ -25,6 +25,7 @@ Style-checking:
 Tested with:
 
 - Jest
+- Enzyme
 
 ## Usage
 
