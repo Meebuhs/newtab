@@ -9,10 +9,10 @@
   font-size: $font-size;
 }
 
-.title {
-  @include text(3rem);
+.column {
+  @include text(2rem);
 }
 
-.text {
+.tile {
   @include text(1rem);
 }

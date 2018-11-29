@@ -1,13 +1,15 @@
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-import { Grid } from './Grid'
+import { Grid } from '../../components/Display/Grid'
+import { initialState } from '../../reducers/grid'
 
-// Basic jest test
-test('two plus two is four', () => {
-  expect(2 + 2).toBe(4)
-})
-
-it('renders the correct text', () => {
-  const grid = enzyme.shallow(<Grid testString="Testing title" />)
-  expect(grid.find('.title').text()).toEqual('Testing title')
+describe('Grid component', () => {
+  it('should render columns', () => {
+    const { tiles, columns, columnOrder } = initialState
+    const grid = enzyme.shallow(
+      <Grid tiles={tiles} columns={columns} columnOrder={columnOrder} />
+    )
+    expect(grid.find('#column-1').text()).toEqual('column-1')
+    expect(grid.find('#column-0').text()).toEqual('column-0link2')
+  })
 })

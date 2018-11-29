@@ -16,6 +16,7 @@
       "options": [120]
     },
     "new-parens": true,
-    "member-access": false
+    "member-access": false,
+    "object-literal-sort-keys": false
   }
 }
