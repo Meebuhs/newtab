@@ -9,6 +9,7 @@ Built with:
 - Typescript (3.x)
 - React (16.x)
 - Redux (4.x)
+- Reselect
 - Sass
 
 Development server using:
