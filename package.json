@@ -1,6 +1,6 @@
 {
   "name": "newtab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A customisable replacement for chrome's new tab page",
   "main": "newtab.js",
   "repository": "https://github.com/Meebuhs/newtab",
@@ -46,6 +46,7 @@
     "react-redux": "^5.1.1",
     "react-test-renderer": "^16.6.3",
     "redux": "^4.0.1",
+    "reselect": "^4.0.0",
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
