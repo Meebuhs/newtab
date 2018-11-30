@@ -10,26 +10,13 @@ export interface IGridState {
   columnOrder: string[]
 }
 
-// Define the initial state of the grid, populated with some test data
+// Define the initial state of the grid
 export const initialState: IGridState = {
-  tiles: {
-    test1: {
-      id: 'test1',
-      url: 'link1',
-    },
-    test2: {
-      id: 'test2',
-      url: 'link2',
-    },
-    test3: {
-      id: 'test3',
-      url: 'link3',
-    },
-  },
+  tiles: {},
   columns: {
     'column-0': {
       id: 'column-0',
-      tileIds: ['test2'],
+      tileIds: [],
     },
     'column-1': {
       id: 'column-1',
@@ -37,7 +24,7 @@ export const initialState: IGridState = {
     },
     'column-2': {
       id: 'column-2',
-      tileIds: ['test1', 'test3'],
+      tileIds: [],
     },
   },
   columnOrder: ['column-0', 'column-1', 'column-2'],

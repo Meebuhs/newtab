@@ -3,87 +3,71 @@ import { reducer } from '../reducers/grid'
 import { initialState } from './grid'
 
 describe('Grid reducer', () => {
-  it('should handle ADD_TILE', () => {
+  it('should handle ADD_TILE on empty grid', () => {
     expect(
       reducer(initialState, {
         type: types.ADD_TILE,
         payload: {
           tile: {
-            url: 'link.url',
-            id: 'link.id',
+            id: 'new.tile',
+            url: 'new.url',
           },
         },
       })
     ).toEqual({
       tiles: {
-        test1: {
-          id: 'test1',
-          url: 'link1',
-        },
-        test2: {
-          id: 'test2',
-          url: 'link2',
-        },
-        test3: {
-          id: 'test3',
-          url: 'link3',
-        },
-        'link.id': {
-          id: 'link.id',
-          url: 'link.url',
+        'new.tile': {
+          id: 'new.tile',
+          url: 'new.url',
         },
       },
       columns: {
         'column-0': {
           id: 'column-0',
-          tileIds: ['test2'],
+          tileIds: ['new.tile'],
         },
         'column-1': {
           id: 'column-1',
-          tileIds: ['link.id'],
+          tileIds: [],
         },
         'column-2': {
           id: 'column-2',
-          tileIds: ['test1', 'test3'],
+          tileIds: [],
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2'],
     })
   }),
-    it('should handle a second ADD_TILE', () => {
+    it('should add a tile to the shortest column', () => {
       expect(
         reducer(
           {
             tiles: {
-              test1: {
-                id: 'test1',
-                url: 'link1',
+              'existing.tile.1': {
+                id: 'existing.tile.1',
+                url: 'existing.url.1',
               },
-              test2: {
-                id: 'test2',
-                url: 'link2',
+              'existing.tile.2': {
+                id: 'existing.tile.2',
+                url: 'existing.url.2',
               },
-              test3: {
-                id: 'test3',
-                url: 'link3',
-              },
-              'link.id': {
-                id: 'link.id',
-                url: 'link.url',
+              'existing.tile.3': {
+                id: 'existing.tile.3',
+                url: 'existing.url.3',
               },
             },
             columns: {
               'column-0': {
                 id: 'column-0',
-                tileIds: ['test2'],
+                tileIds: ['existing.tile.2'],
               },
               'column-1': {
                 id: 'column-1',
-                tileIds: ['link.id'],
+                tileIds: [],
               },
               'column-2': {
                 id: 'column-2',
-                tileIds: ['test1', 'test3'],
+                tileIds: ['existing.tile.1', 'existing.tile.3'],
               },
             },
             columnOrder: ['column-0', 'column-1', 'column-2'],
@@ -92,47 +76,43 @@ describe('Grid reducer', () => {
             type: types.ADD_TILE,
             payload: {
               tile: {
-                url: 'link.second.url',
-                id: 'link.second.id',
+                id: 'new.tile',
+                url: 'new.url',
               },
             },
           }
         )
       ).toEqual({
         tiles: {
-          test1: {
-            id: 'test1',
-            url: 'link1',
+          'existing.tile.1': {
+            id: 'existing.tile.1',
+            url: 'existing.url.1',
           },
-          test2: {
-            id: 'test2',
-            url: 'link2',
+          'existing.tile.2': {
+            id: 'existing.tile.2',
+            url: 'existing.url.2',
           },
-          test3: {
-            id: 'test3',
-            url: 'link3',
+          'existing.tile.3': {
+            id: 'existing.tile.3',
+            url: 'existing.url.3',
           },
-          'link.id': {
-            id: 'link.id',
-            url: 'link.url',
-          },
-          'link.second.id': {
-            id: 'link.second.id',
-            url: 'link.second.url',
+          'new.tile': {
+            id: 'new.tile',
+            url: 'new.url',
           },
         },
         columns: {
           'column-0': {
             id: 'column-0',
-            tileIds: ['test2', 'link.second.id'],
+            tileIds: ['existing.tile.2'],
           },
           'column-1': {
             id: 'column-1',
-            tileIds: ['link.id'],
+            tileIds: ['new.tile'],
           },
           'column-2': {
             id: 'column-2',
-            tileIds: ['test1', 'test3'],
+            tileIds: ['existing.tile.1', 'existing.tile.3'],
           },
         },
         columnOrder: ['column-0', 'column-1', 'column-2'],

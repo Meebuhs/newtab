@@ -17,6 +17,8 @@
     },
     "new-parens": true,
     "member-access": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false,
+    "no-bitwise": false
   }
 }
