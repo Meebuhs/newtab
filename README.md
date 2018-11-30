@@ -21,12 +21,13 @@ Style-checking:
 
 - Prettier
 - Tslint
-- Sass-lint
+- Stylelint & stylelint-config-sass-guidelines
 
 Tested with:
 
 - Jest
 - Enzyme
+- redux-mock-store
 
 ## Usage
 
@@ -65,7 +66,7 @@ yarn
 | Command         | Description                                                                                                                                  |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `yarn start`    | Starts a local development server on port 3000 and uses webpack-hot-middleware to rebuild with webpack when changes are made to the project. |
-| `yarn lint`     | Runs tslint/prettier and sass-lint style checks.                                                                                             |
+| `yarn lint`     | Runs tslint/prettier and stylelint.                                                                                                          |
 | `yarn prettier` | Perform in-place prettier reformat.                                                                                                          |
 | `yarn test`     | Runs the test-suite using Jest.                                                                                                              |
 
