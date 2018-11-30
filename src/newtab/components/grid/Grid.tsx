@@ -2,6 +2,7 @@ import * as React from 'react'
 import './Grid.scss'
 
 import { IColumn, ITile } from '../../models/newtab'
+import { Column } from './Column'
 
 interface IProps {
   tiles: { [id: string]: ITile }
@@ -11,15 +12,16 @@ interface IProps {
 export class Grid extends React.Component<IProps, {}> {
   render() {
     const { tiles, columns, columnOrder } = this.props
-    return columnOrder.map(column => (
-      <div className={'column'} id={column}>
-        {column}
-        {columns[column].tileIds.map(tile => (
-          <div className={'tile'} key={tiles[tile].id}>
-            {tiles[tile].url}
-          </div>
+    return (
+      <div className={'grid'}>
+        {columnOrder.map(column => (
+          <Column
+            key={columns[column].id}
+            column={columns[column]}
+            tiles={tiles}
+          />
         ))}
       </div>
-    ))
+    )
   }
 }

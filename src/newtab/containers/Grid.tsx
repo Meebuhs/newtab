@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Grid } from '../components/Display/Grid'
+import { Grid } from '../components/grid/Grid'
 import { IState } from '../reducers/newtab'
 import { getColumnOrder, getColumns, getTiles } from '../selectors/grid'
 

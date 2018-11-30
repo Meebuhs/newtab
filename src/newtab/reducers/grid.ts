@@ -1,5 +1,5 @@
 import { Action } from '../actions/grid'
-import { Grid } from '../components/Display/Grid'
+import { Grid } from '../components/grid/Grid'
 import { ADD_TILE } from '../constants/types'
 import { IColumn, ITile } from '../models/newtab'
 
