@@ -1,6 +1,11 @@
 import { Action } from '../actions/grid'
 import { Grid } from '../components/grid/Grid'
-import { ADD_COLUMN, ADD_TILE } from '../constants/types'
+import {
+  ADD_COLUMN,
+  ADD_TILE,
+  REMOVE_COLUMN,
+  REMOVE_TILE,
+} from '../constants/types'
 import { IColumn, ITile } from '../models/newtab'
 
 // Define the types of the grid state structure
@@ -57,6 +62,26 @@ export function reducer(state: IGridState = initialState, action: Action) {
         columnOrder: newColumnOrder,
       }
     }
+    case REMOVE_COLUMN: {
+      /**
+       * Removes the column with the specified id from the grid. Should more than one element have the same id,
+       * both would be removed, though this shouldn't happen with a human user as more than one column would need
+       * to have been created within a millisecond.
+       */
+      const id = action.payload.id
+
+      const newColumns = Object.assign({}, state.columns)
+      delete newColumns[id]
+
+      let newColumnOrder = Array.from(state.columnOrder)
+      newColumnOrder = newColumnOrder.filter(key => key !== id)
+
+      return {
+        ...state,
+        columns: newColumns,
+        columnOrder: newColumnOrder,
+      }
+    }
     case ADD_TILE: {
       /**
        * Add a tile to the grid. The tile will have the link and id provided in the payload and it will be added to the
@@ -72,8 +97,8 @@ export function reducer(state: IGridState = initialState, action: Action) {
             : min,
         'column-0' // Start index
       )
-      const newColumn = Object.assign({}, state.columns[shortestColumn])
-      newColumn.tileIds.push(tile.id)
+      const newTileIds = Array.from(state.columns[shortestColumn].tileIds)
+      newTileIds.push(tile.id)
 
       return {
         ...state,
@@ -83,8 +108,35 @@ export function reducer(state: IGridState = initialState, action: Action) {
         },
         columns: {
           ...state.columns,
-          [shortestColumn]: newColumn,
+          [shortestColumn]: {
+            ...state.columns[shortestColumn],
+            tileIds: newTileIds,
+          },
         },
+      }
+    }
+    case REMOVE_TILE: {
+      /**
+       * Removes the tile with the specified id from the grid. Should more than one element have the same id, they would
+       * both be removed, though this shouldn't happen with a human user as more than one tile with the same url would
+       * need to have been created within a millisecond.
+       */
+      const id = action.payload.id
+
+      const newTiles = Object.assign({}, state.tiles)
+      delete newTiles[id]
+
+      const newColumns = Object.assign({}, state.columns)
+      state.columnOrder.forEach(column => {
+        let newTileIds = Array.from(state.columns[column].tileIds)
+        newTileIds = newTileIds.filter(key => key !== id)
+        newColumns[column].tileIds = newTileIds
+      })
+
+      return {
+        ...state,
+        tiles: newTiles,
+        columns: newColumns,
       }
     }
     default:
