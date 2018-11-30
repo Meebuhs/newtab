@@ -2,7 +2,8 @@ import * as React from 'react'
 import './Sidebar.scss'
 
 interface IProps {
-  handleAddTile: (url: string, id: string) => void
+  handleAddColumn: (id: string) => void
+  handleAddTile: (id: string, url: string) => void
 }
 interface IState {
   currentUrlValue: string
@@ -14,13 +15,22 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
+   * Adds a column to the grid. A collision here is possible if the user
+   * is able to create two columns in the same millisecond
+   */
+  addColumn = () => {
+    const id = this.getHashCode(['column', Date.now()].join('.'))
+    this.props.handleAddColumn(id)
+  }
+
+  /**
    * Adds a tile to the grid with the url which is currently specified by the input #tileUrl
    */
   addTile = () => {
     const url = this.state.currentUrlValue
     const id = this.getHashCode([url, Date.now()].join('.'))
     this.setState({ currentUrlValue: '' })
-    this.props.handleAddTile(url, id)
+    this.props.handleAddTile(id, url)
   }
 
   /**
@@ -64,6 +74,10 @@ export class Sidebar extends React.Component<IProps, IState> {
             onChange={event => this.updateUrlValue(event.target.value)}
           />
           <button onClick={this.addTile}>Add tile</button>
+        </div>
+
+        <div className={'addColumn'}>
+          <button onClick={this.addColumn}>Add column</button>
         </div>
       </div>
     )

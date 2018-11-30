@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added tile display.
 - Added ability to add tiles.
+- Added ability to add columns.
 - Added redux mock store.
 
 ### Changed

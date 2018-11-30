@@ -1,6 +1,6 @@
 import { Action } from '../actions/grid'
 import { Grid } from '../components/grid/Grid'
-import { ADD_TILE } from '../constants/types'
+import { ADD_COLUMN, ADD_TILE } from '../constants/types'
 import { IColumn, ITile } from '../models/newtab'
 
 // Define the types of the grid state structure
@@ -37,7 +37,27 @@ export const initialState: IGridState = {
  */
 export function reducer(state: IGridState = initialState, action: Action) {
   switch (action.type) {
-    case ADD_TILE:
+    case ADD_COLUMN: {
+      /**
+       * Add a column to the grid. The grid will be empty upon initialisation and will be added as the rightmost column.
+       */
+      const { id, tileIds } = action.payload.column
+      const newColumnOrder = Array.from(state.columnOrder)
+      newColumnOrder.push(id)
+
+      return {
+        ...state,
+        columns: {
+          ...state.columns,
+          [id]: {
+            id,
+            tileIds,
+          },
+        },
+        columnOrder: newColumnOrder,
+      }
+    }
+    case ADD_TILE: {
       /**
        * Add a tile to the grid. The tile will have the link and id provided in the payload and it will be added to the
        * column with the least tiles.
@@ -66,6 +86,7 @@ export function reducer(state: IGridState = initialState, action: Action) {
           [shortestColumn]: newColumn,
         },
       }
+    }
     default:
       return state
   }
