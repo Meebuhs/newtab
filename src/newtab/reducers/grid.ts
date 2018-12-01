@@ -1,5 +1,4 @@
 import { Action } from '../actions/grid'
-import { Grid } from '../components/grid/Grid'
 import {
   ADD_COLUMN,
   ADD_TILE,
