@@ -1,0 +1,10 @@
+@import '../../styles/themeColours';
+
+.tile {
+  border: 1px solid $border-light;
+  border-radius: 5px;
+  height: 150px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}

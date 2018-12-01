@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Grid from '../containers/Grid'
+import Grid from '../containers/EditableGrid'
 import Sidebar from '../containers/Sidebar'
 import './Newtab.scss'
 

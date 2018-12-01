@@ -15,7 +15,7 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
-   * Adds a column to the grid. A collision here is possible if the user
+   * Adds a column to the grid. A collision of ids is possible here if the user
    * is able to create two columns in the same millisecond
    */
   addColumn = () => {
