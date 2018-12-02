@@ -1,12 +1,23 @@
-@import '../../styles/themeColours';
+@import '../../styles/theme-colours';
+@import '../../styles/common-elements';
 
 .sidebar {
-  border-right: 1px solid $border-light;
-  height: 200px;
-  margin-left: 15%;
-  width: 100%;
+  background: colour('grey-dark');
+  display: flex;
+  flex-direction: column;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  position: fixed;
+  top: 0;
+  width: 18%;
 }
 
-button {
-  margin-left: 20px;
+.sidebar-function {
+  @include button(80%, 50px, false);
+  margin: 10px auto;
 }

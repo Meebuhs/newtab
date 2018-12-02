@@ -1,7 +1,22 @@
+@import '../../styles/common-elements';
+@import '../../styles/theme-colours';
+
+$column-width-percentage: 92%;
+
 .column {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 0 10px;
+  overflow: hidden;
   width: 100%;
+}
+
+.tiles {
+  border-radius: 5px;
+  flex-grow: 1;
+  margin: auto;
+  min-height: 100px;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+  width: $column-width-percentage;
 }

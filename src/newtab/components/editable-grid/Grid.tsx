@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Grid.scss'
+import '../grid/Grid.scss'
 
 import { IColumn, ITile } from '../../models/newtab'
 import { Column } from './Column'
@@ -20,6 +20,7 @@ export class Grid extends React.Component<IProps, {}> {
       handleRemoveColumn,
       handleRemoveTile,
     } = this.props
+
     return (
       <div className={'grid'}>
         {columnOrder.map(column => (

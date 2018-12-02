@@ -1,0 +1,19 @@
+$colour: (
+  'grey-dark': #333,
+  'grey-light': #ccc,
+  'highlight': #14dcbc,
+);
+
+@function colour($key) {
+  @return map-get($colour, $key);
+}
+
+$colour-interval: 10%;
+
+@function darken($colour, $level) {
+  @return mix(black, $colour, $level * $colour-interval);
+}
+
+@function lighten($colour, $level) {
+  @return mix(white, $colour, $level * $colour-interval);
+}

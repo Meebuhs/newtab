@@ -23,16 +23,20 @@ export class Column extends React.Component<IProps, {}> {
     const { tiles, column, handleRemoveColumn, handleRemoveTile } = this.props
     return (
       <div className={'column'} id={column.id}>
-        <button className={'remove-column'} onClick={this.removeColumn}>
-          X
-        </button>
-        {column.tileIds.map(tile => (
-          <Tile
-            key={tiles[tile].id}
-            tile={tiles[tile]}
-            handleRemoveTile={handleRemoveTile}
-          />
-        ))}
+        <div className={'handle'}>
+          <button className={'remove-column'} onClick={this.removeColumn}>
+            X
+          </button>
+        </div>
+        <div className={'tiles'}>
+          {column.tileIds.map(tile => (
+            <Tile
+              key={tiles[tile].id}
+              tile={tiles[tile]}
+              handleRemoveTile={handleRemoveTile}
+            />
+          ))}
+        </div>
       </div>
     )
   }
