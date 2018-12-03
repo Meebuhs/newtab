@@ -6,6 +6,7 @@
   left: 10px;
   position: absolute;
   top: 10px;
+  transition: 0.5s ease-in-out;
 }
 
 .sidebar {
@@ -21,7 +22,8 @@
   padding-top: 20px;
   position: fixed;
   top: 0;
-  width: 18%;
+  width: $sidebar-width;
+  transition: 0.5s ease-in-out;
 }
 
 .sidebar-function {
