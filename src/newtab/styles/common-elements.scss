@@ -1,5 +1,7 @@
 @import './theme-colours';
 
+$sidebar-width: 18%;
+
 @mixin button($width, $height, $highlight) {
   $background: if($highlight, colour('highlight'), #fff);
   background-color: $background;

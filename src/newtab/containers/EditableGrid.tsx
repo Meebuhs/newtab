@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { removeColumn, removeTile } from '../actions/grid'
-import { Grid } from '../components/editable-grid/Grid'
+import { EditableGrid } from '../components/editable-grid/EditableGrid'
 import { IState } from '../reducers/newtab'
 import { getColumnOrder, getColumns, getTiles } from '../selectors/grid'
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch: any) => ({
 export default connect<any, any, any>(
   mapStateToProps,
   mapDispatchToProps
-)(Grid)
+)(EditableGrid)

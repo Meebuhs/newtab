@@ -1,17 +1,25 @@
 import * as React from 'react'
+import { AddTile } from './modals/AddTile'
 import './Sidebar.scss'
 
 interface IProps {
+  sidebarVisible: boolean
   handleAddColumn: (id: string) => void
   handleAddTile: (id: string, url: string) => void
+  handleToggleSidebar: () => void
 }
 interface IState {
-  currentUrlValue: string
+  showAddTileModal: boolean
 }
+
 export class Sidebar extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
-    this.state = { currentUrlValue: '' }
+    this.state = { showAddTileModal: false }
+  }
+
+  toggleSidebar = () => {
+    this.props.handleToggleSidebar()
   }
 
   /**
@@ -26,10 +34,8 @@ export class Sidebar extends React.Component<IProps, IState> {
   /**
    * Adds a tile to the grid with the url which is currently specified by the input #tileUrl
    */
-  addTile = () => {
-    const url = this.state.currentUrlValue
+  addTile = (url: string) => {
     const id = this.getHashCode([url, Date.now()].join('.'))
-    this.setState({ currentUrlValue: '' })
     this.props.handleAddTile(id, url)
   }
 
@@ -54,32 +60,49 @@ export class Sidebar extends React.Component<IProps, IState> {
     return hash.toString()
   }
 
-  /**
-   * Sets the current url value in the state
-   */
-  updateUrlValue = (url: string) => {
-    this.setState({ currentUrlValue: url })
+  handleOpenAddTileModal = () => {
+    this.setState({ showAddTileModal: true })
+  }
+
+  handleCloseAddTileModal = () => {
+    this.setState({ showAddTileModal: false })
+  }
+
+  handleSaveAddTileModal = (value: string) => {
+    this.setState({ showAddTileModal: false })
+    this.addTile(value)
   }
 
   render() {
-    const urlValue = this.state.currentUrlValue
+    const sidebarMargin = this.props.sidebarVisible ? 0 : '-18%'
+    const toggleMargin = this.props.sidebarVisible ? '18%' : 0
 
     return (
-      <div className={'sidebar'}>
-        <div className={'addTile'}>
-          <input
-            type={'text'}
-            id={'tileUrl'}
-            value={urlValue}
-            onChange={event => this.updateUrlValue(event.target.value)}
+      <>
+        <button
+          className={'toggle-sidebar'}
+          onClick={this.toggleSidebar}
+          style={{ marginLeft: toggleMargin }}
+        >
+          {this.props.sidebarVisible ? '<' : '>'}
+        </button>
+        <div className={'sidebar'} style={{ marginLeft: sidebarMargin }}>
+          <div
+            className={'sidebar-function'}
+            onClick={this.handleOpenAddTileModal}
+          >
+            Add Tile
+          </div>
+          <AddTile
+            showModal={this.state.showAddTileModal}
+            handleCloseModal={this.handleCloseAddTileModal}
+            handleSaveModal={this.handleSaveAddTileModal}
           />
-          <button onClick={this.addTile}>Add tile</button>
+          <div className={'sidebar-function'} onClick={this.addColumn}>
+            Add Column
+          </div>
         </div>
-
-        <div className={'addColumn'}>
-          <button onClick={this.addColumn}>Add column</button>
-        </div>
-      </div>
+      </>
     )
   }
 }

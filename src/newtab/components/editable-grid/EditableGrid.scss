@@ -1,11 +1,12 @@
 @import '../../styles/common-elements';
 
-.container {
+.editable-container {
   height: 100%;
-  width: 100%;
+  margin-left: $sidebar-width;
+  width: 100% - $sidebar-width;
 }
 
-.grid {
+.editable-grid {
   display: flex;
   height: 70%;
   margin: 15% auto 0;

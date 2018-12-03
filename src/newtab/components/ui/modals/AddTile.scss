@@ -1,0 +1,39 @@
+@import '../../../styles/theme-colours';
+@import '../../../styles/common-elements';
+
+.container {
+  font-family: 'Ubuntu', sans-serif;
+  height: auto;
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  height: auto;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.text {
+  margin-bottom: 20px;
+}
+
+.text-input {
+  width: 100%;
+}
+
+.nav-buttons {
+  bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - 40px);
+}
+
+.save-button {
+  @include button(100px, 30px, true);
+}
+
+.cancel-button {
+  @include button(100px, 30px, false);
+}

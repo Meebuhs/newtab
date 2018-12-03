@@ -1,8 +1,8 @@
 import * as React from 'react'
-import './Column.scss'
+import './EditableColumn.scss'
 
 import { IColumn, ITile } from '../../models/newtab'
-import { Tile } from './Tile'
+import { EditableTile } from './EditableTile'
 
 interface IProps {
   column: IColumn
@@ -11,7 +11,7 @@ interface IProps {
   handleRemoveTile: (id: string) => void
 }
 
-export class Column extends React.Component<IProps, {}> {
+export class EditableColumn extends React.Component<IProps, {}> {
   /**
    * Removes the column with the specified id from the grid
    */
@@ -30,7 +30,7 @@ export class Column extends React.Component<IProps, {}> {
         </div>
         <div className={'tiles'}>
           {column.tileIds.map(tile => (
-            <Tile
+            <EditableTile
               key={tiles[tile].id}
               tile={tiles[tile]}
               handleRemoveTile={handleRemoveTile}

@@ -1,6 +1,13 @@
 @import '../../styles/theme-colours';
 @import '../../styles/common-elements';
 
+.toggle-sidebar {
+  @include button(30px, 30px, false);
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+
 .sidebar {
   background: colour('grey-dark');
   display: flex;

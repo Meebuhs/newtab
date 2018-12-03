@@ -12,15 +12,18 @@ interface IProps {
 export class Grid extends React.Component<IProps, {}> {
   render() {
     const { tiles, columns, columnOrder } = this.props
+
     return (
-      <div className={'grid'}>
-        {columnOrder.map(column => (
-          <Column
-            key={columns[column].id}
-            column={columns[column]}
-            tiles={tiles}
-          />
-        ))}
+      <div className={'container'}>
+        <div className={'grid'}>
+          {columnOrder.map(column => (
+            <Column
+              key={columns[column].id}
+              column={columns[column]}
+              tiles={tiles}
+            />
+          ))}
+        </div>
       </div>
     )
   }

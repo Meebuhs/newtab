@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './Tile.scss'
+import './EditableTile.scss'
 
 import { ITile } from '../../models/newtab'
 
@@ -8,7 +8,7 @@ interface IProps {
   handleRemoveTile: (id: string) => void
 }
 
-export class Tile extends React.Component<IProps, {}> {
+export class EditableTile extends React.Component<IProps, {}> {
   /**
    * Removes the tile with the specified id from the grid
    */

@@ -1,13 +1,20 @@
 import * as React from 'react'
-import Grid from '../containers/EditableGrid'
+import EditableGrid from '../containers/EditableGrid'
+import Grid from '../containers/Grid'
 import Sidebar from '../containers/Sidebar'
 import './Newtab.scss'
 
-export class Newtab extends React.Component {
+interface IProps {
+  sidebarVisible: boolean
+}
+
+export class Newtab extends React.Component<IProps, {}> {
   render() {
+    const content = this.props.sidebarVisible ? <EditableGrid /> : <Grid />
+
     return (
       <div className={'newtab'}>
-        <Grid />
+        {content}
         <Sidebar />
       </div>
     )
