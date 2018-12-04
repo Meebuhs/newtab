@@ -2,8 +2,11 @@ import { Action } from '../actions/grid'
 import {
   ADD_COLUMN,
   ADD_TILE,
+  MOVE_TILE,
   REMOVE_COLUMN,
   REMOVE_TILE,
+  REORDER_COLUMN,
+  REORDER_TILE,
 } from '../constants/types'
 import { IColumn, ITile } from '../models/newtab'
 
@@ -81,6 +84,20 @@ export function reducer(state: IGridState = initialState, action: Action) {
         columnOrder: newColumnOrder,
       }
     }
+    case REORDER_COLUMN: {
+      /**
+       * Rearranges the column order within the grid moving the column from startIndex to endIndex.
+       */
+      const { columnOrder, startIndex, endIndex } = action.payload
+      const newColumnOrder = Array.from(columnOrder)
+      const [removed] = newColumnOrder.splice(startIndex, 1)
+      newColumnOrder.splice(endIndex, 0, removed)
+
+      return {
+        ...state,
+        columnOrder: newColumnOrder,
+      }
+    }
     case ADD_TILE: {
       /**
        * Add a tile to the grid. The tile will have the link and id provided in the payload and it will be added to the
@@ -136,6 +153,58 @@ export function reducer(state: IGridState = initialState, action: Action) {
         ...state,
         tiles: newTiles,
         columns: newColumns,
+      }
+    }
+    case REORDER_TILE: {
+      /**
+       * Rearranges the tiles within a single column moving the tile from startIndex to endIndex.
+       */
+      const { column, startIndex, endIndex } = action.payload
+      const newTileOrder = Array.from(column.tileIds)
+      const [removed] = newTileOrder.splice(startIndex, 1)
+      newTileOrder.splice(endIndex, 0, removed)
+
+      return {
+        ...state,
+        columns: {
+          ...state.columns,
+          [column.id]: {
+            ...state.columns[column.id],
+            tileIds: newTileOrder,
+          },
+        },
+      }
+    }
+    case MOVE_TILE: {
+      /**
+       * Moves a tile from one column to another, rearranging the tile order in both. The tile starts in sourceColumn
+       * at index droppableSource.index and ends up at destinationColumn at index droppableDestination.index.
+       */
+      const { droppableSource, droppableDestination } = action.payload
+
+      const newSourceTileOrder = Array.from(
+        state.columns[droppableSource.droppableId].tileIds
+      )
+      const newDestinationTileOrder = Array.from(
+        state.columns[droppableDestination.droppableId].tileIds
+      )
+
+      const [removed] = newSourceTileOrder.splice(droppableSource.index, 1)
+      newDestinationTileOrder.splice(droppableDestination.index, 0, removed)
+
+      return {
+        ...state,
+        columns: {
+          ...state.columns,
+          [droppableSource.droppableId]: {
+            ...state.columns[droppableSource.droppableId],
+            tileIds: newSourceTileOrder,
+          },
+          [droppableDestination.droppableId]: {
+            ...state.columns[droppableDestination.droppableId],
+            tileIds: newDestinationTileOrder,
+          },
+        },
       }
     }
     default:

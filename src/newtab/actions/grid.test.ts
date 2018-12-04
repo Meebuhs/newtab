@@ -1,3 +1,4 @@
+import { DraggableLocation } from 'react-beautiful-dnd'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
 import * as types from '../constants/types'
 import * as actions from './grid'
@@ -46,6 +47,30 @@ describe('store', () => {
     const expectedPayload = { type: types.REMOVE_TILE }
     expect(storeActions).toEqual([expectedPayload])
   })
+
+  it('should dispatch reorderColumn correctly', () => {
+    store.dispatch({ type: types.REORDER_COLUMN })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.REORDER_COLUMN }
+    expect(storeActions).toEqual([expectedPayload])
+  })
+
+  it('should dispatch reorderTile correctly', () => {
+    store.dispatch({ type: types.REORDER_TILE })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.REORDER_TILE }
+    expect(storeActions).toEqual([expectedPayload])
+  })
+
+  it('should dispatch moveTile correctly', () => {
+    store.dispatch({ type: types.MOVE_TILE })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.MOVE_TILE }
+    expect(storeActions).toEqual([expectedPayload])
+  })
 })
 
 describe('actions', () => {
@@ -75,6 +100,46 @@ describe('actions', () => {
     expect(actions.removeTile(id)).toEqual(expectedAction)
   })
 
+  it('should create an action to reorder a tile within a column', () => {
+    const column = { id: 'column.id.1', tileIds: ['tile.id.1', 'tile.id.2'] }
+    const startIndex = 0
+    const endIndex = 1
+
+    const expectedAction = {
+      type: types.REORDER_TILE,
+      payload: {
+        column,
+        startIndex,
+        endIndex,
+      },
+    }
+    expect(actions.reorderTile(column, startIndex, endIndex)).toEqual(
+      expectedAction
+    )
+  })
+
+  it('should create an action to move a tile between columns', () => {
+    const droppableSource: DraggableLocation = {
+      droppableId: 'column.id.1',
+      index: 0,
+    }
+    const droppableDestination: DraggableLocation = {
+      droppableId: 'column.id.2',
+      index: 1,
+    }
+
+    const expectedAction = {
+      type: types.MOVE_TILE,
+      payload: {
+        droppableSource,
+        droppableDestination,
+      },
+    }
+    expect(actions.moveTile(droppableSource, droppableDestination)).toEqual(
+      expectedAction
+    )
+  })
+
   it('should create an action to add a column', () => {
     const id = 'column.id'
     const expectedAction = {
@@ -98,5 +163,23 @@ describe('actions', () => {
       },
     }
     expect(actions.removeColumn(id)).toEqual(expectedAction)
+  })
+
+  it('should create an action to reorder a column', () => {
+    const columnOrder = ['column.id.1', 'column.id.2']
+    const startIndex = 0
+    const endIndex = 1
+
+    const expectedAction = {
+      type: types.REORDER_COLUMN,
+      payload: {
+        columnOrder,
+        startIndex,
+        endIndex,
+      },
+    }
+    expect(actions.reorderColumn(columnOrder, startIndex, endIndex)).toEqual(
+      expectedAction
+    )
   })
 })
