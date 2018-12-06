@@ -10,9 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added tile display.
-- Added ability to add tiles.
-- Added ability to add columns.
+- Added ability to add tiles and columns.
+- Added ability to reorder tiles and columns using drag and drop.
 - Added ability to remove columns and tiles in editable-grid.
+- Added sidebar which enables grid editing when open.
 - Added redux mock store.
 
 ### Changed

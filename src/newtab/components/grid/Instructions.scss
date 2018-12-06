@@ -1,0 +1,19 @@
+.instructions-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
+.instructions {
+  margin: auto;
+  text-align: center;
+}
+
+.instructions-header {
+  font-size: 2.5rem;
+}
+
+.instructions-text {
+  font-size: 1.5rem;
+}
