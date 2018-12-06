@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { INSTRUCTION_HEADER, INSTRUCTION_TEXT } from '../../constants/strings'
 import './Instructions.scss'
 
 export class Instructions extends React.Component<{}, {}> {
@@ -6,10 +7,8 @@ export class Instructions extends React.Component<{}, {}> {
     return (
       <div className={'instructions-wrapper'}>
         <div className={'instructions'}>
-          <div className={'instructions-header'}>There's more to this!</div>
-          <div className={'instructions-text'}>
-            Click the settings button in the top left to add some tiles.
-          </div>
+          <div className={'instructions-header'}>{INSTRUCTION_HEADER}</div>
+          <div className={'instructions-text'}>{INSTRUCTION_TEXT}</div>
         </div>
       </div>
     )

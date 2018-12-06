@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from '../../constants/strings'
 import { AddTile } from './modals/AddTile'
 import './Sidebar.scss'
 
@@ -91,7 +92,7 @@ export class Sidebar extends React.Component<IProps, IState> {
             className={'sidebar-function'}
             onClick={this.handleOpenAddTileModal}
           >
-            Add Tile
+            {SIDEBAR_ADDTILE}
           </div>
           <AddTile
             showModal={this.state.showAddTileModal}
@@ -99,7 +100,7 @@ export class Sidebar extends React.Component<IProps, IState> {
             handleSaveModal={this.handleSaveAddTileModal}
           />
           <div className={'sidebar-function'} onClick={this.addColumn}>
-            Add Column
+            {SIDEBAR_ADDCOLUMN}
           </div>
         </div>
       </>

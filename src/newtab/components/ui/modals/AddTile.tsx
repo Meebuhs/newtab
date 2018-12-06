@@ -1,5 +1,11 @@
 import * as React from 'react'
 import Modal from 'react-modal'
+import {
+  ADDTILE_HEADER,
+  ADDTILE_TEXT,
+  CANCEL_BUTTON_TEXT,
+  SAVE_BUTTON_TEXT,
+} from '../../../constants/strings'
 import './AddTile.scss'
 
 interface IProps {
@@ -56,10 +62,8 @@ export class AddTile extends React.Component<IProps, IState> {
         }}
       >
         <div className={'container'}>
-          <h2 className={'header'}>Add a tile</h2>
-          <div className={'text'}>
-            Enter the url for a new tile and it will be added to the grid.
-          </div>
+          <h2 className={'header'}>{ADDTILE_HEADER}</h2>
+          <div className={'text'}>{ADDTILE_TEXT}</div>
           <input
             type={'text'}
             className={'text-input'}
@@ -74,14 +78,14 @@ export class AddTile extends React.Component<IProps, IState> {
               className={'cancel-button'}
               onClick={this.props.handleCloseModal}
             >
-              Cancel
+              {CANCEL_BUTTON_TEXT}
             </button>
             <button
               key={'save'}
               className={'save-button'}
               onClick={this.addTile}
             >
-              Save
+              {SAVE_BUTTON_TEXT}
             </button>
           </div>
         </div>
