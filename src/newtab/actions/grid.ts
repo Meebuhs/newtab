@@ -61,8 +61,8 @@ export interface IMoveTileAction {
 // Define the action creators
 
 /**
- * Add a column to the grid
- * @param id The id of the column
+ * Add a column to the grid.
+ * @param {string} id The id of the column
  */
 export function addColumn(id: string): IAddColumnAction {
   return {
@@ -77,8 +77,8 @@ export function addColumn(id: string): IAddColumnAction {
 }
 
 /**
- * Remove a column from the grid
- * @param id The id of the column to remove
+ * Remove a column from the grid.
+ * @param {string} id The id of the column to remove
  */
 export function removeColumn(id: string): IRemoveColumnAction {
   return {
@@ -90,10 +90,10 @@ export function removeColumn(id: string): IRemoveColumnAction {
 }
 
 /**
- * Reorder the column order of the grid
- * @param columnOrder The current columnOrder array
- * @param startIndex The index the column started at before being dragged
- * @param endIndex The index at which the column was dropped
+ * Reorder the column order of the grid.
+ * @param {string[]} columnOrder The current columnOrder array
+ * @param {number} startIndex The index the column started at before being dragged
+ * @param {number} endIndex The index at which the column was dropped
  */
 export function reorderColumn(
   columnOrder: string[],
@@ -111,9 +111,9 @@ export function reorderColumn(
 }
 
 /**
- * Add a tile to the grid
- * @param url The url the tile should point to
- * @param id The id of the tile to add
+ * Add a tile to the grid.
+ * @param {string} id The id of the tile to add
+ * @param {string} url The url the tile should point to
  */
 export function addTile(id: string, url: string): IAddTileAction {
   return {
@@ -128,8 +128,8 @@ export function addTile(id: string, url: string): IAddTileAction {
 }
 
 /**
- * Remove a tile from the grid
- * @param id The id of the tile to remove
+ * Remove a tile from the grid.
+ * @param {string} id The id of the tile to remove
  */
 export function removeTile(id: string): IRemoveTileAction {
   return {
@@ -141,10 +141,10 @@ export function removeTile(id: string): IRemoveTileAction {
 }
 
 /**
- * Reorder the tile order within a column
- * @param columnOrder The column to be rearranged
- * @param startIndex The index the tile started at before being dragged
- * @param endIndex The index at which the tile was dropped
+ * Reorder the tiles within a column.
+ * @param {string[]} columnOrder The column to be rearranged
+ * @param {number} startIndex The index the tile started at before being dragged
+ * @param {number} endIndex The index at which the tile was dropped
  */
 export function reorderTile(
   column: IColumn,
@@ -162,9 +162,9 @@ export function reorderTile(
 }
 
 /**
- * Move the tile between columns
- * @param droppableSource The source result from onDragEnd
- * @param droppableDestination The destination result from onDragEnd
+ * Move the tile between columns.
+ * @param {DraggableLocation} droppableSource The source result from onDragEnd
+ * @param {DraggableLocation} droppableDestination The destination result from onDragEnd
  */
 export function moveTile(
   droppableSource: DraggableLocation,

@@ -19,13 +19,16 @@ export class Sidebar extends React.Component<IProps, IState> {
     this.state = { showAddTileModal: false }
   }
 
+  /**
+   * Toggles the visibility of the sidebar.
+   */
   toggleSidebar = () => {
     this.props.handleToggleSidebar()
   }
 
   /**
    * Adds a column to the grid. A collision of ids is possible here if the user
-   * is able to create two columns in the same millisecond
+   * is able to create two columns in the same millisecond.
    */
   addColumn = () => {
     const id = this.getHashCode(['column', Date.now()].join('.'))
@@ -33,7 +36,8 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
-   * Adds a tile to the grid with the url which is currently specified by the input #tileUrl
+   * Adds a tile to the grid with the specified url.
+   * @param {string} url the url to set
    */
   addTile = (url: string) => {
     const id = this.getHashCode([url, Date.now()].join('.'))
@@ -61,14 +65,24 @@ export class Sidebar extends React.Component<IProps, IState> {
     return hash.toString()
   }
 
+  /**
+   * Opens the AddTile modal.
+   */
   handleOpenAddTileModal = () => {
     this.setState({ showAddTileModal: true })
   }
 
+  /**
+   * Closes the AddTile modal.
+   */
   handleCloseAddTileModal = () => {
     this.setState({ showAddTileModal: false })
   }
 
+  /**
+   * Creates the tile defined in the AddTile modal.
+   * @param {string} value the url value to set
+   */
   handleSaveAddTileModal = (value: string) => {
     this.setState({ showAddTileModal: false })
     this.addTile(value)

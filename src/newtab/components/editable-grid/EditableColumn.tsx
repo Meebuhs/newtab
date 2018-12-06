@@ -20,7 +20,7 @@ interface IProps {
 
 export class EditableColumn extends React.Component<IProps, {}> {
   /**
-   * Removes the column with the specified id from the grid
+   * Removes this column from the grid.
    */
   removeColumn = () => {
     this.props.handleRemoveColumn(this.props.column.id)

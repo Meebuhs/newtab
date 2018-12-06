@@ -12,7 +12,7 @@ interface IProps {
 
 export class EditableTile extends React.Component<IProps, {}> {
   /**
-   * Removes the tile with the specified id from the grid
+   * Removes this tile from the grid.
    */
   removeTile = () => {
     this.props.handleRemoveTile(this.props.tile.id)

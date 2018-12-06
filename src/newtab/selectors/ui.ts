@@ -3,7 +3,7 @@ import { IState } from '../reducers/newtab'
 
 /**
  * Returns the ui state from the root state
- * @param state The root state of the app
+ * @param {IState} state The root state of the app
  */
 const getUIState = (state: IState) => state.ui
 

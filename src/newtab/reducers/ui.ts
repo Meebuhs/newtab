@@ -13,8 +13,8 @@ export const initialState: IUIState = {
 
 /**
  * Reducer function for the ui state
- * @param state The current state of the ui, initialState if none provided
- * @param action The action to handle. The possible actions are declared in src/actions/ui.ts
+ * @param {IUIState} state The current state of the ui, initialState if none provided
+ * @param {Action} action The action to handle. The possible actions are declared in src/actions/ui.ts
  */
 export function reducer(state: IUIState = initialState, action: Action) {
   switch (action.type) {

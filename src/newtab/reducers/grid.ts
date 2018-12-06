@@ -39,8 +39,8 @@ export const initialState: IGridState = {
 
 /**
  * Reducer function for the grid state
- * @param state The current state of the grid, initialState if none provided
- * @param action The action to handle. The possible actions are declared in src/actions/grid.ts
+ * @param {IGridState} state The current state of the grid, initialState if none provided
+ * @param {Action} action The action to handle. The possible actions are declared in src/actions/grid.ts
  */
 export function reducer(state: IGridState = initialState, action: Action) {
   switch (action.type) {

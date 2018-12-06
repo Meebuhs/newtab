@@ -9,8 +9,7 @@ export interface IToggleSidebarAction {
 // Define the action creators
 
 /**
- * Add a column to the grid
- * @param id The id of the column
+ * Toggle the visibility of the sidebar.
  */
 export function toggleSidebar(): IToggleSidebarAction {
   return {

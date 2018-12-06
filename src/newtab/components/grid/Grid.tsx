@@ -10,6 +10,7 @@ interface IProps {
   columns: { [id: string]: IColumn }
   columnOrder: string[]
 }
+
 export class Grid extends React.Component<IProps, {}> {
   render() {
     const { tiles, columns, columnOrder } = this.props

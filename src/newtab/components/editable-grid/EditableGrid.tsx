@@ -34,6 +34,7 @@ interface IProps {
 export class EditableGrid extends React.Component<IProps, {}> {
   /**
    * Handles the drag end event and calls the appropriate method for mutating the state.
+   * @param {DropResult} result the result of the onDragEnd event
    */
   onDragEnd = (result: DropResult) => {
     const { destination, source, type } = result
@@ -60,6 +61,7 @@ export class EditableGrid extends React.Component<IProps, {}> {
 
   /**
    * Handles the reorder call for dragging a column.
+   * @param {DropResult} result the result of the onDragEnd event
    */
   columnDragEnd = (result: DropResult) => {
     const { destination, source } = result
@@ -77,6 +79,7 @@ export class EditableGrid extends React.Component<IProps, {}> {
   /**
    * Handles the reorder call for dragging a tile. Tiles can either be rearranged within a column or moved
    * from one column to another.
+   * @param {DropResult} result the result of the onDragEnd event
    */
   tileDragEnd = (result: DropResult) => {
     const { destination, source } = result

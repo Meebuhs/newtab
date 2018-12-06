@@ -3,7 +3,7 @@ import { IState } from '../reducers/newtab'
 
 /**
  * Returns the grid state from the root state
- * @param state The root state of the app
+ * @param {IState} state The root state of the app
  */
 const getGridState = (state: IState) => state.grid
 
