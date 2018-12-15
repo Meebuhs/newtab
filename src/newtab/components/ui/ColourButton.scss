@@ -1,0 +1,29 @@
+.colour-preview {
+  border-radius: 2px;
+  height: 14px;
+  width: 36px;
+}
+
+.colour-button {
+  background-color: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.popover {
+  position: absolute;
+  transform: translateY(-250px);
+  z-index: 2;
+}
+
+.cover {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}

@@ -1,13 +1,7 @@
 import * as React from 'react'
-import {
-  Draggable,
-  DraggableLocation,
-  Droppable,
-  DropResult,
-} from 'react-beautiful-dnd'
-import './EditableColumn.scss'
-
+import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { IColumn, ITile } from '../../models/newtab'
+import './EditableColumn.scss'
 import { EditableTile } from './EditableTile'
 
 interface IProps {
@@ -16,6 +10,7 @@ interface IProps {
   tiles: { [id: string]: ITile }
   handleRemoveColumn: (id: string) => void
   handleRemoveTile: (id: string) => void
+  handleEditTile: (tile: ITile) => void
 }
 
 export class EditableColumn extends React.Component<IProps, {}> {
@@ -27,7 +22,13 @@ export class EditableColumn extends React.Component<IProps, {}> {
   }
 
   render() {
-    const { tiles, index, column, handleRemoveTile } = this.props
+    const {
+      tiles,
+      index,
+      column,
+      handleRemoveTile,
+      handleEditTile,
+    } = this.props
 
     return (
       <Draggable draggableId={column.id} index={index} type={'column'}>
@@ -59,6 +60,7 @@ export class EditableColumn extends React.Component<IProps, {}> {
                       index={tileIndex}
                       tile={tiles[tile]}
                       handleRemoveTile={handleRemoveTile}
+                      handleEditTile={handleEditTile}
                     />
                   ))}
                   {dropProvided.placeholder}

@@ -3,29 +3,39 @@ import * as types from '../constants/types'
 import { reducer } from '../reducers/grid'
 import { initialState } from './grid'
 
+const testTiles = [
+  'test.tile.id.1',
+  'test.tile.id.2',
+  'test.tile.id.3',
+  'test.tile.id.4',
+].map(id => ({
+  id,
+  name: 'test.tile.name',
+  url: 'test.tile.url',
+  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  backgroundColour: '#fff',
+  fontColour: '#000',
+  favicon: false,
+  image: 'test.image.key',
+}))
+
 describe('Grid reducer', () => {
   it('should handle ADD_TILE on empty grid', () => {
     expect(
       reducer(initialState, {
         type: types.ADD_TILE,
         payload: {
-          tile: {
-            id: 'new.tile',
-            url: 'new.url',
-          },
+          tile: testTiles[0],
         },
       })
     ).toEqual({
       tiles: {
-        'new.tile': {
-          id: 'new.tile',
-          url: 'new.url',
-        },
+        [testTiles[0].id]: testTiles[0],
       },
       columns: {
         'column-0': {
           id: 'column-0',
-          tileIds: ['new.tile'],
+          tileIds: [testTiles[0].id],
         },
         'column-1': {
           id: 'column-1',
@@ -45,23 +55,14 @@ describe('Grid reducer', () => {
       reducer(
         {
           tiles: {
-            'existing.tile.1': {
-              id: 'existing.tile.1',
-              url: 'existing.url.1',
-            },
-            'existing.tile.2': {
-              id: 'existing.tile.2',
-              url: 'existing.url.2',
-            },
-            'existing.tile.3': {
-              id: 'existing.tile.3',
-              url: 'existing.url.3',
-            },
+            [testTiles[0].id]: testTiles[0],
+            [testTiles[1].id]: testTiles[1],
+            [testTiles[2].id]: testTiles[2],
           },
           columns: {
             'column-0': {
               id: 'column-0',
-              tileIds: ['existing.tile.2'],
+              tileIds: [testTiles[0].id],
             },
             'column-1': {
               id: 'column-1',
@@ -69,7 +70,7 @@ describe('Grid reducer', () => {
             },
             'column-2': {
               id: 'column-2',
-              tileIds: ['existing.tile.1', 'existing.tile.3'],
+              tileIds: [testTiles[1].id, testTiles[2].id],
             },
           },
           columnOrder: ['column-0', 'column-1', 'column-2'],
@@ -77,44 +78,88 @@ describe('Grid reducer', () => {
         {
           type: types.ADD_TILE,
           payload: {
-            tile: {
-              id: 'new.tile',
-              url: 'new.url',
-            },
+            tile: testTiles[3],
           },
         }
       )
     ).toEqual({
       tiles: {
-        'existing.tile.1': {
-          id: 'existing.tile.1',
-          url: 'existing.url.1',
-        },
-        'existing.tile.2': {
-          id: 'existing.tile.2',
-          url: 'existing.url.2',
-        },
-        'existing.tile.3': {
-          id: 'existing.tile.3',
-          url: 'existing.url.3',
-        },
-        'new.tile': {
-          id: 'new.tile',
-          url: 'new.url',
-        },
+        [testTiles[0].id]: testTiles[0],
+        [testTiles[1].id]: testTiles[1],
+        [testTiles[2].id]: testTiles[2],
+        [testTiles[3].id]: testTiles[3],
       },
       columns: {
         'column-0': {
           id: 'column-0',
-          tileIds: ['existing.tile.2'],
+          tileIds: [testTiles[0].id],
         },
         'column-1': {
           id: 'column-1',
-          tileIds: ['new.tile'],
+          tileIds: [testTiles[3].id],
         },
         'column-2': {
           id: 'column-2',
-          tileIds: ['existing.tile.1', 'existing.tile.3'],
+          tileIds: [testTiles[1].id, testTiles[2].id],
+        },
+      },
+      columnOrder: ['column-0', 'column-1', 'column-2'],
+    })
+  })
+
+  it('should handle EDIT_TILE correctly', () => {
+    const testTile = {
+      id: 'test.tile.id',
+      name: 'test.tile.name',
+      url: 'test.tile.url',
+      displayMode: 'colour' as 'colour', // Suppress compiler warning
+      backgroundColour: '#fff',
+      fontColour: '#000',
+      favicon: false,
+      image: 'test.image.key',
+    }
+
+    const editedTile = {
+      id: 'test.tile.id',
+      name: 'test.tile.name',
+      url: 'test.tile.url',
+      displayMode: 'colour' as 'colour', // Suppress compiler warning
+      backgroundColour: '#000',
+      fontColour: '#fff',
+      favicon: false,
+      image: 'test.image.key',
+    }
+
+    const newState = reducer(initialState, {
+      type: types.ADD_TILE,
+      payload: {
+        tile: testTile,
+      },
+    })
+
+    expect(
+      reducer(newState, {
+        type: types.EDIT_TILE,
+        payload: {
+          tile: editedTile,
+        },
+      })
+    ).toEqual({
+      tiles: {
+        [editedTile.id]: editedTile,
+      },
+      columns: {
+        'column-0': {
+          id: 'column-0',
+          tileIds: [editedTile.id],
+        },
+        'column-1': {
+          id: 'column-1',
+          tileIds: [],
+        },
+        'column-2': {
+          id: 'column-2',
+          tileIds: [],
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2'],
@@ -126,10 +171,7 @@ describe('Grid reducer', () => {
     newState = reducer(newState, {
       type: types.ADD_TILE,
       payload: {
-        tile: {
-          id: 'new.tile',
-          url: 'new.url',
-        },
+        tile: testTiles[0],
       },
     })
 
@@ -137,7 +179,7 @@ describe('Grid reducer', () => {
       reducer(newState, {
         type: types.REMOVE_TILE,
         payload: {
-          id: 'new.tile',
+          id: testTiles[0].id,
         },
       })
     ).toEqual(initialState)
@@ -145,14 +187,11 @@ describe('Grid reducer', () => {
 
   it('should handle REMOVE_TILE correctly when multiple tiles exist', () => {
     let newState = Object.assign({}, initialState)
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 3; i++) {
       newState = reducer(newState, {
         type: types.ADD_TILE,
         payload: {
-          tile: {
-            id: 'new.tile.' + i,
-            url: 'new.url.' + i,
-          },
+          tile: testTiles[i],
         },
       })
     }
@@ -161,10 +200,7 @@ describe('Grid reducer', () => {
     newState = reducer(newState, {
       type: types.ADD_TILE,
       payload: {
-        tile: {
-          id: 'new.tile.4',
-          url: 'new.url.4',
-        },
+        tile: testTiles[3],
       },
     })
 
@@ -172,7 +208,7 @@ describe('Grid reducer', () => {
       reducer(newState, {
         type: types.REMOVE_TILE,
         payload: {
-          id: 'new.tile.4',
+          id: testTiles[3].id,
         },
       })
     ).toEqual(expectedState)
@@ -190,18 +226,15 @@ describe('Grid reducer', () => {
   })
 
   it('should handle REORDER_TILE correctly', () => {
-    const column = { id: 'column-0', tileIds: ['tile.id.1', 'tile.id.2'] }
+    const column = {
+      id: 'column-0',
+      tileIds: [testTiles[0].id, testTiles[1].id],
+    }
 
     const twoTileSingleColumnState = {
       tiles: {
-        'tile.id.1': {
-          id: 'tile.id.1',
-          url: 'tile.url.1',
-        },
-        'tile.id.2': {
-          id: 'tile.id.2',
-          url: 'tile.url.2',
-        },
+        [testTiles[0].id]: testTiles[0],
+        [testTiles[1].id]: testTiles[1],
       },
       columns: {
         'column-0': column,
@@ -214,7 +247,7 @@ describe('Grid reducer', () => {
       columns: {
         'column-0': {
           ...twoTileSingleColumnState.columns['column-0'],
-          tileIds: ['tile.id.2', 'tile.id.1'],
+          tileIds: [testTiles[1].id, testTiles[0].id],
         },
       },
     }
@@ -234,18 +267,12 @@ describe('Grid reducer', () => {
   it('should handle MOVE_TILE correctly', () => {
     const twoTileTwoColumnState = {
       tiles: {
-        'tile.id.1': {
-          id: 'tile.id.1',
-          url: 'tile.url.1',
-        },
-        'tile.id.2': {
-          id: 'tile.id.2',
-          url: 'tile.url.2',
-        },
+        [testTiles[0].id]: testTiles[0],
+        [testTiles[1].id]: testTiles[1],
       },
       columns: {
-        'column-0': { id: 'column-0', tileIds: ['tile.id.1'] },
-        'column-1': { id: 'column-1', tileIds: ['tile.id.2'] },
+        'column-0': { id: 'column-0', tileIds: [testTiles[0].id] },
+        'column-1': { id: 'column-1', tileIds: [testTiles[1].id] },
       },
       columnOrder: ['column-0', 'column-1'],
     }
@@ -259,7 +286,7 @@ describe('Grid reducer', () => {
         },
         'column-1': {
           ...twoTileTwoColumnState.columns['column-1'],
-          tileIds: ['tile.id.2', 'tile.id.1'],
+          tileIds: [testTiles[1].id, testTiles[0].id],
         },
       },
     }

@@ -1,11 +1,21 @@
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-import * as types from '../../constants/types'
-
 import { Column } from '../../components/grid/Column'
 import { Grid } from '../../components/grid/Grid'
+import * as types from '../../constants/types'
 import { initialState, reducer } from '../../reducers/grid'
 import { Instructions } from './Instructions'
+
+const testTile = {
+  id: 'test.tile.id.1',
+  name: 'test.tile.name',
+  url: 'test.tile.url',
+  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  backgroundColour: '#fff',
+  fontColour: '#000',
+  favicon: false,
+  image: 'test.image.key',
+}
 
 describe('Grid component', () => {
   it('should render the instructions component upon initialisation', () => {
@@ -21,10 +31,7 @@ describe('Grid component', () => {
     const addedTileState = reducer(initialState, {
       type: types.ADD_TILE,
       payload: {
-        tile: {
-          id: 'new.tile',
-          url: 'tile.url',
-        },
+        tile: testTile,
       },
     })
     const { tiles, columns, columnOrder } = addedTileState
@@ -54,10 +61,7 @@ describe('Grid component', () => {
     addedColumnState = reducer(addedColumnState, {
       type: types.ADD_TILE,
       payload: {
-        tile: {
-          id: 'new.tile',
-          url: 'tile.url',
-        },
+        tile: testTile,
       },
     })
 

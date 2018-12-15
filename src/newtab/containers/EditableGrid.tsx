@@ -1,6 +1,7 @@
 import { DraggableLocation } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'
 import {
+  editTile,
   moveTile,
   removeColumn,
   removeTile,
@@ -8,7 +9,7 @@ import {
   reorderTile,
 } from '../actions/grid'
 import { EditableGrid } from '../components/editable-grid/EditableGrid'
-import { IColumn } from '../models/newtab'
+import { IColumn, ITile } from '../models/newtab'
 import { IState } from '../reducers/newtab'
 import { getColumnOrder, getColumns, getTiles } from '../selectors/grid'
 
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch: any) => ({
     startIndex: number,
     endIndex: number
   ) => dispatch(reorderColumn(columnOrder, startIndex, endIndex)),
+  handleEditTile: (tile: ITile) => dispatch(editTile(tile)),
   handleMoveTile: (
     droppableSource: DraggableLocation,
     droppableDestination: DraggableLocation

@@ -6,3 +6,10 @@
   right: 5px;
   top: 5px;
 }
+
+.edit-tile {
+  @include button(30px, 30px, false);
+  position: absolute;
+  right: 40px;
+  top: 5px;
+}

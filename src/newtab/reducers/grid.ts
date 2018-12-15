@@ -2,6 +2,7 @@ import { Action } from '../actions/grid'
 import {
   ADD_COLUMN,
   ADD_TILE,
+  EDIT_TILE,
   MOVE_TILE,
   REMOVE_COLUMN,
   REMOVE_TILE,
@@ -111,7 +112,7 @@ export function reducer(state: IGridState = initialState, action: Action) {
           state.columns[min].tileIds.length
             ? column
             : min,
-        'column-0' // Start index
+        columns[0] // Start index
       )
       const newTileIds = Array.from(state.columns[shortestColumn].tileIds)
       newTileIds.push(tile.id)
@@ -128,6 +129,20 @@ export function reducer(state: IGridState = initialState, action: Action) {
             ...state.columns[shortestColumn],
             tileIds: newTileIds,
           },
+        },
+      }
+    }
+    case EDIT_TILE: {
+      /**
+       * Edits the properties of an existing tile.
+       */
+      const tile = action.payload.tile
+
+      return {
+        ...state,
+        tiles: {
+          ...state.tiles,
+          [tile.id]: tile,
         },
       }
     }

@@ -3,6 +3,7 @@ import { DraggableLocation } from 'react-beautiful-dnd'
 import {
   ADD_COLUMN,
   ADD_TILE,
+  EDIT_TILE,
   MOVE_TILE,
   REMOVE_COLUMN,
   REMOVE_TILE,
@@ -33,6 +34,11 @@ export interface IReorderColumnAction {
 
 export interface IAddTileAction {
   type: 'ADD_TILE'
+  payload: { tile: ITile }
+}
+
+export interface IEditTileAction {
+  type: 'EDIT_TILE'
   payload: { tile: ITile }
 }
 
@@ -112,17 +118,26 @@ export function reorderColumn(
 
 /**
  * Add a tile to the grid.
- * @param {string} id The id of the tile to add
- * @param {string} url The url the tile should point to
+ * @param {ITile} tile the tile to add
  */
-export function addTile(id: string, url: string): IAddTileAction {
+export function addTile(tile: ITile): IAddTileAction {
   return {
     type: ADD_TILE,
     payload: {
-      tile: {
-        id,
-        url,
-      },
+      tile,
+    },
+  }
+}
+
+/**
+ * Edits an existing tile.
+ * @param {ITile} tile the new tile to set
+ */
+export function editTile(tile: ITile): IEditTileAction {
+  return {
+    type: EDIT_TILE,
+    payload: {
+      tile,
     },
   }
 }
@@ -185,6 +200,7 @@ export type Action =
   | IRemoveColumnAction
   | IReorderColumnAction
   | IAddTileAction
+  | IEditTileAction
   | IMoveTileAction
   | IRemoveTileAction
   | IReorderTileAction

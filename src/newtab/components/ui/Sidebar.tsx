@@ -1,22 +1,25 @@
 import * as React from 'react'
+import { getHashCode } from '../../../utils/hashcode'
 import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from '../../constants/strings'
-import { AddTile } from './modals/AddTile'
+import { emptyTile, ITile } from '../../models/newtab'
+import { TileCreator } from './modals/TileCreator'
 import './Sidebar.scss'
 
 interface IProps {
   sidebarVisible: boolean
   handleAddColumn: (id: string) => void
-  handleAddTile: (id: string, url: string) => void
+  handleAddTile: (tile: ITile) => void
   handleToggleSidebar: () => void
 }
+
 interface IState {
-  showAddTileModal: boolean
+  showTileCreatorModal: boolean
 }
 
 export class Sidebar extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
-    this.state = { showAddTileModal: false }
+    this.state = { showTileCreatorModal: false }
   }
 
   /**
@@ -31,61 +34,42 @@ export class Sidebar extends React.Component<IProps, IState> {
    * is able to create two columns in the same millisecond.
    */
   addColumn = () => {
-    const id = this.getHashCode(['column', Date.now()].join('.'))
+    const id = getHashCode(['column', Date.now()].join('.'))
     this.props.handleAddColumn(id)
   }
 
   /**
    * Adds a tile to the grid with the specified url.
-   * @param {string} url the url to set
+   * @param {ITile} tile the tile to add
    */
-  addTile = (url: string) => {
-    const id = this.getHashCode([url, Date.now()].join('.'))
-    this.props.handleAddTile(id, url)
-  }
-
-  /**
-   * Returns the hash code for a string. This is a javascript implementation of Java's String.hashcode()
-   * ref: https://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
-   */
-  getHashCode = (value: string) => {
-    let hash = 0
-    let i = 0
-    let chr
-    if (value.length === 0) {
-      return hash.toString()
+  addTile = (tile: ITile) => {
+    if (tile.id === '') {
+      tile.id = getHashCode([tile.name, Date.now()].join('.'))
     }
-
-    for (i = 0; i < value.length; i++) {
-      chr = value.charCodeAt(i)
-      hash = (hash << 5) - hash + chr
-      hash |= 0
-    }
-
-    return hash.toString()
+    this.props.handleAddTile(tile)
   }
 
   /**
-   * Opens the AddTile modal.
+   * Opens the TileCreator modal with an empty tile.
    */
-  handleOpenAddTileModal = () => {
-    this.setState({ showAddTileModal: true })
+  handleOpenTileCreatorModal = () => {
+    this.setState({ showTileCreatorModal: true })
   }
 
   /**
-   * Closes the AddTile modal.
+   * Closes the TileCreator modal without saving any of the changes made.
    */
-  handleCloseAddTileModal = () => {
-    this.setState({ showAddTileModal: false })
+  handleCloseTileCreatorModal = () => {
+    this.setState({ showTileCreatorModal: false })
   }
 
   /**
-   * Creates the tile defined in the AddTile modal.
-   * @param {string} value the url value to set
+   * Creates the tile defined in the TileCreator modal.
+   * @param {ITile} tile the tile to add
    */
-  handleSaveAddTileModal = (value: string) => {
-    this.setState({ showAddTileModal: false })
-    this.addTile(value)
+  handleSaveTileCreatorModal = (tile: ITile) => {
+    this.setState({ showTileCreatorModal: false })
+    this.addTile(tile)
   }
 
   render() {
@@ -104,14 +88,16 @@ export class Sidebar extends React.Component<IProps, IState> {
         <div className={'sidebar'} style={{ marginLeft: sidebarMargin }}>
           <div
             className={'sidebar-function'}
-            onClick={this.handleOpenAddTileModal}
+            onClick={this.handleOpenTileCreatorModal}
           >
             {SIDEBAR_ADDTILE}
           </div>
-          <AddTile
-            showModal={this.state.showAddTileModal}
-            handleCloseModal={this.handleCloseAddTileModal}
-            handleSaveModal={this.handleSaveAddTileModal}
+          <TileCreator
+            tile={emptyTile}
+            edit={false}
+            showModal={this.state.showTileCreatorModal}
+            handleCloseModal={this.handleCloseTileCreatorModal}
+            handleSaveModal={this.handleSaveTileCreatorModal}
           />
           <div className={'sidebar-function'} onClick={this.addColumn}>
             {SIDEBAR_ADDCOLUMN}

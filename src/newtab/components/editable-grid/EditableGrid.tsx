@@ -5,10 +5,9 @@ import {
   Droppable,
   DropResult,
 } from 'react-beautiful-dnd'
-import './EditableGrid.scss'
-
 import { IColumn, ITile } from '../../models/newtab'
 import { EditableColumn } from './EditableColumn'
+import './EditableGrid.scss'
 
 interface IProps {
   tiles: { [id: string]: ITile }
@@ -20,6 +19,7 @@ interface IProps {
     startIndex: number,
     endIndex: number
   ) => void
+  handleEditTile: (tile: ITile) => void
   handleMoveTile: (
     droppableSource: DraggableLocation,
     droppableDestination: DraggableLocation
@@ -106,6 +106,7 @@ export class EditableGrid extends React.Component<IProps, {}> {
       tiles,
       columns,
       columnOrder,
+      handleEditTile,
       handleRemoveColumn,
       handleRemoveTile,
     } = this.props
@@ -127,6 +128,7 @@ export class EditableGrid extends React.Component<IProps, {}> {
                     index={index}
                     tiles={tiles}
                     handleRemoveColumn={handleRemoveColumn}
+                    handleEditTile={handleEditTile}
                     handleRemoveTile={handleRemoveTile}
                   />
                 ))}

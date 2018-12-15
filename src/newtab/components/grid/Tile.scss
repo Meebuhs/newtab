@@ -3,10 +3,17 @@
 
 $tile-height: 150px;
 
+.tile-link {
+  text-decoration: none;
+}
+
 .tile {
-  border: 1px solid lighten(colour('grey-light'), 1);
+  align-items: center;
+  border: 1px solid darken(#fff, 2);
   border-radius: 5px;
+  display: flex;
   height: $tile-height;
+  justify-content: center;
   margin-bottom: 20px;
   position: relative;
   text-align: center;

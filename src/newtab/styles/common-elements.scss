@@ -5,7 +5,7 @@ $sidebar-width: 18%;
 @mixin button($width, $height, $highlight) {
   $background: if($highlight, colour('highlight'), #fff);
   background-color: $background;
-  border: 1px solid lighten(colour('grey-light'), 1);
+  border: 1px solid if($highlight, colour('highlight'), darken(#fff, 2));
   border-radius: 2px;
   color: if($highlight, #fff, colour('grey-dark'));
   cursor: pointer;
@@ -22,4 +22,23 @@ $sidebar-width: 18%;
   &:active {
     background-color: darken($background, 2);
   }
+}
+
+@mixin flex-row-parent() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-row-child() {
+  flex: 1;
+  justify-content: space-between;
+}
+
+@mixin flex-column-parent() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-child() {
+  flex: 1;
 }

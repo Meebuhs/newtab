@@ -1,8 +1,7 @@
 import * as React from 'react'
-import './Grid.scss'
-
 import { IColumn, ITile } from '../../models/newtab'
 import { Column } from './Column'
+import './Grid.scss'
 import { Instructions } from './Instructions'
 
 interface IProps {
@@ -18,7 +17,7 @@ export class Grid extends React.Component<IProps, {}> {
       return <Instructions />
     } else {
       return (
-        <div className={'container'}>
+        <div className={'grid-container'}>
           <div className={'grid'}>
             {columnOrder.map(column => (
               <Column

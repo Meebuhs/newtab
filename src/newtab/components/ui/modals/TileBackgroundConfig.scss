@@ -1,0 +1,84 @@
+@import '../../../styles/theme-colours';
+@import '../../../styles/common-elements';
+
+.tile-background-config-container {
+  @include flex-column-parent();
+  border-color: darken(#fff, 1);
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  margin-top: -10px;
+}
+
+.tile-background-config-top {
+  @include flex-column-child();
+  height: 150px;
+}
+
+.tile-background-config-bottom {
+  @include flex-column-child();
+  align-items: center;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+}
+
+.tile-background-colour-container {
+  @include flex-row-parent();
+  height: 100%;
+}
+
+.tile-background-colour-select {
+  @include flex-row-child();
+  height: 100%;
+}
+
+.tile-background-favicon-select {
+  @include flex-row-child();
+  height: 100%;
+}
+
+.tile-background-preview,
+.tile-background-favicon-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.tile-background-colour-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.form-label {
+  margin-right: 10px;
+}
+
+.tile-image-config-container {
+  @include flex-column-parent();
+  border-color: darken(#fff, 1);
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  margin-top: -10px;
+}
+
+.tile-image-config-top {
+  @include flex-column-child();
+  height: 150px;
+}
+
+.tile-image-config-bottom {
+  @include flex-column-child();
+  align-items: center;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+}

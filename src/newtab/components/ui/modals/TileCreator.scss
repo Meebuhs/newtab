@@ -1,7 +1,7 @@
 @import '../../../styles/theme-colours';
 @import '../../../styles/common-elements';
 
-.container {
+.tilecreator-container {
   height: auto;
 }
 
@@ -38,4 +38,30 @@
 
 .cancel-button {
   @include button(100px, 30px, false);
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+.text-input {
+  border: 1px solid darken(#fff, 1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  width: 100%;
+
+  &:focus {
+    border-color: colour('grey-dark');
+    outline: none;
+  }
+
+  &:hover:not(:focus) {
+    border-color: darken(#fff, 2);
+    transition: border-color 0.5s;
+  }
 }

@@ -5,19 +5,24 @@ import { Tile } from '../../components/grid/Tile'
 
 describe('Column component', () => {
   it('should render 2 tiles', () => {
+    const testTiles = ['test.tile.id.1', 'test.tile.id.2'].map(id => ({
+      id,
+      name: 'test.tile.name',
+      url: 'test.tile.url',
+      displayMode: 'colour' as 'colour', // Suppress compiler warning
+      backgroundColour: '#fff',
+      fontColour: '#000',
+      favicon: false,
+      image: 'test.image.key',
+    }))
+
     const tiles = {
-      'test.1': {
-        id: 'test.1',
-        url: 'url.1',
-      },
-      'test.2': {
-        id: 'test.2',
-        url: 'url.2',
-      },
+      [testTiles[0].id]: testTiles[0],
+      [testTiles[1].id]: testTiles[1],
     }
     const column = {
       id: 'column-0',
-      tileIds: ['test.1', 'test.2'],
+      tileIds: [testTiles[0].id, testTiles[1].id],
     }
     const grid = enzyme.shallow(<Column tiles={tiles} column={column} />)
     expect(grid.find(Tile)).toHaveLength(2)

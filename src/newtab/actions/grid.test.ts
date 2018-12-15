@@ -40,6 +40,14 @@ describe('store', () => {
     expect(storeActions).toEqual([expectedPayload])
   })
 
+  it('should dispatch editTile correctly', () => {
+    store.dispatch({ type: types.EDIT_TILE })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.EDIT_TILE }
+    expect(storeActions).toEqual([expectedPayload])
+  })
+
   it('should dispatch removeTile correctly', () => {
     store.dispatch({ type: types.REMOVE_TILE })
 
@@ -75,18 +83,45 @@ describe('store', () => {
 
 describe('actions', () => {
   it('should create an action to add a tile', () => {
-    const id = 'tile.id'
-    const url = 'tile.url'
+    const tile = {
+      id: 'test.tile.id',
+      name: 'test.tile.name',
+      url: 'test.tile.url',
+      displayMode: 'colour' as 'colour', // Suppress compiler warning
+      backgroundColour: '#fff',
+      fontColour: '#000',
+      favicon: false,
+      image: 'test.image.key',
+    }
+
     const expectedAction = {
       type: types.ADD_TILE,
       payload: {
-        tile: {
-          id,
-          url,
-        },
+        tile,
       },
     }
-    expect(actions.addTile(id, url)).toEqual(expectedAction)
+    expect(actions.addTile(tile)).toEqual(expectedAction)
+  })
+
+  it('should create an action to edit a tile', () => {
+    const tile = {
+      id: 'test.tile.id',
+      name: 'test.tile.name',
+      url: 'test.tile.url',
+      displayMode: 'colour' as 'colour', // Suppress compiler warning
+      backgroundColour: '#fff',
+      fontColour: '#000',
+      favicon: false,
+      image: 'test.image.key',
+    }
+
+    const expectedAction = {
+      type: types.EDIT_TILE,
+      payload: {
+        tile,
+      },
+    }
+    expect(actions.editTile(tile)).toEqual(expectedAction)
   })
 
   it('should create an action to remove a tile', () => {
