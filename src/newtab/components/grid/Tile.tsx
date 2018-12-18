@@ -1,5 +1,5 @@
+import { ITile } from 'models/newtab'
 import * as React from 'react'
-import { ITile } from '../../models/newtab'
 import './Tile.scss'
 
 interface IProps {

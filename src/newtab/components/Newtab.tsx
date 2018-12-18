@@ -1,7 +1,7 @@
+import EditableGrid from 'containers/EditableGrid'
+import Grid from 'containers/Grid'
+import Sidebar from 'containers/Sidebar'
 import * as React from 'react'
-import EditableGrid from '../containers/EditableGrid'
-import Grid from '../containers/Grid'
-import Sidebar from '../containers/Sidebar'
 import './Newtab.scss'
 
 interface IProps {

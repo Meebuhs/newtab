@@ -1,5 +1,5 @@
-import { Action } from '../actions/ui'
-import { TOGGLE_SIDEBAR } from '../constants/types'
+import { Action } from 'actions/ui'
+import { TOGGLE_SIDEBAR } from 'constants/types'
 
 // Define the types of the grid state structure
 export interface IUIState {

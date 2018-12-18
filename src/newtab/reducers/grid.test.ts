@@ -1,7 +1,5 @@
-import { DraggableLocation } from 'react-beautiful-dnd'
-import * as types from '../constants/types'
-import { reducer } from '../reducers/grid'
-import { initialState } from './grid'
+import * as types from 'constants/types'
+import { initialState, reducer } from 'reducers/grid'
 
 const testTiles = [
   'test.tile.id.1',

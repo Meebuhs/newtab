@@ -10,7 +10,22 @@
     "sourceMap": true,
     "target": "es6",
     "alwaysStrict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "paths": {
+      "actions/*": ["newtab/actions/*"],
+      "modals/*": ["newtab/components/ui/modals/*"],
+      "components/*": ["newtab/components/*"],
+      "constants/*": ["newtab/constants/*"],
+      "containers/*": ["newtab/containers/*"],
+      "models/*": ["newtab/models/*"],
+      "reducers/*": ["newtab/reducers/*"],
+      "selectors/*": ["newtab/selectors/*"],
+      "store/*": ["newtab/store/*"],
+      "styles/*": ["newtab/styles/*"],
+      "utils/*": ["utils/*"]
+    }
   },
   "include": ["./src/**/**/*"]
 }

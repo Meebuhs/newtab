@@ -1,10 +1,10 @@
+import { Column } from 'components/grid/Column'
+import { Grid } from 'components/grid/Grid'
+import { Instructions } from 'components/grid/Instructions'
+import * as types from 'constants/types'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-import { Column } from '../../components/grid/Column'
-import { Grid } from '../../components/grid/Grid'
-import * as types from '../../constants/types'
-import { initialState, reducer } from '../../reducers/grid'
-import { Instructions } from './Instructions'
+import { initialState, reducer } from 'reducers/grid'
 
 const testTile = {
   id: 'test.tile.id.1',

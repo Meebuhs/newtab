@@ -1,8 +1,7 @@
+import { TileColourBackgroundConfig } from 'modals/tile-creator/TileColourConfig'
+import { TileImageBackgroundConfig } from 'modals/tile-creator/TileImageConfig'
+import { ITile } from 'models/newtab'
 import * as React from 'react'
-import { TILECREATOR_BACKGROUND_PREVIEW } from '../../../../constants/strings'
-import { ITile } from '../../../../models/newtab'
-import { TileColourBackgroundConfig } from './TileColourConfig'
-import { TileImageBackgroundConfig } from './TileImageConfig'
 
 interface IProps {
   updateStateValue: (attribute: keyof ITile, value: string) => void

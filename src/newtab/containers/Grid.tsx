@@ -1,7 +1,7 @@
+import { Grid } from 'components/grid/Grid'
 import { connect } from 'react-redux'
-import { Grid } from '../components/grid/Grid'
-import { IState } from '../reducers/newtab'
-import { getColumnOrder, getColumns, getTiles } from '../selectors/grid'
+import { IState } from 'reducers/newtab'
+import { getColumnOrder, getColumns, getTiles } from 'selectors/grid'
 
 const mapStateToProps = (state: IState) => ({
   tiles: getTiles(state),

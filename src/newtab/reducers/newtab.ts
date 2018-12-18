@@ -1,6 +1,6 @@
+import * as fromGrid from 'reducers/grid'
+import * as fromUI from 'reducers/ui'
 import { combineReducers } from 'redux'
-import * as fromGrid from './grid'
-import * as fromUI from './ui'
 
 // Define the root state of the app containing all substates
 export interface IState {

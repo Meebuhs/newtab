@@ -1,5 +1,3 @@
-import { DraggableLocation } from 'react-beautiful-dnd'
-import { connect } from 'react-redux'
 import {
   editTile,
   moveTile,
@@ -7,11 +5,13 @@ import {
   removeTile,
   reorderColumn,
   reorderTile,
-} from '../actions/grid'
-import { EditableGrid } from '../components/editable-grid/EditableGrid'
-import { IColumn, ITile } from '../models/newtab'
-import { IState } from '../reducers/newtab'
-import { getColumnOrder, getColumns, getTiles } from '../selectors/grid'
+} from 'actions/grid'
+import { EditableGrid } from 'components/editable-grid/EditableGrid'
+import { IColumn, ITile } from 'models/newtab'
+import { DraggableLocation } from 'react-beautiful-dnd'
+import { connect } from 'react-redux'
+import { IState } from 'reducers/newtab'
+import { getColumnOrder, getColumns, getTiles } from 'selectors/grid'
 
 const mapStateToProps = (state: IState) => ({
   tiles: getTiles(state),

@@ -4,6 +4,10 @@ const path = require('path'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const paths = {
+  src: path.resolve(__dirname, 'src'),
+}
+
 module.exports = {
   entry: {
     newtab: ['./src/newtab/Newtab.tsx', 'webpack-hot-middleware/client'],
@@ -16,6 +20,19 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+    alias: {
+      actions: path.resolve(paths.src, 'newtab', 'actions'),
+      modals: path.resolve(paths.src, 'newtab', 'components', 'ui', 'modals'),
+      components: path.resolve(paths.src, 'newtab', 'components'),
+      constants: path.resolve(paths.src, 'newtab', 'constants'),
+      containers: path.resolve(paths.src, 'newtab', 'containers'),
+      models: path.resolve(paths.src, 'newtab', 'models'),
+      reducers: path.resolve(paths.src, 'newtab', 'reducers'),
+      selectors: path.resolve(paths.src, 'newtab', 'selectors'),
+      store: path.resolve(paths.src, 'newtab', 'store'),
+      styles: path.resolve(paths.src, 'newtab', 'styles'),
+      utils: path.resolve(paths.src, 'utils'),
+    },
   },
   module: {
     rules: [
@@ -70,7 +87,7 @@ module.exports = {
       },
     ]),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'newtab.html'),
+      template: path.resolve(paths.src, 'newtab.html'),
       filename: 'newtab.html',
     }),
     new webpack.HotModuleReplacementPlugin(),

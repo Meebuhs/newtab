@@ -1,6 +1,6 @@
+import { Tile } from 'components/grid/Tile'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-import { Tile } from '../../components/grid/Tile'
 
 describe('Tile component', () => {
   it('should render tile with solid background colour', () => {

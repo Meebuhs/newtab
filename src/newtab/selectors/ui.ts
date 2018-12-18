@@ -1,5 +1,5 @@
+import { IState } from 'reducers/newtab'
 import { createSelector } from 'reselect'
-import { IState } from '../reducers/newtab'
 
 /**
  * Returns the ui state from the root state

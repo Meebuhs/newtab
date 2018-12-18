@@ -1,4 +1,5 @@
-@import '../grid/Tile';
+@import '~components/grid/Tile';
+@import '~styles/common-elements';
 
 .remove-tile {
   @include button(30px, 30px, false);

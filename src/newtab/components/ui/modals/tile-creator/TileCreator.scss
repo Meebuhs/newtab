@@ -1,12 +1,12 @@
-@import '../../../../styles/theme-colours';
-@import '../../../../styles/common-elements';
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
 
 .tilecreator-container {
   height: auto;
 }
 
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid darken(#fff, 1);
   font-size: 1.25rem;
   height: auto;
   padding-bottom: 10px;

@@ -1,8 +1,8 @@
+import { Column } from 'components/grid/Column'
+import { Instructions } from 'components/grid/Instructions'
+import { IColumn, ITile } from 'models/newtab'
 import * as React from 'react'
-import { IColumn, ITile } from '../../models/newtab'
-import { Column } from './Column'
 import './Grid.scss'
-import { Instructions } from './Instructions'
 
 interface IProps {
   tiles: { [id: string]: ITile }

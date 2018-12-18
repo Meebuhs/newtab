@@ -1,6 +1,5 @@
-import * as types from '../constants/types'
-import { reducer } from '../reducers/ui'
-import { initialState } from './ui'
+import * as types from 'constants/types'
+import { initialState, reducer } from 'reducers/ui'
 
 describe('UI reducer', () => {
   it('should handle TOGGLE_SIDEBAR correctly', () => {

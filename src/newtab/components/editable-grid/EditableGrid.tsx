@@ -1,3 +1,5 @@
+import { EditableColumn } from 'components/editable-grid/EditableColumn'
+import { IColumn, ITile } from 'models/newtab'
 import * as React from 'react'
 import {
   DragDropContext,
@@ -5,8 +7,6 @@ import {
   Droppable,
   DropResult,
 } from 'react-beautiful-dnd'
-import { IColumn, ITile } from '../../models/newtab'
-import { EditableColumn } from './EditableColumn'
 import './EditableGrid.scss'
 
 interface IProps {

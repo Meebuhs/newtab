@@ -1,11 +1,11 @@
-import * as React from 'react'
+import { ColourButton } from 'components/ui/ColourButton'
 import {
   TILECREATOR_COLOUR_LABEL,
   TILECREATOR_COLOUR_PREVIEW,
   TILECREATOR_FONT_LABEL,
-} from '../../../../constants/strings'
-import { ITile } from '../../../../models/newtab'
-import { ColourButton } from '../../ColourButton'
+} from 'constants/strings'
+import { ITile } from 'models/newtab'
+import * as React from 'react'
 import './TileColourConfig.scss'
 
 interface IProps {

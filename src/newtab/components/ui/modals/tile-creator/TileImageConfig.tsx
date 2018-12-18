@@ -1,6 +1,6 @@
+import { TILECREATOR_IMAGE_SELECT } from 'constants/strings'
+import { ITile } from 'models/newtab'
 import * as React from 'react'
-import { TILECREATOR_IMAGE_SELECT } from '../../../../constants/strings'
-import { ITile } from '../../../../models/newtab'
 import './TileImageConfig.scss'
 
 interface IProps {

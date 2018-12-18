@@ -1,5 +1,5 @@
-@import '../../styles/theme-colours';
-@import '../../styles/common-elements';
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
 
 .toggle-wrapper {
   @include flex-row-parent();

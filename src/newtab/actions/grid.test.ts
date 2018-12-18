@@ -1,7 +1,7 @@
+import * as actions from 'actions/grid'
+import * as types from 'constants/types'
 import { DraggableLocation } from 'react-beautiful-dnd'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
-import * as types from '../constants/types'
-import * as actions from './grid'
 
 const mockStore = configureStore()
 let store: MockStoreEnhanced<any, any>

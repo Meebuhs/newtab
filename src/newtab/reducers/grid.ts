@@ -1,4 +1,4 @@
-import { Action } from '../actions/grid'
+import { Action } from 'actions/grid'
 import {
   ADD_COLUMN,
   ADD_TILE,
@@ -8,8 +8,8 @@ import {
   REMOVE_TILE,
   REORDER_COLUMN,
   REORDER_TILE,
-} from '../constants/types'
-import { IColumn, ITile } from '../models/newtab'
+} from 'constants/types'
+import { IColumn, ITile } from 'models/newtab'
 
 // Define the types of the grid state structure
 export interface IGridState {

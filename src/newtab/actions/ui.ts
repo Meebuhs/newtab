@@ -1,4 +1,4 @@
-import { TOGGLE_SIDEBAR } from '../constants/types'
+import { TOGGLE_SIDEBAR } from 'constants/types'
 
 // Define the Action interfaces representing the return types of the action creators
 export interface IToggleSidebarAction {

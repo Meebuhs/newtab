@@ -1,6 +1,6 @@
+import * as actions from 'actions/ui'
+import * as types from 'constants/types'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
-import * as types from '../constants/types'
-import * as actions from './ui'
 
 const mockStore = configureStore()
 let store: MockStoreEnhanced<any, any>

@@ -1,4 +1,5 @@
-@import '../grid/Column';
+@import '~components/grid/Column';
+@import '~styles/common-elements';
 
 .handle {
   border: 1px solid darken(#fff, 2);

@@ -1,5 +1,5 @@
-@import '../../styles/theme-colours';
-@import '../../styles/common-elements';
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
 
 .toggle-sidebar {
   @include button(30px, 30px, false);

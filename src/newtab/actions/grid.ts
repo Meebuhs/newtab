@@ -1,5 +1,3 @@
-import { any } from 'prop-types'
-import { DraggableLocation } from 'react-beautiful-dnd'
 import {
   ADD_COLUMN,
   ADD_TILE,
@@ -9,8 +7,9 @@ import {
   REMOVE_TILE,
   REORDER_COLUMN,
   REORDER_TILE,
-} from '../constants/types'
-import { IColumn, ITile } from '../models/newtab'
+} from 'constants/types'
+import { IColumn, ITile } from 'models/newtab'
+import { DraggableLocation } from 'react-beautiful-dnd'
 
 // Define the Action interfaces representing the return types of the action creators
 export interface IAddColumnAction {

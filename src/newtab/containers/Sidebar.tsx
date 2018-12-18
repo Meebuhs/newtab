@@ -1,10 +1,10 @@
+import { addColumn, addTile } from 'actions/grid'
+import { toggleSidebar } from 'actions/ui'
+import { Sidebar } from 'components/ui/Sidebar'
+import { ITile } from 'models/newtab'
 import { connect } from 'react-redux'
-import { addColumn, addTile } from '../actions/grid'
-import { toggleSidebar } from '../actions/ui'
-import { Sidebar } from '../components/ui/Sidebar'
-import { ITile } from '../models/newtab'
-import { IState } from '../reducers/newtab'
-import { getSidebarVisibility } from '../selectors/ui'
+import { IState } from 'reducers/newtab'
+import { getSidebarVisibility } from 'selectors/ui'
 
 const mapStateToProps = (state: IState) => ({
   sidebarVisible: getSidebarVisibility(state),

@@ -1,5 +1,4 @@
-import * as React from 'react'
-import Modal from 'react-modal'
+import { ToggleButton } from 'components/ui/ToggleButton'
 import {
   CANCEL_BUTTON_TEXT,
   SAVE_BUTTON_TEXT,
@@ -7,10 +6,11 @@ import {
   TILECREATOR_EDIT_HEADER,
   TILECREATOR_TOGGLE_COLOUR,
   TILECREATOR_TOGGLE_IMAGE,
-} from '../../../../constants/strings'
-import { emptyTile, ITile } from '../../../../models/newtab'
-import { ToggleButton } from '../../ToggleButton'
-import { TileBackgroundConfig } from './TileBackgroundConfig'
+} from 'constants/strings'
+import { TileBackgroundConfig } from 'modals/tile-creator/TileBackgroundConfig'
+import { emptyTile, ITile } from 'models/newtab'
+import * as React from 'react'
+import Modal from 'react-modal'
 import './TileCreator.scss'
 
 interface IProps {

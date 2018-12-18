@@ -1,5 +1,5 @@
+import { INSTRUCTION_HEADER, INSTRUCTION_TEXT } from 'constants/strings'
 import * as React from 'react'
-import { INSTRUCTION_HEADER, INSTRUCTION_TEXT } from '../../constants/strings'
 import './Instructions.scss'
 
 export class Instructions extends React.Component<{}, {}> {
