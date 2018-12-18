@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { ITile } from '../../models/newtab'
-import { TileCreator } from '../ui/modals/TileCreator'
+import { TileCreator } from '../ui/modals/TileCreator/TileCreator'
 import './EditableTile.scss'
 
 interface IProps {

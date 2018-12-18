@@ -1,5 +1,5 @@
-@import '../../../styles/theme-colours';
-@import '../../../styles/common-elements';
+@import '../../../../styles/theme-colours';
+@import '../../../../styles/common-elements';
 
 .tilecreator-container {
   height: auto;
@@ -43,6 +43,7 @@
 .form-label {
   font-size: 0.8rem;
   font-weight: bold;
+  margin-right: 10px;
   width: 100%;
 }
 

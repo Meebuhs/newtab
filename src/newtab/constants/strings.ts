@@ -12,9 +12,12 @@ export const TILECREATOR_CREATE_HEADER = 'Create a Tile'
 export const TILECREATOR_EDIT_HEADER = 'Edit a Tile'
 export const TILECREATOR_URL_TEXT =
   'Enter the url for a new tile and it will be added to the grid.'
-export const TILECREATOR_TOGGLE_BACKGROUND = 'Set a colour'
+export const TILECREATOR_TOGGLE_COLOUR = 'Set a colour'
 export const TILECREATOR_TOGGLE_IMAGE = 'Upload an image'
-export const TILECREATOR_BACKGROUND_PREVIEW = 'Preview'
+export const TILECREATOR_COLOUR_PREVIEW = 'Preview'
+export const TILECREATOR_COLOUR_LABEL = 'Tile colour:'
+export const TILECREATOR_FONT_LABEL = 'Font colour:'
+export const TILECREATOR_IMAGE_SELECT = 'Select image'
 
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'

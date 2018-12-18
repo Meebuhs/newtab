@@ -11,6 +11,7 @@
     "build": "webpack --mode=production",
     "start": "yarn build && node server.js",
     "lint": "tslint --project tsconfig.json 'src/**/*.{ts,tsx}' && stylelint src/**/*.scss --fix",
+    "precommit": "yarn prettier && yarn lint && yarn test",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
     "test": "jest"
   },

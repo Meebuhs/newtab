@@ -5,11 +5,11 @@ import {
   SAVE_BUTTON_TEXT,
   TILECREATOR_CREATE_HEADER,
   TILECREATOR_EDIT_HEADER,
-  TILECREATOR_TOGGLE_BACKGROUND,
+  TILECREATOR_TOGGLE_COLOUR,
   TILECREATOR_TOGGLE_IMAGE,
-} from '../../../constants/strings'
-import { emptyTile, ITile } from '../../../models/newtab'
-import { ToggleButton } from '../ToggleButton'
+} from '../../../../constants/strings'
+import { emptyTile, ITile } from '../../../../models/newtab'
+import { ToggleButton } from '../../ToggleButton'
 import { TileBackgroundConfig } from './TileBackgroundConfig'
 import './TileCreator.scss'
 
@@ -125,7 +125,7 @@ export class TileCreator extends React.Component<IProps, IState> {
             }
           />
           <ToggleButton
-            leftLabel={TILECREATOR_TOGGLE_BACKGROUND}
+            leftLabel={TILECREATOR_TOGGLE_COLOUR}
             rightLabel={TILECREATOR_TOGGLE_IMAGE}
             handleToggleCallback={this.handleToggleCallback}
           />

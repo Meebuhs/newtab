@@ -2,7 +2,7 @@ import * as React from 'react'
 import { getHashCode } from '../../../utils/hashcode'
 import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from '../../constants/strings'
 import { emptyTile, ITile } from '../../models/newtab'
-import { TileCreator } from './modals/TileCreator'
+import { TileCreator } from './modals/TileCreator/TileCreator'
 import './Sidebar.scss'
 
 interface IProps {

@@ -1,0 +1,40 @@
+@import '../../../../styles/theme-colours';
+@import '../../../../styles/common-elements';
+
+@import '../../../../styles/theme-colours';
+@import '../../../../styles/common-elements';
+
+.tile-image-container {
+  @include flex-column-parent();
+  border-color: darken(#fff, 1);
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  margin-top: -10px;
+}
+
+.tile-image-top {
+  @include flex-column-child();
+  height: 150px;
+}
+
+.tile-image-select {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.tile-image-bottom {
+  @include flex-column-child();
+  height: 150px;
+}
+
+.tile-image-preview {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
