@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ability to remove columns and tiles in editable-grid.
 - Added sidebar which enables grid editing when open.
 - Added redux-mock-store, react-beautiful-dnd and react-modal.
+- Added local storage persistence of redux store.
 
 ### Changed
 

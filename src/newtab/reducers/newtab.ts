@@ -8,14 +8,19 @@ export interface IState {
   ui: fromUI.IUIState
 }
 
+// Define the subset of states which will be persisted in local storage
+export interface IPersistedState {
+  grid: fromGrid.IGridState
+}
+
 // Define the root initialState of the app
 export const initialState: IState = {
   grid: fromGrid.initialState,
   ui: fromUI.initialState,
-}
+};
 
 // Define the root reducer by combining the reducers for each substate
 export const reducer = combineReducers({
   grid: fromGrid.reducer,
   ui: fromUI.reducer,
-})
+});
