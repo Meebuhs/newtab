@@ -17,6 +17,7 @@ export class Tile extends React.Component<IProps, {}> {
         const { image } = this.props.tile
         return {
           backgroundImage: image,
+          marginBottom: '20px',
         }
       }
       case 'colour': {
@@ -24,6 +25,7 @@ export class Tile extends React.Component<IProps, {}> {
         return {
           backgroundColor: backgroundColour,
           color: fontColour,
+          marginBottom: '20px',
         }
       }
     }
