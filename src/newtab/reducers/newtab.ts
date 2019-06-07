@@ -17,10 +17,10 @@ export interface IPersistedState {
 export const initialState: IState = {
   grid: fromGrid.initialState,
   ui: fromUI.initialState,
-};
+}
 
 // Define the root reducer by combining the reducers for each substate
 export const reducer = combineReducers({
   grid: fromGrid.reducer,
   ui: fromUI.reducer,
-});
+})

@@ -21,6 +21,6 @@ module.exports = {
     '^styles(.*)$': '<rootDir>/src/newtab/styles$1',
     '^utils(.*)$': '<rootDir>/src/utils$1',
   },
-  setupTestFrameworkScriptFile: './src/setupTests.ts',
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
 }
