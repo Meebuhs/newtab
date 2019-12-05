@@ -5,7 +5,10 @@
   "manifest_version": 2,
   "description": "A customisable replacement for the new tab page",
   "icons": {
-    "128": "images/icon-128.png"
+    "16": "images/newtab-icon-16.png",
+    "32": "images/newtab-icon-32.png",
+    "64": "images/newtab-icon-64.png",
+    "128": "images/newtab-icon-128.png"
   },
   "chrome_url_overrides": {
     "newtab": "newtab.html"

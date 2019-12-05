@@ -1,6 +1,7 @@
 # Newtab
-
 A customisable replacement for chrome's new tab page.
+
+![Newtab](docs/newtab-stack-horizontal.png)
 
 Built with:
 
