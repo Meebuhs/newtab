@@ -4,6 +4,7 @@ import './ToggleButton.scss'
 interface IProps {
   leftLabel: string
   rightLabel: string
+  toggled: boolean
   handleToggleCallback: (side: string) => void
 }
 
@@ -24,7 +25,7 @@ export class ToggleButton extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
-      toggled: false,
+      toggled: props.toggled,
     }
   }
 

@@ -8,36 +8,32 @@ interface IProps {
 
 export class Tile extends React.Component<IProps, {}> {
   /**
-   * Creates the tile's style based on the displaymode and its properties.
+   * Creates the tile's style based on its colour and font properties. This is only done with colour tiles,
+   * image tiles are created in the render function.
    */
   createStyle = () => {
-    const { displayMode } = this.props.tile
-    switch (displayMode) {
-      case 'image': {
-        const { image } = this.props.tile
-        return {
-          backgroundImage: image,
-          marginBottom: '20px',
-        }
-      }
-      case 'colour': {
-        const { backgroundColour, fontColour, favicon } = this.props.tile
-        return {
-          backgroundColor: backgroundColour,
-          color: fontColour,
-          marginBottom: '20px',
-        }
-      }
+    const { backgroundColour, fontColour, favicon } = this.props.tile
+    return {
+      backgroundColor: backgroundColour,
+      color: fontColour,
+      marginBottom: '20px',
     }
   }
 
   render() {
-    const { id, name, url } = this.props.tile
+    const { id, name, url, displayMode, image } = this.props.tile
     return (
       <a href={url} className={'tile-link'}>
-        <div className={'tile'} key={id} style={this.createStyle()}>
-          <span>{name}</span>
-        </div>
+        {displayMode === 'colour' ? (
+          <div className={'tile'} key={id} style={this.createStyle()}>
+            {name}
+          </div>
+        ) : (
+          <div className={'tile'} key={id}>
+            <img className={'tile-image'} src={image} />
+            <div className="tile-image-text">{name}</div>
+          </div>
+        )}
       </a>
     )
   }

@@ -18,6 +18,7 @@ export const TILECREATOR_COLOUR_PREVIEW = 'Preview'
 export const TILECREATOR_COLOUR_LABEL = 'Tile colour:'
 export const TILECREATOR_FONT_LABEL = 'Font colour:'
 export const TILECREATOR_IMAGE_SELECT = 'Select image'
+export const TILECREATOR_IMAGE_PREVIEW = 'Preview'
 
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'

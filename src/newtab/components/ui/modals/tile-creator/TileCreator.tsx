@@ -67,6 +67,10 @@ export class TileCreator extends React.Component<IProps, IState> {
     this.setState({ favicon: value })
   }
 
+  /**
+   * Changes the state of the toggle button. The left side of the toggle button is the colour editor.
+   * @param {string} side the editor which is being displayed.
+   */
   handleToggleCallback = (side: string) => {
     this.setState({ displayMode: side === 'left' ? 'colour' : 'image' })
   }
@@ -127,6 +131,7 @@ export class TileCreator extends React.Component<IProps, IState> {
           <ToggleButton
             leftLabel={TILECREATOR_TOGGLE_COLOUR}
             rightLabel={TILECREATOR_TOGGLE_IMAGE}
+            toggled={this.state.displayMode === 'image'}
             handleToggleCallback={this.handleToggleCallback}
           />
           <TileBackgroundConfig

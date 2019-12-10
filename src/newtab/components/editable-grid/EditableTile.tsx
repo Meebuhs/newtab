@@ -60,29 +60,20 @@ export class EditableTile extends React.Component<IProps, IState> {
   }
 
   /**
-   * Creates the tile's style based on the displaymode and its properties.
+   * Creates the tile's style based on its colour and font properties. This is only done with colour tiles,
+   * image tiles are created in the render function.
    */
   createStyle = () => {
-    const { displayMode } = this.props.tile
-    switch (displayMode) {
-      case 'image': {
-        const { image } = this.props.tile
-        return {
-          backgroundImage: image,
-        }
-      }
-      case 'colour': {
-        const { backgroundColour, fontColour, favicon } = this.props.tile
-        return {
-          backgroundColor: backgroundColour,
-          color: fontColour,
-        }
-      }
+    const { backgroundColour, fontColour, favicon } = this.props.tile
+    return {
+      backgroundColor: backgroundColour,
+      color: fontColour,
+      marginBottom: '20px',
     }
   }
 
   render() {
-    const { id, name } = this.props.tile
+    const { id, name, displayMode, image } = this.props.tile
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
@@ -94,18 +85,34 @@ export class EditableTile extends React.Component<IProps, IState> {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <div className={'tile'} style={this.createStyle()}>
-                {name}
-                <button
-                  className={'edit-tile'}
-                  onClick={this.handleOpenTileEditorModal}
-                >
-                  E
-                </button>
-                <button className={'remove-tile'} onClick={this.removeTile}>
-                  X
-                </button>
-              </div>
+              {displayMode === 'colour' ? (
+                <div className={'tile'} key={id} style={this.createStyle()}>
+                  {name}
+                  <button
+                    className={'edit-tile'}
+                    onClick={this.handleOpenTileEditorModal}
+                  >
+                    E
+                  </button>
+                  <button className={'remove-tile'} onClick={this.removeTile}>
+                    X
+                  </button>
+                </div>
+              ) : (
+                <div className={'tile'} key={id}>
+                  <img className={'tile-image'} src={image} />
+                  <div className="tile-image-text">{name}</div>
+                  <button
+                    className={'edit-tile'}
+                    onClick={this.handleOpenTileEditorModal}
+                  >
+                    E
+                  </button>
+                  <button className={'remove-tile'} onClick={this.removeTile}>
+                    X
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </Draggable>

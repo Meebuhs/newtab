@@ -9,7 +9,4 @@ const mapStateToProps = (state: IState) => ({
   columnOrder: getColumnOrder(state),
 })
 
-export default connect<any, any, any>(
-  mapStateToProps,
-  {}
-)(Grid)
+export default connect<any, any, any>(mapStateToProps, {})(Grid)

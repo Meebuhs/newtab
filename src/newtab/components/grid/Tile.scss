@@ -17,3 +17,16 @@ $tile-height: 150px;
   text-align: center;
   width: 100%;
 }
+
+.tile-image {
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.tile-image-text {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

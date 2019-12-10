@@ -7,7 +7,4 @@ const mapStateToProps = (state: IState) => ({
   sidebarVisible: getSidebarVisibility(state),
 })
 
-export default connect<any, any, any>(
-  mapStateToProps,
-  {}
-)(Newtab)
+export default connect<any, any, any>(mapStateToProps, {})(Newtab)
