@@ -1,4 +1,5 @@
 # Newtab
+
 A customisable replacement for chrome's new tab page.
 
 ![Newtab](docs/newtab-stack-horizontal.png)
@@ -15,8 +16,7 @@ Built with:
 
 Development server using:
 
-- Express
-- webpack-dev-middleware & webpack-hot-middleware
+- webpack-dev-server
 
 Style-checking:
 
@@ -64,12 +64,13 @@ yarn
 
 ### Yarn commands
 
-| Command         | Description                                                                                                                                  |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `yarn start`    | Starts a local development server on port 3000 and uses webpack-hot-middleware to rebuild with webpack when changes are made to the project. |
-| `yarn lint`     | Runs tslint/prettier and stylelint.                                                                                                          |
-| `yarn prettier` | Perform in-place prettier reformat.                                                                                                          |
-| `yarn test`     | Runs the test-suite using Jest.                                                                                                              |
+| Command         | Description                                     |
+| --------------- | ----------------------------------------------- |
+| `yarn build`    | Packages a production build of this extension.  |
+| `yarn start`    | Starts a local development server on port 8080. |
+| `yarn lint`     | Runs tslint/prettier and stylelint.             |
+| `yarn prettier` | Perform in-place prettier reformat.             |
+| `yarn test`     | Runs the test-suite using Jest.                 |
 
 ## License
 

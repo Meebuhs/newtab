@@ -10,14 +10,20 @@ const paths = {
 
 module.exports = {
   entry: {
-    newtab: ['./src/newtab/Newtab.tsx', 'webpack-hot-middleware/client'],
+    newtab: ['./src/newtab/Newtab.tsx'],
     vendor: ['react', 'react-dom'],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'js/[name].bundle.js',
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: __dirname + '/build/',
+    inline: true,
+    hot: true,
+    open: true,
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     alias: {
@@ -88,7 +94,7 @@ module.exports = {
     ]),
     new HtmlWebpackPlugin({
       template: path.resolve(paths.src, 'newtab.html'),
-      filename: 'newtab.html',
+      filename: 'index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

@@ -2,7 +2,7 @@ module.exports = function(api) {
   const presets = [
     '@babel/preset-react',
     '@babel/preset-typescript',
-    ['@babel/env', { modules: false }],
+    ['@babel/preset-env', { modules: false }],
   ]
   const plugins = [
     '@babel/proposal-class-properties',
