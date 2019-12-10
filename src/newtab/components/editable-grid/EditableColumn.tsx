@@ -32,7 +32,7 @@ export class EditableColumn extends React.Component<IProps, {}> {
 
     return (
       <Draggable draggableId={column.id} index={index} type={'column'}>
-        {dragProvided => (
+        {(dragProvided, dragSnapshot) => (
           <Droppable droppableId={column.id} type={'tile'}>
             {dropProvided => (
               <div
@@ -41,7 +41,12 @@ export class EditableColumn extends React.Component<IProps, {}> {
                 {...dragProvided.draggableProps}
                 ref={dragProvided.innerRef}
               >
-                <div className={'handle'} {...dragProvided.dragHandleProps}>
+                <div
+                  className={
+                    dragSnapshot.isDragging ? 'handle-dragging' : 'handle'
+                  }
+                  {...dragProvided.dragHandleProps}
+                >
                   <button
                     className={'remove-column'}
                     onClick={this.removeColumn}

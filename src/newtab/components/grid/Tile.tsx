@@ -26,10 +26,12 @@ export class Tile extends React.Component<IProps, {}> {
       <a href={url} className={'tile-link'}>
         {displayMode === 'colour' ? (
           <div className={'tile'} key={id} style={this.createStyle()}>
+            <div className={'tile-overlay'} />
             {name}
           </div>
         ) : (
           <div className={'tile'} key={id}>
+            <div className={'tile-overlay'} />
             <img className={'tile-image'} src={image} />
             <div className="tile-image-text">{name}</div>
           </div>

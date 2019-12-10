@@ -1,7 +1,8 @@
 @import '~components/grid/Column';
 @import '~styles/common-elements';
 
-.handle {
+.handle,
+%handle {
   border: 1px solid darken(#fff, 2);
   border-radius: 5px;
   margin: 10px auto 0;
@@ -12,6 +13,11 @@
   &:hover {
     background-color: darken(#fff, 1);
   }
+}
+
+.handle-dragging {
+  @extend %handle;
+  background-color: darken(#fff, 1);
 }
 
 .remove-column {

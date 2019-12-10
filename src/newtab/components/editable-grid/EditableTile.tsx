@@ -77,7 +77,7 @@ export class EditableTile extends React.Component<IProps, IState> {
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
-          {provided => (
+          {(provided, snapshot) => (
             <div
               className={'draggable-tile'}
               key={id}
@@ -87,6 +87,11 @@ export class EditableTile extends React.Component<IProps, IState> {
             >
               {displayMode === 'colour' ? (
                 <div className={'tile'} key={id} style={this.createStyle()}>
+                  {snapshot.isDragging ? (
+                    <div className={'tile-overlay-dragging'} />
+                  ) : (
+                    <div className={'tile-overlay'} />
+                  )}
                   {name}
                   <button
                     className={'edit-tile'}
@@ -100,6 +105,11 @@ export class EditableTile extends React.Component<IProps, IState> {
                 </div>
               ) : (
                 <div className={'tile'} key={id}>
+                  {snapshot.isDragging ? (
+                    <div className={'tile-overlay-dragging'} />
+                  ) : (
+                    <div className={'tile-overlay'} />
+                  )}
                   <img className={'tile-image'} src={image} />
                   <div className="tile-image-text">{name}</div>
                   <button
