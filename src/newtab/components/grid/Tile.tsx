@@ -12,7 +12,7 @@ export class Tile extends React.Component<IProps, {}> {
    * image tiles are created in the render function.
    */
   createStyle = () => {
-    const { backgroundColour, fontColour, favicon } = this.props.tile
+    const { backgroundColour, fontColour } = this.props.tile
     return {
       backgroundColor: backgroundColour,
       color: fontColour,
@@ -21,12 +21,18 @@ export class Tile extends React.Component<IProps, {}> {
   }
 
   render() {
-    const { id, name, url, displayMode, image } = this.props.tile
+    const { id, name, url, displayMode, favicon, image } = this.props.tile
     return (
       <a href={url} className={'tile-link'}>
         {displayMode === 'colour' ? (
           <div className={'tile'} key={id} style={this.createStyle()}>
             <div className={'tile-overlay'} />
+            {favicon ? (
+              <img
+                className={'favicon'}
+                src={`http://icons.duckduckgo.com/ip2/${url}.ico`}
+              />
+            ) : null}
             {name}
           </div>
         ) : (

@@ -73,7 +73,7 @@ export class EditableTile extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { id, name, displayMode, image } = this.props.tile
+    const { id, name, url, displayMode, favicon, image } = this.props.tile
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
@@ -92,6 +92,12 @@ export class EditableTile extends React.Component<IProps, IState> {
                   ) : (
                     <div className={'tile-overlay'} />
                   )}
+                  {favicon ? (
+                    <img
+                      className={'favicon'}
+                      src={`http://icons.duckduckgo.com/ip2/${url}.ico`}
+                    />
+                  ) : null}
                   {name}
                   <button
                     className={'edit-tile'}
