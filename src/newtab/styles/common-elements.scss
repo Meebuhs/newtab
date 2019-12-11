@@ -12,6 +12,7 @@ $sidebar-width: 18%;
   display: block;
   height: $height;
   line-height: $height;
+  padding: 0;
   text-align: center;
   width: $width;
 
@@ -41,4 +42,12 @@ $sidebar-width: 18%;
 
 @mixin flex-column-child() {
   flex: 1;
+}
+
+@mixin icon() {
+  height: 80%;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
+  width: 80%;
 }

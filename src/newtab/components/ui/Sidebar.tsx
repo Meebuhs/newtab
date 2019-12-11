@@ -2,6 +2,8 @@ import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from 'constants/strings'
 import { TileCreator } from 'modals/tile-creator/TileCreator'
 import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
+import left from 'resources/left.png'
+import right from 'resources/right.png'
 import { getHashCode } from 'utils/hashcode'
 import './Sidebar.scss'
 
@@ -83,7 +85,11 @@ export class Sidebar extends React.Component<IProps, IState> {
           onClick={this.toggleSidebar}
           style={{ marginLeft: toggleMargin }}
         >
-          {this.props.sidebarVisible ? '<' : '>'}
+          {this.props.sidebarVisible ? (
+            <img className={'button-icon'} src={left} />
+          ) : (
+            <img className={'button-icon'} src={right} />
+          )}
         </button>
         <div className={'sidebar'} style={{ marginLeft: sidebarMargin }}>
           <div

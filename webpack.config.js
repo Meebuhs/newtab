@@ -34,6 +34,7 @@ module.exports = {
       containers: path.resolve(paths.src, 'newtab', 'containers'),
       models: path.resolve(paths.src, 'newtab', 'models'),
       reducers: path.resolve(paths.src, 'newtab', 'reducers'),
+      resources: path.resolve(paths.src, 'newtab', 'resources'),
       selectors: path.resolve(paths.src, 'newtab', 'selectors'),
       store: path.resolve(paths.src, 'newtab', 'store'),
       styles: path.resolve(paths.src, 'newtab', 'styles'),
@@ -67,6 +68,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'file-loader',
       },
     ],
   },

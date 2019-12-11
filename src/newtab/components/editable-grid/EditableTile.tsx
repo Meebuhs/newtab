@@ -2,6 +2,8 @@ import { TileCreator } from 'modals/tile-creator/TileCreator'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
+import close from 'resources/close.png'
+import options from 'resources/options.png'
 import './EditableTile.scss'
 
 interface IProps {
@@ -102,10 +104,10 @@ export class EditableTile extends React.Component<IProps, IState> {
                     className={'edit-tile'}
                     onClick={this.handleOpenTileEditorModal}
                   >
-                    E
+                    <img className={'button-icon'} src={options} />
                   </button>
                   <button className={'remove-tile'} onClick={this.removeTile}>
-                    X
+                    <img className={'button-icon'} src={close} />
                   </button>
                 </div>
               ) : (
@@ -121,10 +123,10 @@ export class EditableTile extends React.Component<IProps, IState> {
                     className={'edit-tile'}
                     onClick={this.handleOpenTileEditorModal}
                   >
-                    E
+                    <img className={'button-icon'} src={options} />
                   </button>
                   <button className={'remove-tile'} onClick={this.removeTile}>
-                    X
+                    <img className={'button-icon'} src={close} />
                   </button>
                 </div>
               )}

@@ -21,6 +21,7 @@
       "containers/*": ["newtab/containers/*"],
       "models/*": ["newtab/models/*"],
       "reducers/*": ["newtab/reducers/*"],
+      "resources/*": ["newtab/resources/*"],
       "selectors/*": ["newtab/selectors/*"],
       "store/*": ["newtab/store/*"],
       "styles/*": ["newtab/styles/*"],

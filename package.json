@@ -13,7 +13,7 @@
     "lint": "tslint --project tsconfig.json 'src/**/*.{ts,tsx}' && stylelint src/**/*.scss --fix",
     "precommit": "yarn prettier && yarn lint && yarn test",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -39,6 +39,7 @@
     "css-loader": "^3.2.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",

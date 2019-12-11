@@ -2,6 +2,7 @@ import { EditableTile } from 'components/editable-grid/EditableTile'
 import { IColumn, ITile } from 'models/newtab'
 import * as React from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
+import close from 'resources/close.png'
 import './EditableColumn.scss'
 
 interface IProps {
@@ -51,7 +52,7 @@ export class EditableColumn extends React.Component<IProps, {}> {
                     className={'remove-column'}
                     onClick={this.removeColumn}
                   >
-                    X
+                    <img className={'button-icon'} src={close} />
                   </button>
                 </div>
                 <div

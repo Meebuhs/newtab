@@ -9,6 +9,10 @@
   transition: 0.5s ease-in-out;
 }
 
+.button-icon {
+  @include icon();
+}
+
 .sidebar {
   background: colour('grey-dark');
   display: flex;

@@ -13,10 +13,10 @@ $tile-height: 150px;
   display: flex;
   height: $tile-height;
   justify-content: center;
+  margin-bottom: 10px;
   position: relative;
   text-align: center;
   width: 100%;
-  margin-bottom: 10px;
 }
 
 .tile-overlay,
@@ -62,6 +62,6 @@ $tile-height: 150px;
 
 .favicon {
   height: 20px;
-  width: 20px;
   margin-right: 5px;
+  width: 20px;
 }
