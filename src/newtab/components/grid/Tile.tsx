@@ -1,5 +1,6 @@
 import { ITile } from 'models/newtab'
 import * as React from 'react'
+import { RGBColorToString } from 'utils/colour'
 import './Tile.scss'
 
 interface IProps {
@@ -7,24 +8,28 @@ interface IProps {
 }
 
 export class Tile extends React.Component<IProps, {}> {
-  /**
-   * Creates the tile's style based on its colour and font properties. This is only done with colour tiles,
-   * image tiles are created in the render function.
-   */
-  createStyle = () => {
-    const { backgroundColour, fontColour } = this.props.tile
-    return {
-      backgroundColor: backgroundColour,
-      color: fontColour,
-    }
-  }
-
   render() {
-    const { id, name, url, displayMode, favicon, image } = this.props.tile
+    const {
+      id,
+      name,
+      url,
+      displayMode,
+      backgroundColour,
+      fontColour,
+      favicon,
+      image,
+    } = this.props.tile
     return (
       <a href={url} className={'tile-link'}>
         {displayMode === 'colour' ? (
-          <div className={'tile'} key={id} style={this.createStyle()}>
+          <div
+            className={'tile'}
+            key={id}
+            style={{
+              backgroundColor: RGBColorToString(backgroundColour),
+              color: RGBColorToString(fontColour),
+            }}
+          >
             <div className={'tile-overlay'} />
             {favicon ? (
               <img

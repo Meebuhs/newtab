@@ -6,18 +6,23 @@ import {
 } from 'constants/strings'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
+import { RGBColor } from 'react-color'
+import { RGBColorToString } from 'utils/colour'
 import './TileColourConfig.scss'
 
 interface IProps {
   updateStateValue: (attribute: keyof ITile, value: string) => void
+  updateColourValue: (attribute: string, value: RGBColor) => void
   updateFaviconValue: (value: boolean) => void
-  backgroundColour: string
-  fontColour: string
+  backgroundColour: RGBColor
+  fontColour: RGBColor
   favicon: boolean
 }
 
 export class TileColourBackgroundConfig extends React.Component<IProps, {}> {
   render() {
+    const { backgroundColour, fontColour } = this.props
+
     return (
       <div className={'tile-colour-container'}>
         <div className={'tile-colour-top'}>
@@ -35,6 +40,7 @@ export class TileColourBackgroundConfig extends React.Component<IProps, {}> {
                     colour={this.props.backgroundColour}
                     attribute={'backgroundColour'}
                     updateStateValue={this.props.updateStateValue}
+                    updateColourValue={this.props.updateColourValue}
                   />
                 </div>
                 <div className={'tile-colour-button'}>
@@ -45,6 +51,7 @@ export class TileColourBackgroundConfig extends React.Component<IProps, {}> {
                     colour={this.props.fontColour}
                     attribute={'fontColour'}
                     updateStateValue={this.props.updateStateValue}
+                    updateColourValue={this.props.updateColourValue}
                   />
                 </div>
               </div>
@@ -70,8 +77,8 @@ export class TileColourBackgroundConfig extends React.Component<IProps, {}> {
           <div
             className={'tile-colour-preview'}
             style={{
-              backgroundColor: this.props.backgroundColour,
-              color: this.props.fontColour,
+              backgroundColor: RGBColorToString(backgroundColour),
+              color: RGBColorToString(fontColour),
             }}
           >
             <span>{TILECREATOR_COLOUR_PREVIEW}</span>

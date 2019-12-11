@@ -1,3 +1,5 @@
+import { RGBColor } from 'react-color'
+
 /**
  * A single column in the grid.
  * @property {string} id the id of the column. This is used as the key in the state's column dictionary
@@ -20,8 +22,8 @@ export interface IColumn {
  * @property {string} name the text which is displayed on the tile
  * @property {string} url the url which the tile leads to
  * @property {'image' | 'colour'} displayMode the display mode of the tile
- * @property {string} backgroundColour the colour of the tile background
- * @property {string} fontColour the colour of the tile font
+ * @property {RGBColor} backgroundColour the colour of the tile background
+ * @property {RGBColor} fontColour the colour of the tile font
  * @property {boolean} favicon whether the favicon should be displayed beside the tile name
  * @property {string} image the key used to retrieve the image from local storage
  */
@@ -30,8 +32,8 @@ export interface ITile {
   name: string
   url: string
   displayMode: 'colour' | 'image'
-  backgroundColour: string
-  fontColour: string
+  backgroundColour: RGBColor
+  fontColour: RGBColor
   favicon: boolean
   image: string
 }
@@ -44,8 +46,8 @@ export const emptyTile = {
   name: '',
   url: '',
   displayMode: 'colour' as 'colour', // Suppress compiler warning
-  backgroundColour: '#fff',
-  fontColour: '#000',
+  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
+  fontColour: { r: 0, g: 0, b: 0, a: 1 },
   favicon: false,
   image: '',
 }

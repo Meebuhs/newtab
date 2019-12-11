@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { ChromePicker, Color, ColorResult } from 'react-color'
+import { ChromePicker, Color, ColorResult, RGBColor } from 'react-color'
 import './ColourButton.scss'
 
 interface IProps {
-  colour: string
+  colour: RGBColor
   attribute: string
   updateStateValue: (attribute: string, value: string) => void
+  updateColourValue: (attribute: string, value: RGBColor) => void
 }
 
 interface IState {
@@ -39,16 +40,27 @@ export class ColourButton extends React.Component<IProps, IState> {
    * @param {ColorResult} colour the colour result of the picker
    */
   handleChange = (colour: ColorResult) => {
-    this.props.updateStateValue(this.props.attribute, colour.hex)
+    // If alpha undefined or outside [0, 1], set it to 1
+    let alpha = colour.rgb.a === undefined ? 1 : colour.rgb.a
+    alpha = alpha > 1 || alpha < 0 ? 1 : alpha
+    const fixedColour: RGBColor = {
+      r: colour.rgb.r,
+      g: colour.rgb.g,
+      b: colour.rgb.b,
+      a: alpha,
+    }
+    this.props.updateColourValue(this.props.attribute, fixedColour)
   }
 
   render() {
+    const colourString = `rgba(${this.props.colour.r}, ${this.props.colour.g}, ${this.props.colour.b}, ${this.props.colour.a})`
+
     return (
       <>
         <div className={'colour-button'} onClick={this.handleOpenColourPicker}>
           <div
             className={'colour-preview'}
-            style={{ backgroundColor: this.props.colour.toString() }}
+            style={{ backgroundColor: colourString }}
           />
         </div>
         {this.state.showColourPicker ? (
@@ -56,7 +68,7 @@ export class ColourButton extends React.Component<IProps, IState> {
             <ChromePicker
               color={this.props.colour}
               onChange={this.handleChange}
-              disableAlpha={true}
+              disableAlpha={false}
             />
           </div>
         ) : null}

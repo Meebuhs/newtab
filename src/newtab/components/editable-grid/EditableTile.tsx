@@ -4,6 +4,7 @@ import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import close from 'resources/close.png'
 import options from 'resources/options.png'
+import { RGBColorToString } from 'utils/colour'
 import './EditableTile.scss'
 
 interface IProps {
@@ -61,20 +62,17 @@ export class EditableTile extends React.Component<IProps, IState> {
     this.props.handleEditTile(tile)
   }
 
-  /**
-   * Creates the tile's style based on its colour and font properties. This is only done with colour tiles,
-   * image tiles are created in the render function.
-   */
-  createStyle = () => {
-    const { backgroundColour, fontColour, favicon } = this.props.tile
-    return {
-      backgroundColor: backgroundColour,
-      color: fontColour,
-    }
-  }
-
   render() {
-    const { id, name, url, displayMode, favicon, image } = this.props.tile
+    const {
+      id,
+      name,
+      url,
+      displayMode,
+      backgroundColour,
+      fontColour,
+      favicon,
+      image,
+    } = this.props.tile
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
@@ -87,7 +85,14 @@ export class EditableTile extends React.Component<IProps, IState> {
               ref={provided.innerRef}
             >
               {displayMode === 'colour' ? (
-                <div className={'tile'} key={id} style={this.createStyle()}>
+                <div
+                  className={'tile'}
+                  key={id}
+                  style={{
+                    backgroundColor: RGBColorToString(backgroundColour),
+                    color: RGBColorToString(fontColour),
+                  }}
+                >
                   {snapshot.isDragging ? (
                     <div className={'tile-overlay-dragging'} />
                   ) : (

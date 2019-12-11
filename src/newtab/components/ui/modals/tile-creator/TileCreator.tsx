@@ -10,6 +10,7 @@ import {
 import { TileBackgroundConfig } from 'modals/tile-creator/TileBackgroundConfig'
 import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
+import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
 import './TileCreator.scss'
 
@@ -26,8 +27,8 @@ interface IState {
   name: string
   url: string
   displayMode: 'colour' | 'image'
-  backgroundColour: string
-  fontColour: string
+  backgroundColour: RGBColor
+  fontColour: RGBColor
   favicon: boolean
   image: string
 }
@@ -56,6 +57,18 @@ export class TileCreator extends React.Component<IProps, IState> {
    * @param {string} value the value to set
    */
   updateStateValue = (attribute: keyof IState, value: string) => {
+    this.setState(prevState => ({ ...prevState, [attribute]: value }))
+  }
+
+  /**
+   * Updates the value of the given state colour attribute.
+   * @param {'backgroundColour' | 'fontColour'} attribute the state colour attribute to update
+   * @param {RGBColor} value the value to set
+   */
+  updateColourValue = (
+    attribute: 'backgroundColour' | 'fontColour',
+    value: RGBColor
+  ) => {
     this.setState(prevState => ({ ...prevState, [attribute]: value }))
   }
 
@@ -138,6 +151,7 @@ export class TileCreator extends React.Component<IProps, IState> {
             {...this.state}
             updateFaviconValue={this.updateFaviconValue}
             updateStateValue={this.updateStateValue}
+            updateColourValue={this.updateColourValue}
           />
           <div className={'nav-buttons'}>
             <button

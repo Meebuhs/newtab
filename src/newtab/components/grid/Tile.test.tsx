@@ -2,13 +2,14 @@ import { Tile } from 'components/grid/Tile'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
+import { RGBColorToString } from 'utils/colour'
 
 const testTile = {
   id: 'tile.id',
   url: 'tile.url',
   name: 'test.tile',
-  backgroundColour: '#fff',
-  fontColour: '#000',
+  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
+  fontColour: { r: 0, g: 0, b: 0, a: 1 },
   image: 'test.image.data',
 }
 
@@ -42,11 +43,11 @@ describe('Tile component', () => {
     expect(tile.find('.tile').text()).toEqual('test.tile')
     expect(tile.find('.tile').get(0).props.style).toHaveProperty(
       'backgroundColor',
-      colourTile.backgroundColour
+      RGBColorToString(colourTile.backgroundColour)
     )
     expect(tile.find('.tile').get(0).props.style).toHaveProperty(
       'color',
-      colourTile.fontColour
+      RGBColorToString(colourTile.fontColour)
     )
     expect(tile.find('.tile-image')).toHaveLength(0)
   })
