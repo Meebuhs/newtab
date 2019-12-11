@@ -68,7 +68,6 @@ export class EditableTile extends React.Component<IProps, IState> {
     return {
       backgroundColor: backgroundColour,
       color: fontColour,
-      marginBottom: '20px',
     }
   }
 

@@ -16,7 +16,6 @@ export class Tile extends React.Component<IProps, {}> {
     return {
       backgroundColor: backgroundColour,
       color: fontColour,
-      marginBottom: '20px',
     }
   }
 
