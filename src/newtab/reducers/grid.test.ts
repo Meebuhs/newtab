@@ -14,10 +14,10 @@ const testTiles = [
   backgroundColour: '#fff',
   fontColour: '#000',
   favicon: false,
-  image: 'test.image.key',
+  image: 'test.image.data',
 }))
 
-describe('Grid reducer', () => {
+describe('Grid reducers', () => {
   it('should handle ADD_TILE on empty grid', () => {
     expect(
       reducer(initialState, {
@@ -114,7 +114,7 @@ describe('Grid reducer', () => {
       backgroundColour: '#fff',
       fontColour: '#000',
       favicon: false,
-      image: 'test.image.key',
+      image: 'test.image.data',
     }
 
     const editedTile = {
@@ -125,7 +125,7 @@ describe('Grid reducer', () => {
       backgroundColour: '#000',
       fontColour: '#fff',
       favicon: false,
-      image: 'test.image.key',
+      image: 'test.image.data',
     }
 
     const newState = reducer(initialState, {

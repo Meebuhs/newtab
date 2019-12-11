@@ -1,10 +1,14 @@
-import { Column } from 'components/grid/Column'
-import { Tile } from 'components/grid/Tile'
+import { EditableColumn } from 'components/editable-grid/EditableColumn'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
+import { Draggable } from 'react-beautiful-dnd'
 
-describe('Column component', () => {
-  it('should render 2 tiles', () => {
+const emptyFunction = () => {
+  return
+}
+
+describe('Editable column component', () => {
+  it('should be draggable', () => {
     const testTiles = ['test.tile.id.1', 'test.tile.id.2'].map(id => ({
       id,
       name: 'test.tile.name',
@@ -25,8 +29,16 @@ describe('Column component', () => {
       tileIds: [testTiles[0].id, testTiles[1].id],
     }
     const renderedColumn = enzyme.shallow(
-      <Column tiles={tiles} column={column} />
+      <EditableColumn
+        key={0}
+        column={column}
+        index={0}
+        tiles={tiles}
+        handleRemoveColumn={emptyFunction}
+        handleEditTile={emptyFunction}
+        handleRemoveTile={emptyFunction}
+      />
     )
-    expect(renderedColumn.find(Tile)).toHaveLength(2)
+    expect(renderedColumn.find(Draggable)).toHaveLength(1)
   })
 })

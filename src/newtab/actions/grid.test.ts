@@ -6,6 +6,17 @@ import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
 const mockStore = configureStore()
 let store: MockStoreEnhanced<any, any>
 
+const testTile = {
+  id: 'test.tile.id',
+  name: 'test.tile.name',
+  url: 'test.tile.url',
+  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  backgroundColour: '#fff',
+  fontColour: '#000',
+  favicon: false,
+  image: 'test.image.data',
+}
+
 describe('store', () => {
   beforeEach(() => {
     const initialState = {}
@@ -83,45 +94,23 @@ describe('store', () => {
 
 describe('actions', () => {
   it('should create an action to add a tile', () => {
-    const tile = {
-      id: 'test.tile.id',
-      name: 'test.tile.name',
-      url: 'test.tile.url',
-      displayMode: 'colour' as 'colour', // Suppress compiler warning
-      backgroundColour: '#fff',
-      fontColour: '#000',
-      favicon: false,
-      image: 'test.image.key',
-    }
-
     const expectedAction = {
       type: types.ADD_TILE,
       payload: {
-        tile,
+        tile: testTile,
       },
     }
-    expect(actions.addTile(tile)).toEqual(expectedAction)
+    expect(actions.addTile(testTile)).toEqual(expectedAction)
   })
 
   it('should create an action to edit a tile', () => {
-    const tile = {
-      id: 'test.tile.id',
-      name: 'test.tile.name',
-      url: 'test.tile.url',
-      displayMode: 'colour' as 'colour', // Suppress compiler warning
-      backgroundColour: '#fff',
-      fontColour: '#000',
-      favicon: false,
-      image: 'test.image.key',
-    }
-
     const expectedAction = {
       type: types.EDIT_TILE,
       payload: {
-        tile,
+        tile: testTile,
       },
     }
-    expect(actions.editTile(tile)).toEqual(expectedAction)
+    expect(actions.editTile(testTile)).toEqual(expectedAction)
   })
 
   it('should create an action to remove a tile', () => {

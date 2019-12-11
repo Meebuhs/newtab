@@ -10,11 +10,9 @@ interface IProps {
 
 export class Newtab extends React.Component<IProps, {}> {
   render() {
-    const content = this.props.sidebarVisible ? <EditableGrid /> : <Grid />
-
     return (
       <div className={'newtab'}>
-        {content}
+        {this.props.sidebarVisible ? <EditableGrid /> : <Grid />}
         <Sidebar />
       </div>
     )
