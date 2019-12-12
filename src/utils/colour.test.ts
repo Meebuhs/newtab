@@ -1,4 +1,3 @@
-import * as enzyme from 'enzyme'
 import { RGBColor } from 'react-color'
 import { RGBColorToString } from 'utils/colour'
 

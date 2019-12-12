@@ -1,5 +1,3 @@
-import { EditableGrid } from 'components/editable-grid/EditableGrid'
-import { Grid } from 'components/grid/Grid'
 import { Newtab } from 'components/Newtab'
 import * as enzyme from 'enzyme'
 import * as React from 'react'

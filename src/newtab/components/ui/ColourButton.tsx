@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ChromePicker, Color, ColorResult, RGBColor } from 'react-color'
+import { ChromePicker, ColorResult, RGBColor } from 'react-color'
 import './ColourButton.scss'
 
 interface IProps {

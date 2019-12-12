@@ -5,7 +5,6 @@ import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import close from 'resources/close.png'
 import options from 'resources/options.png'
-import { RGBColorToString } from 'utils/colour'
 import './EditableTile.scss'
 
 interface IProps {
@@ -64,16 +63,7 @@ export class EditableTile extends React.Component<IProps, IState> {
   }
 
   render() {
-    const {
-      id,
-      name,
-      url,
-      displayMode,
-      backgroundColour,
-      fontColour,
-      favicon,
-      image,
-    } = this.props.tile
+    const { id } = this.props.tile
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
@@ -85,11 +75,7 @@ export class EditableTile extends React.Component<IProps, IState> {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              <Tile
-                key={this.props.tile.id}
-                tile={this.props.tile}
-                disableLink={true}
-              />
+              <Tile key={id} tile={this.props.tile} disableLink={true} />
               <button
                 className={'edit-tile'}
                 onClick={this.handleOpenTileEditorModal}
