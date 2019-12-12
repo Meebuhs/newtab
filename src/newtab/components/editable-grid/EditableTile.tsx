@@ -67,7 +67,7 @@ export class EditableTile extends React.Component<IProps, IState> {
     return (
       <>
         <Draggable draggableId={id} index={this.props.index} type={'tile'}>
-          {(provided, snapshot) => (
+          {provided => (
             <div
               className={'draggable-tile'}
               key={id}

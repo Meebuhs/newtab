@@ -9,18 +9,31 @@ interface IProps {
 }
 
 export class Tile extends React.Component<IProps, {}> {
+  /**
+   * Returns the properly formatted url for retrieving the favicon. This is attempted by trimming the start and end
+   * to gain a url of the form '(www.)website.com'.
+   */
+  getFaviconURL = () => {
+    let faviconURL = this.props.tile.url
+      .replace('https://', '')
+      .replace('http://', '')
+    faviconURL = faviconURL.substring(0, faviconURL.indexOf('/'))
+    return `http://icons.duckduckgo.com/ip2/${faviconURL}.ico`
+  }
+
+  /**
+   * Returns the render content for the tile depending on whether it has a colour or an image background.
+   */
   getTileContent = () => {
     const {
       id,
       name,
-      url,
       displayMode,
       backgroundColour,
       fontColour,
       favicon,
       image,
     } = this.props.tile
-    const faviconURL = url.replace('https://', '').replace('http://', '')
 
     return displayMode === 'colour' ? (
       <div
@@ -33,10 +46,7 @@ export class Tile extends React.Component<IProps, {}> {
       >
         <div className={'tile-overlay'} />
         {favicon ? (
-          <img
-            className={'favicon'}
-            src={`http://icons.duckduckgo.com/ip2/${faviconURL}.ico`}
-          />
+          <img className={'favicon'} src={this.getFaviconURL()} />
         ) : null}
         {name}
       </div>
