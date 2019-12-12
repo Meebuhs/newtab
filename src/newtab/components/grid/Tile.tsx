@@ -19,6 +19,8 @@ export class Tile extends React.Component<IProps, {}> {
       favicon,
       image,
     } = this.props.tile
+
+    const faviconURL = url.replace('https://', '').replace('http://', '')
     return (
       <a href={url} className={'tile-link'}>
         {displayMode === 'colour' ? (
@@ -34,7 +36,7 @@ export class Tile extends React.Component<IProps, {}> {
             {favicon ? (
               <img
                 className={'favicon'}
-                src={`http://icons.duckduckgo.com/ip2/${url}.ico`}
+                src={`http://icons.duckduckgo.com/ip2/${faviconURL}.ico`}
               />
             ) : null}
             {name}
