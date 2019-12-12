@@ -20,7 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Changed from sass-lint to stylelint + stylelint-config-sass-guidelines
+- Changed from sass-lint to stylelint + stylelint-config-sass-guidelines.
+- Changed from express and webpack-dev-middleware/webpack-hot-middleware to webpack-dev-server.
 
 ## 0.1.1 2018-11-27
 
