@@ -2,20 +2,10 @@ import * as actions from 'actions/grid'
 import * as types from 'constants/types'
 import { DraggableLocation } from 'react-beautiful-dnd'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
+import { testTile } from 'testObjects'
 
 const mockStore = configureStore()
 let store: MockStoreEnhanced<any, any>
-
-const testTile = {
-  id: 'test.tile.id',
-  name: 'test.tile.name',
-  url: 'test.tile.url',
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
-  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
-  fontColour: { r: 0, g: 0, b: 0, a: 0 },
-  favicon: false,
-  image: 'test.image.data',
-}
 
 describe('store', () => {
   beforeEach(() => {

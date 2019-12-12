@@ -1,10 +1,7 @@
 import { ToggleButton } from 'components/ui/ToggleButton'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-
-const emptyFunction = () => {
-  return
-}
+import { emptyFunction } from 'testObjects'
 
 const testProps = {
   leftLabel: 'left',

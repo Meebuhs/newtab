@@ -1,10 +1,7 @@
 import { Sidebar } from 'components/ui/Sidebar'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
-
-const emptyFunction = () => {
-  return
-}
+import { emptyFunction } from 'testObjects'
 
 describe('Sidebar component', () => {
   it('should not render the sidebar when it is not visible', () => {

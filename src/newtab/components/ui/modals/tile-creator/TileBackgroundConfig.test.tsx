@@ -2,11 +2,8 @@ import * as enzyme from 'enzyme'
 import { TileColourBackgroundConfig } from 'modals/tile-creator/TileColourConfig'
 import { TileImageBackgroundConfig } from 'modals/tile-creator/TileImageConfig'
 import * as React from 'react'
+import { emptyFunction } from 'testObjects'
 import { TileBackgroundConfig } from './TileBackgroundConfig'
-
-const emptyFunction = () => {
-  return
-}
 
 const testProps = {
   updateStateValue: emptyFunction,

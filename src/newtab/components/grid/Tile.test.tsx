@@ -2,16 +2,8 @@ import { Tile } from 'components/grid/Tile'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
+import { testTile } from 'testObjects'
 import { RGBColorToString } from 'utils/colour'
-
-const testTile = {
-  id: 'tile.id',
-  url: 'tile.url',
-  name: 'test.tile',
-  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
-  fontColour: { r: 0, g: 0, b: 0, a: 1 },
-  image: 'test.image.data',
-}
 
 const colourTile = {
   ...testTile,
@@ -40,7 +32,7 @@ const imageFaviconTile = {
 describe('Tile component', () => {
   it('should render tile with solid background colour', () => {
     const tile = enzyme.shallow(<Tile tile={colourTile} />)
-    expect(tile.find('.tile').text()).toEqual('test.tile')
+    expect(tile.find('.tile').text()).toEqual(colourTile.name)
     expect(tile.find('.tile').get(0).props.style).toHaveProperty(
       'backgroundColor',
       RGBColorToString(colourTile.backgroundColour)
@@ -69,7 +61,7 @@ describe('Tile component', () => {
 
   it('should render a background image when set', () => {
     const tile = enzyme.shallow(<Tile tile={imageTile} />)
-    expect(tile.find('.tile').text()).toEqual('test.tile')
+    expect(tile.find('.tile').text()).toEqual(imageTile.name)
     expect(tile.find('.tile-image')).toHaveLength(1)
   })
 

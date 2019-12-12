@@ -1,5 +1,6 @@
 import { IGridState } from 'reducers/grid'
 import { getColumnOrder, getColumns, getTiles } from 'selectors/grid'
+import { testTile } from 'testObjects'
 
 const testTiles = [
   'test.tile.id.1',
@@ -7,14 +8,8 @@ const testTiles = [
   'test.tile.id.3',
   'test.tile.id.4',
 ].map(id => ({
+  ...testTile,
   id,
-  name: 'test.tile.name',
-  url: 'test.tile.url',
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
-  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
-  fontColour: { r: 0, g: 0, b: 0, a: 1 },
-  favicon: false,
-  image: 'test.image.data',
 }))
 
 const testState: IGridState = {
