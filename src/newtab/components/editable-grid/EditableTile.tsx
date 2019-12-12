@@ -1,3 +1,4 @@
+import { Tile } from 'components/grid/Tile'
 import { TileCreator } from 'modals/tile-creator/TileCreator'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
@@ -84,57 +85,20 @@ export class EditableTile extends React.Component<IProps, IState> {
               {...provided.dragHandleProps}
               ref={provided.innerRef}
             >
-              {displayMode === 'colour' ? (
-                <div
-                  className={'tile'}
-                  key={id}
-                  style={{
-                    backgroundColor: RGBColorToString(backgroundColour),
-                    color: RGBColorToString(fontColour),
-                  }}
-                >
-                  {snapshot.isDragging ? (
-                    <div className={'tile-overlay-dragging'} />
-                  ) : (
-                    <div className={'tile-overlay'} />
-                  )}
-                  {favicon ? (
-                    <img
-                      className={'favicon'}
-                      src={`http://icons.duckduckgo.com/ip2/${url}.ico`}
-                    />
-                  ) : null}
-                  {name}
-                  <button
-                    className={'edit-tile'}
-                    onClick={this.handleOpenTileEditorModal}
-                  >
-                    <img className={'button-icon'} src={options} />
-                  </button>
-                  <button className={'remove-tile'} onClick={this.removeTile}>
-                    <img className={'button-icon'} src={close} />
-                  </button>
-                </div>
-              ) : (
-                <div className={'tile'} key={id}>
-                  {snapshot.isDragging ? (
-                    <div className={'tile-overlay-dragging'} />
-                  ) : (
-                    <div className={'tile-overlay'} />
-                  )}
-                  <img className={'tile-image'} src={image} />
-                  <div className="tile-image-text">{name}</div>
-                  <button
-                    className={'edit-tile'}
-                    onClick={this.handleOpenTileEditorModal}
-                  >
-                    <img className={'button-icon'} src={options} />
-                  </button>
-                  <button className={'remove-tile'} onClick={this.removeTile}>
-                    <img className={'button-icon'} src={close} />
-                  </button>
-                </div>
-              )}
+              <Tile
+                key={this.props.tile.id}
+                tile={this.props.tile}
+                disableLink={true}
+              />
+              <button
+                className={'edit-tile'}
+                onClick={this.handleOpenTileEditorModal}
+              >
+                <img className={'button-icon'} src={options} />
+              </button>
+              <button className={'remove-tile'} onClick={this.removeTile}>
+                <img className={'button-icon'} src={close} />
+              </button>
             </div>
           )}
         </Draggable>

@@ -1,6 +1,10 @@
 @import '~components/grid/Tile';
 @import '~styles/common-elements';
 
+.draggable-tile {
+  position: relative;
+}
+
 .remove-tile {
   @include button(30px, 30px, false);
   position: absolute;
