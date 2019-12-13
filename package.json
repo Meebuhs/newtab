@@ -13,7 +13,8 @@
     "lint": "tslint --project tsconfig.json 'src/**/*.{ts,tsx}' && stylelint src/**/*.scss --fix",
     "precommit": "yarn prettier && yarn lint && yarn test",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,scss}\"",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "dist": "mkdir -p ./dist && cd build && zip -r ../dist/${npm_package_version}.zip *"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",

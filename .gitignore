@@ -98,3 +98,4 @@ linters/*
 
 ### Webpack Production Build Output ###
 build
+dist

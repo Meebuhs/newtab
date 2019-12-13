@@ -71,6 +71,7 @@ yarn
 | `yarn lint`     | Runs tslint/prettier and stylelint.             |
 | `yarn prettier` | Perform in-place prettier reformat.             |
 | `yarn test`     | Runs the test-suite using Jest.                 |
+| `yarn dist`     | Compresses the current build for distribution.  |
 
 ## License
 
