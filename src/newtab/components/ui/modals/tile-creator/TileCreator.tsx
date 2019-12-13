@@ -81,11 +81,11 @@ export class TileCreator extends React.Component<IProps, IState> {
   }
 
   /**
-   * Changes the state of the toggle button. The left side of the toggle button is the colour editor.
-   * @param {string} side the editor which is being displayed.
+   * Changes the state of the toggle button.
+   * @param {'colour' | 'image'} key the key of the button which is selected.
    */
-  handleToggleCallback = (side: string) => {
-    this.setState({ displayMode: side === 'left' ? 'colour' : 'image' })
+  handleSelectionCallback = (key: 'colour' | 'image') => {
+    this.setState({ displayMode: key })
   }
 
   /**
@@ -102,6 +102,11 @@ export class TileCreator extends React.Component<IProps, IState> {
     const header = this.props.edit
       ? TILECREATOR_EDIT_HEADER
       : TILECREATOR_CREATE_HEADER
+
+    const toggleLabels = {
+      colour: TILECREATOR_TOGGLE_COLOUR,
+      image: TILECREATOR_TOGGLE_IMAGE,
+    }
 
     return (
       <Modal
@@ -142,10 +147,10 @@ export class TileCreator extends React.Component<IProps, IState> {
             }
           />
           <ToggleButton
-            leftLabel={TILECREATOR_TOGGLE_COLOUR}
-            rightLabel={TILECREATOR_TOGGLE_IMAGE}
-            toggled={this.state.displayMode === 'image'}
-            handleToggleCallback={this.handleToggleCallback}
+            labels={[TILECREATOR_TOGGLE_COLOUR, TILECREATOR_TOGGLE_IMAGE]}
+            keys={['colour', 'image']}
+            selectedKey={toggleLabels[this.state.displayMode]}
+            handleSelectionCallback={this.handleSelectionCallback}
           />
           <TileBackgroundConfig
             {...this.state}
