@@ -1,5 +1,5 @@
 import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from 'constants/strings'
-import { TileCreator } from 'modals/tile-creator/TileCreator'
+import { TileEditor } from 'modals/editors/tile-editor/TileEditor'
 import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
 import left from 'resources/left.png'
@@ -98,7 +98,7 @@ export class Sidebar extends React.Component<IProps, IState> {
           >
             {SIDEBAR_ADDTILE}
           </div>
-          <TileCreator
+          <TileEditor
             tile={emptyTile}
             edit={false}
             showModal={this.state.showTileCreatorModal}

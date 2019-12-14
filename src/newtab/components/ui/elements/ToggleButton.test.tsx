@@ -1,4 +1,4 @@
-import { ToggleButton } from 'components/ui/ToggleButton'
+import { ToggleButton } from 'components/ui/elements/ToggleButton'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { emptyFunction } from 'testObjects'

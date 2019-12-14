@@ -1,7 +1,7 @@
-import { TILECREATOR_IMAGE_PREVIEW } from 'constants/strings'
+import { EDITOR_PREVIEW_LABEL } from 'constants/strings'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
-import './TileImageConfig.scss'
+import './ImageConfig.scss'
 
 interface IProps {
   updateStateValue: (attribute: keyof ITile, value: string) => void
@@ -25,7 +25,7 @@ const getBase64 = (file: any) => {
   })
 }
 
-export class TileImageBackgroundConfig extends React.Component<IProps, {}> {
+export class ImageConfig extends React.Component<IProps, {}> {
   /**
    * Accepts a file upload and if it is an image, converts it for storage
    */
@@ -45,26 +45,20 @@ export class TileImageBackgroundConfig extends React.Component<IProps, {}> {
 
   render() {
     return (
-      <div className={'tile-image-container'}>
-        <div className={'tile-image-top'}>
-          <div className={'tile-image-select'}>
-            <input
-              type="file"
-              id="tile-image-upload"
-              onChange={this.imageUpload}
-            />
+      <div className={'image-container'}>
+        <div className={'image-top'}>
+          <div className={'image-select'}>
+            <input type="file" id="image-upload" onChange={this.imageUpload} />
           </div>
         </div>
-        <div className={'tile-image-bottom'}>
-          <div className={'tile-image-preview'}>
+        <div className={'image-bottom'}>
+          <div className={'image-preview'}>
             {this.props.image === '' ? (
-              <span>{TILECREATOR_IMAGE_PREVIEW}</span>
+              <span>{EDITOR_PREVIEW_LABEL}</span>
             ) : (
               <>
-                <img className={'tile-image'} src={this.props.image} />
-                <div className="tile-image-text">
-                  {TILECREATOR_IMAGE_PREVIEW}
-                </div>
+                <img className={'image'} src={this.props.image} />
+                <div className="image-text">{EDITOR_PREVIEW_LABEL}</div>
               </>
             )}
           </div>

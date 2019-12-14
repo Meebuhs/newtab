@@ -1,7 +1,7 @@
 @import '~styles/theme-colours';
 @import '~styles/common-elements';
 
-.tile-colour-container {
+.colour-config-container {
   @include flex-column-parent();
   border-color: darken(#fff, 1);
   border-radius: 2px;
@@ -10,22 +10,22 @@
   margin-top: -10px;
 }
 
-.tile-colour-top {
+.colour-config-top {
   @include flex-column-child();
   height: 150px;
 }
 
-.tile-colour-config-container {
+.colour-config-select-container {
   @include flex-row-parent();
   height: 100%;
 }
 
-.tile-colour-select {
+.colour-config-select {
   @include flex-row-child();
   height: 100%;
 }
 
-.tile-colour-buttons {
+.colour-buttons-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -35,12 +35,12 @@
   width: 100%;
 }
 
-.tile-favicon-container {
+.colour-favicon-container {
   @include flex-row-child();
   height: 100%;
 }
 
-.tile-favicon-select {
+.colour-favicon-select {
   align-items: center;
   display: flex;
   height: 100%;
@@ -48,12 +48,12 @@
   width: 100%;
 }
 
-.tile-colour-bottom {
+.colour-config-bottom {
   @include flex-column-child();
   height: 150px;
 }
 
-.tile-colour-preview {
+.colour-config-preview {
   align-items: center;
   box-sizing: border-box;
   display: flex;

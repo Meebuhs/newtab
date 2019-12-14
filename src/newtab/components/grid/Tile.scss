@@ -11,14 +11,14 @@ $tile-height: 150px;
   align-items: center;
   border: 1px solid darken(#fff, 2);
   border-radius: 5px;
+  box-sizing: border-box;
   display: flex;
   height: $tile-height;
   justify-content: center;
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   position: relative;
   text-align: center;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .tile-overlay,

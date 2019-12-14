@@ -1,18 +1,21 @@
-import { ToggleButton } from 'components/ui/ToggleButton'
+import { ToggleButton } from 'components/ui/elements/ToggleButton'
 import {
   CANCEL_BUTTON_TEXT,
+  EDITOR_TOGGLE_COLOUR,
+  EDITOR_TOGGLE_IMAGE,
   SAVE_BUTTON_TEXT,
-  TILECREATOR_CREATE_HEADER,
-  TILECREATOR_EDIT_HEADER,
-  TILECREATOR_TOGGLE_COLOUR,
-  TILECREATOR_TOGGLE_IMAGE,
+  TILE_EDITOR_CREATE_HEADER,
+  TILE_EDITOR_EDIT_HEADER,
+  TILE_EDITOR_NAME_LABEL,
+  TILE_EDITOR_URL_LABEL,
 } from 'constants/strings'
-import { TileBackgroundConfig } from 'modals/tile-creator/TileBackgroundConfig'
+import { ColourConfig } from 'modals/editors/ColourConfig'
+import { ImageConfig } from 'modals/editors/ImageConfig'
 import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
-import './TileCreator.scss'
+import './TileEditor.scss'
 
 interface IProps {
   showModal: boolean
@@ -33,7 +36,7 @@ interface IState {
   image: string
 }
 
-export class TileCreator extends React.Component<IProps, IState> {
+export class TileEditor extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
@@ -100,20 +103,15 @@ export class TileCreator extends React.Component<IProps, IState> {
 
   render() {
     const header = this.props.edit
-      ? TILECREATOR_EDIT_HEADER
-      : TILECREATOR_CREATE_HEADER
-
-    const toggleLabels = {
-      colour: TILECREATOR_TOGGLE_COLOUR,
-      image: TILECREATOR_TOGGLE_IMAGE,
-    }
+      ? TILE_EDITOR_EDIT_HEADER
+      : TILE_EDITOR_CREATE_HEADER
 
     return (
       <Modal
         isOpen={this.props.showModal}
         onRequestClose={this.props.handleCloseModal}
         shouldCloseOnOverlayClick={true}
-        contentLabel="Tile Creation Modal"
+        contentLabel="Tile Editor Modal"
         style={{
           overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -125,9 +123,9 @@ export class TileCreator extends React.Component<IProps, IState> {
           },
         }}
       >
-        <div className={'tilecreator-container'}>
+        <div className={'editor-container'}>
           <h2 className={'header'}>{header}</h2>
-          <label className={'form-label'}>{'Tile url:'}</label>
+          <label className={'form-label'}>{TILE_EDITOR_URL_LABEL}</label>
           <input
             type={'text'}
             className={'text-input'}
@@ -136,7 +134,7 @@ export class TileCreator extends React.Component<IProps, IState> {
             autoFocus={true}
             onChange={event => this.updateStateValue('url', event.target.value)}
           />
-          <label className={'form-label'}>{'Tile name:'}</label>
+          <label className={'form-label'}>{TILE_EDITOR_NAME_LABEL}</label>
           <input
             type={'text'}
             className={'text-input'}
@@ -147,17 +145,27 @@ export class TileCreator extends React.Component<IProps, IState> {
             }
           />
           <ToggleButton
-            labels={[TILECREATOR_TOGGLE_COLOUR, TILECREATOR_TOGGLE_IMAGE]}
+            labels={[EDITOR_TOGGLE_COLOUR, EDITOR_TOGGLE_IMAGE]}
             keys={['colour', 'image']}
-            selectedKey={toggleLabels[this.state.displayMode]}
+            selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />
-          <TileBackgroundConfig
-            {...this.state}
-            updateFaviconValue={this.updateFaviconValue}
-            updateStateValue={this.updateStateValue}
-            updateColourValue={this.updateColourValue}
-          />
+          {this.state.displayMode === 'colour' ? (
+            <ColourConfig
+              backgroundColour={this.state.backgroundColour}
+              backgroundOnly={false}
+              fontColour={this.state.fontColour}
+              favicon={this.state.favicon}
+              updateFaviconValue={this.updateFaviconValue}
+              updateStateValue={this.updateStateValue}
+              updateColourValue={this.updateColourValue}
+            />
+          ) : (
+            <ImageConfig
+              image={this.state.image}
+              updateStateValue={this.updateStateValue}
+            />
+          )}
           <div className={'nav-buttons'}>
             <button
               key={'cancel'}
