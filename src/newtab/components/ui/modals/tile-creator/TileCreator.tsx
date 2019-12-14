@@ -103,11 +103,6 @@ export class TileCreator extends React.Component<IProps, IState> {
       ? TILECREATOR_EDIT_HEADER
       : TILECREATOR_CREATE_HEADER
 
-    const toggleLabels = {
-      colour: TILECREATOR_TOGGLE_COLOUR,
-      image: TILECREATOR_TOGGLE_IMAGE,
-    }
-
     return (
       <Modal
         isOpen={this.props.showModal}
@@ -149,7 +144,7 @@ export class TileCreator extends React.Component<IProps, IState> {
           <ToggleButton
             labels={[TILECREATOR_TOGGLE_COLOUR, TILECREATOR_TOGGLE_IMAGE]}
             keys={['colour', 'image']}
-            selectedKey={toggleLabels[this.state.displayMode]}
+            selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />
           <TileBackgroundConfig
