@@ -1,11 +1,18 @@
 import { EDITOR_PREVIEW_LABEL } from 'constants/strings'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
+import { RGBColor } from 'react-color'
+import { RGBColorToString } from 'utils/colour'
+import { getFaviconURL } from 'utils/url'
 import './ImageConfig.scss'
 
 interface IProps {
   updateStateValue: (attribute: keyof ITile, value: string) => void
+  url: string
   image: string
+  fontColour: RGBColor
+  fontSize: string
+  favicon: boolean
 }
 
 interface IBase64Result {
@@ -44,23 +51,32 @@ export class ImageConfig extends React.Component<IProps, {}> {
   }
 
   render() {
+    const { url, fontColour, fontSize, favicon } = this.props
+
     return (
-      <div className={'image-container'}>
-        <div className={'image-top'}>
-          <div className={'image-select'}>
+      <div className={'image-config-container'}>
+        <div className={'image-config-top'}>
+          <div className={'image-select-container'}>
             <input type="file" id="image-upload" onChange={this.imageUpload} />
           </div>
         </div>
-        <div className={'image-bottom'}>
-          <div className={'image-preview'}>
-            {this.props.image === '' ? (
-              <span>{EDITOR_PREVIEW_LABEL}</span>
-            ) : (
-              <>
-                <img className={'image'} src={this.props.image} />
-                <div className="image-text">{EDITOR_PREVIEW_LABEL}</div>
-              </>
+        <div className={'image-config-bottom'}>
+          <div
+            className={'image-config-preview'}
+            style={{
+              color: RGBColorToString(fontColour),
+              fontSize: `${fontSize}px`,
+            }}
+          >
+            {this.props.image === '' ? null : (
+              <img className={'image'} src={this.props.image} />
             )}
+            <div className="image-config-text">
+              {favicon ? (
+                <img className={'favicon'} src={getFaviconURL(url)} />
+              ) : null}
+              {EDITOR_PREVIEW_LABEL}
+            </div>
           </div>
         </div>
       </div>

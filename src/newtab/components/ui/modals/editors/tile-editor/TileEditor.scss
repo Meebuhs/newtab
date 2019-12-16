@@ -14,17 +14,7 @@
   width: 100%;
 }
 
-.text {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.text-input {
-  width: 100%;
-}
-
-.nav-buttons {
+.editor-end-buttons {
   bottom: 10px;
   display: flex;
   justify-content: space-between;
@@ -32,37 +22,10 @@
   width: calc(100% - 40px);
 }
 
-.save-button {
-  @include button(100px, 30px, true);
-}
-
-.cancel-button {
+.editor-cancel-button {
   @include button(100px, 30px, false);
 }
 
-.form-label {
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-right: 10px;
-  width: 100%;
-}
-
-.text-input {
-  border: 1px solid darken(#fff, 1);
-  border-radius: 2px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  padding: 12px 20px;
-  width: 100%;
-
-  &:focus {
-    border-color: colour('grey-dark');
-    outline: none;
-  }
-
-  &:hover:not(:focus) {
-    border-color: darken(#fff, 2);
-    transition: border-color 0.5s;
-  }
+.editor-save-button {
+  @include button(100px, 30px, true);
 }

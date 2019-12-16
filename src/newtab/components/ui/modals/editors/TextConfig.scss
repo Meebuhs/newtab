@@ -1,0 +1,47 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.text-config-container {
+  @include flex-column-parent;
+  border: 1px solid darken(#fff, 1);
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.font-config-container {
+  @include flex-column-child();
+  height: 100%;
+}
+
+.font-config-elements {
+  @include flex-row-parent;
+  align-items: center;
+  height: 80%;
+  justify-content: space-around;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.text-config-form-label {
+  @include form-label();
+}
+
+.font-size-dropdown-container {
+  display: inline-block;
+  height: 24px;
+  width: 46px;
+}
+
+.favicon-config-container {
+  @include flex-column-child();
+  height: 24px;
+  padding: 15px 0;
+}
+
+.favicon-config-select {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}

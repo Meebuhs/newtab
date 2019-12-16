@@ -5,7 +5,6 @@ import './ColourButton.scss'
 interface IProps {
   colour: RGBColor
   attribute: string
-  updateStateValue: (attribute: string, value: string) => void
   updateColourValue: (attribute: string, value: RGBColor) => void
 }
 

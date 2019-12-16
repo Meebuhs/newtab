@@ -1,7 +1,7 @@
 @import '~styles/theme-colours';
 @import '~styles/common-elements';
 
-.colour-config-container {
+.gradient-config-container {
   @include flex-column-parent();
   border-color: darken(#fff, 1);
   border-radius: 2px;
@@ -10,30 +10,48 @@
   margin-top: -10px;
 }
 
-.colour-config-top {
+.gradient-config-top {
   @include flex-column-child();
   height: 150px;
 }
 
-.colour-select-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.gradient-select-container {
+  @include flex-row-parent();
   height: 100%;
+}
+
+.gradient-colour-select,
+.gradient-detail-select {
+  @include flex-row-child();
+  height: 100%;
+}
+
+.gradient-config-dropdown-container {
+  display: inline-block;
+  height: 24px;
+  width: 80px;
+}
+
+.gradient-colours-container,
+.gradient-details-container {
+  @include flex-column-parent();
+  align-items: center;
+  height: 80%;
   justify-content: space-around;
+  padding-top: 15px;
   width: 100%;
 }
 
-.colour-config-form-label {
+.gradient-config-form-label {
   @include form-label();
 }
 
-.colour-config-bottom {
+.gradient-config-bottom {
   @include flex-column-child();
   height: 150px;
 }
 
-.colour-config-preview {
+.gradient-config-preview {
   align-items: center;
   box-sizing: border-box;
   display: flex;

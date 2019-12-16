@@ -29,6 +29,10 @@ export const EDITOR_FAVICON_LABEL = 'Display favicon'
 
 // ui/modals/editors/GradientConfig
 export const EDITOR_CREATE_GRADIENT = 'Create gradient'
+export const EDITOR_GRADIENT_TYPE_LABEL = 'Gradient type:'
+export const EDITOR_GRADIENT_START_COLOUR_LABEL = 'Start colour:'
+export const EDITOR_GRADIENT_END_COLOUR_LABEL = 'End colour:'
+export const EDITOR_GRADIENT_ANGLE_LABEL = 'Angle: '
 
 // ui/modals/editors/ImageConfig
 export const EDITOR_IMAGE_SELECT = 'Select image'

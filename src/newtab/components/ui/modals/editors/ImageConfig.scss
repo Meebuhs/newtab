@@ -1,7 +1,7 @@
 @import '~styles/theme-colours';
 @import '~styles/common-elements';
 
-.image-container {
+.image-config-container {
   @include flex-column-parent();
   border-color: darken(#fff, 1);
   border-radius: 2px;
@@ -10,12 +10,12 @@
   margin-top: -10px;
 }
 
-.image-top {
+.image-config-top {
   @include flex-column-child();
   height: 150px;
 }
 
-.image-select {
+.image-select-container {
   align-items: center;
   display: flex;
   height: 100%;
@@ -23,12 +23,12 @@
   width: 100%;
 }
 
-.image-bottom {
+.image-config-bottom {
   @include flex-column-child();
   height: 150px;
 }
 
-.image-preview {
+.image-config-preview {
   align-items: center;
   display: flex;
   height: 100%;
@@ -42,7 +42,7 @@
   width: 100%;
 }
 
-.image-text {
+.image-config-text {
   left: 50%;
   position: absolute;
   top: 50%;

@@ -29,6 +29,18 @@ const imageFaviconTile = {
   favicon: true,
 }
 
+const gradientTile = {
+  ...testTile,
+  displayMode: 'gradient' as 'gradient', // Suppress compiler warning
+  favicon: false,
+}
+
+const gradientFaviconTile = {
+  ...testTile,
+  displayMode: 'gradient' as 'gradient', // Suppress compiler warning
+  favicon: true,
+}
+
 describe('Tile component', () => {
   it('should render tile with solid background colour', () => {
     const tile = enzyme.shallow(<Tile tile={colourTile} />)
@@ -41,11 +53,15 @@ describe('Tile component', () => {
       'color',
       RGBColorToString(colourTile.fontColour)
     )
+    expect(tile.find('.tile').get(0).props.style).toHaveProperty(
+      'fontSize',
+      colourTile.fontSize
+    )
     expect(tile.find('.tile-image')).toHaveLength(0)
   })
 
   it('should only render the favicon when required', () => {
-    // favicon is only displayed on a colour tile when the favicon prop is true
+    // favicon is only displayed when the favicon prop is true
     let tile = enzyme.shallow(<Tile tile={colourTile} />)
     expect(tile.find('.favicon')).toHaveLength(0)
 
@@ -56,7 +72,13 @@ describe('Tile component', () => {
     expect(tile.find('.favicon')).toHaveLength(0)
 
     tile = enzyme.shallow(<Tile tile={imageFaviconTile} />)
+    expect(tile.find('.favicon')).toHaveLength(1)
+
+    tile = enzyme.shallow(<Tile tile={gradientTile} />)
     expect(tile.find('.favicon')).toHaveLength(0)
+
+    tile = enzyme.shallow(<Tile tile={gradientFaviconTile} />)
+    expect(tile.find('.favicon')).toHaveLength(1)
   })
 
   it('should render a background image when set', () => {

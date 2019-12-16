@@ -89,5 +89,3 @@ export class Dropdown extends React.Component<IProps, IState> {
     )
   }
 }
-
-export default Dropdown

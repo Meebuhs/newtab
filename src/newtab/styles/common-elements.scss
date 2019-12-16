@@ -51,3 +51,10 @@ $sidebar-width: 18%;
   vertical-align: middle;
   width: 80%;
 }
+
+@mixin form-label() {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 100%;
+}

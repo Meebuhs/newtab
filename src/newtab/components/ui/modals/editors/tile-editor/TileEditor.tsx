@@ -2,15 +2,17 @@ import { ToggleButton } from 'components/ui/elements/ToggleButton'
 import {
   CANCEL_BUTTON_TEXT,
   EDITOR_TOGGLE_COLOUR,
+  EDITOR_TOGGLE_GRADIENT,
   EDITOR_TOGGLE_IMAGE,
   SAVE_BUTTON_TEXT,
   TILE_EDITOR_CREATE_HEADER,
   TILE_EDITOR_EDIT_HEADER,
-  TILE_EDITOR_NAME_LABEL,
-  TILE_EDITOR_URL_LABEL,
 } from 'constants/strings'
 import { ColourConfig } from 'modals/editors/ColourConfig'
+import { GradientConfig } from 'modals/editors/GradientConfig'
 import { ImageConfig } from 'modals/editors/ImageConfig'
+import { LinkConfig } from 'modals/editors/LinkConfig'
+import { TextConfig } from 'modals/editors/TextConfig'
 import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
@@ -29,9 +31,16 @@ interface IState {
   id: string
   name: string
   url: string
-  displayMode: 'colour' | 'image'
+  displayMode: 'colour' | 'gradient' | 'image'
   backgroundColour: RGBColor
   fontColour: RGBColor
+  fontSize: string
+  gradient: {
+    type: 'linear' | 'radial'
+    startColour: RGBColor
+    endColour: RGBColor
+    angle: string
+  }
   favicon: boolean
   image: string
 }
@@ -76,6 +85,25 @@ export class TileEditor extends React.Component<IProps, IState> {
   }
 
   /**
+   * Updates the value of the gradient definition.
+   * @param {'linear' | 'radial'} type the type of gradient
+   * @param {RGBColor} startColour the starting colour of the gradient
+   * @param {RGBColor} endColour the ending colour of the gradient
+   * @param {string} angle the direction of the gradient, used for linear gradients
+   */
+  updateGradientValue = (gradient: {
+    type: 'linear' | 'radial'
+    startColour: RGBColor
+    endColour: RGBColor
+    angle: string
+  }) => {
+    this.setState(prevState => ({
+      ...prevState,
+      gradient,
+    }))
+  }
+
+  /**
    * Updates the value of the favicon state property.
    * @param {boolean} value the value to set
    */
@@ -85,9 +113,9 @@ export class TileEditor extends React.Component<IProps, IState> {
 
   /**
    * Changes the state of the toggle button.
-   * @param {'colour' | 'image'} key the key of the button which is selected.
+   * @param {'colour' | 'gradient' | 'image'} key the key of the button which is selected.
    */
-  handleSelectionCallback = (key: 'colour' | 'image') => {
+  handleSelectionCallback = (key: 'colour' | 'gradient' | 'image') => {
     this.setState({ displayMode: key })
   }
 
@@ -98,6 +126,46 @@ export class TileEditor extends React.Component<IProps, IState> {
     this.props.handleSaveModal({ ...this.state })
     if (!this.props.edit) {
       this.setState(emptyTile)
+    }
+  }
+
+  /**
+   * Returns the appropriate display config based on the current display mode.
+   */
+  getDisplayConfig = () => {
+    if (this.state.displayMode === 'colour') {
+      return (
+        <ColourConfig
+          url={this.state.url}
+          backgroundColour={this.state.backgroundColour}
+          fontColour={this.state.fontColour}
+          fontSize={this.state.fontSize}
+          favicon={this.state.favicon}
+          updateColourValue={this.updateColourValue}
+        />
+      )
+    } else if (this.state.displayMode === 'gradient') {
+      return (
+        <GradientConfig
+          url={this.state.url}
+          gradient={this.state.gradient}
+          fontColour={this.state.fontColour}
+          fontSize={this.state.fontSize}
+          favicon={this.state.favicon}
+          updateGradientValue={this.updateGradientValue}
+        />
+      )
+    } else {
+      return (
+        <ImageConfig
+          url={this.state.url}
+          image={this.state.image}
+          fontColour={this.state.fontColour}
+          fontSize={this.state.fontSize}
+          favicon={this.state.favicon}
+          updateStateValue={this.updateStateValue}
+        />
+      )
     }
   }
 
@@ -118,65 +186,52 @@ export class TileEditor extends React.Component<IProps, IState> {
           },
           content: {
             width: '500px',
-            height: '620px',
+            height: '720px',
             margin: 'auto',
           },
         }}
       >
         <div className={'editor-container'}>
           <h2 className={'header'}>{header}</h2>
-          <label className={'form-label'}>{TILE_EDITOR_URL_LABEL}</label>
-          <input
-            type={'text'}
-            className={'text-input'}
-            value={this.state.url}
-            onKeyPress={this.handleKeyPress}
-            autoFocus={true}
-            onChange={event => this.updateStateValue('url', event.target.value)}
+          <LinkConfig
+            updateStateValue={this.updateStateValue}
+            handleKeyPress={this.handleKeyPress}
+            url={this.state.url}
+            name={this.state.name}
           />
-          <label className={'form-label'}>{TILE_EDITOR_NAME_LABEL}</label>
-          <input
-            type={'text'}
-            className={'text-input'}
-            value={this.state.name}
-            onKeyPress={this.handleKeyPress}
-            onChange={event =>
-              this.updateStateValue('name', event.target.value)
-            }
+          <TextConfig
+            updateStateValue={this.updateStateValue}
+            updateColourValue={this.updateColourValue}
+            updateFaviconValue={this.updateFaviconValue}
+            handleKeyPress={this.handleKeyPress}
+            fontColour={this.state.fontColour}
+            fontSize={this.state.fontSize}
+            favicon={this.state.favicon}
           />
-          <ToggleButton
-            labels={[EDITOR_TOGGLE_COLOUR, EDITOR_TOGGLE_IMAGE]}
-            keys={['colour', 'image']}
-            selectedKey={this.state.displayMode}
-            handleSelectionCallback={this.handleSelectionCallback}
-          />
-          {this.state.displayMode === 'colour' ? (
-            <ColourConfig
-              backgroundColour={this.state.backgroundColour}
-              backgroundOnly={false}
-              fontColour={this.state.fontColour}
-              favicon={this.state.favicon}
-              updateFaviconValue={this.updateFaviconValue}
-              updateStateValue={this.updateStateValue}
-              updateColourValue={this.updateColourValue}
+          <div className={'display-config-container'}>
+            <ToggleButton
+              labels={[
+                EDITOR_TOGGLE_COLOUR,
+                EDITOR_TOGGLE_GRADIENT,
+                EDITOR_TOGGLE_IMAGE,
+              ]}
+              keys={['colour', 'gradient', 'image']}
+              selectedKey={this.state.displayMode}
+              handleSelectionCallback={this.handleSelectionCallback}
             />
-          ) : (
-            <ImageConfig
-              image={this.state.image}
-              updateStateValue={this.updateStateValue}
-            />
-          )}
-          <div className={'nav-buttons'}>
+            {this.getDisplayConfig()}
+          </div>
+          <div className={'editor-end-buttons'}>
             <button
               key={'cancel'}
-              className={'cancel-button'}
+              className={'editor-cancel-button'}
               onClick={this.props.handleCloseModal}
             >
               {CANCEL_BUTTON_TEXT}
             </button>
             <button
               key={'save'}
-              className={'save-button'}
+              className={'editor-save-button'}
               onClick={this.finalise}
             >
               {SAVE_BUTTON_TEXT}

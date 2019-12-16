@@ -2,18 +2,16 @@
 @import '~styles/common-elements';
 
 .dropdown-container {
-  position: relative;
-  display: inline-block;
-  user-select: none;
-  text-align: center;
-  padding-right: 10px;
-  height: 24px;
-  width: 46px;
-  line-height: 24px;
   background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  height: 100%;
+  padding-right: 10px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 100%;
 
   &:hover {
     background-color: darken(#fff, 1);
@@ -25,8 +23,8 @@
 }
 
 .dropdown-header {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .dropdown-title {
@@ -34,30 +32,29 @@
 }
 
 .dropdown-image {
-  vertical-align: middle;
-  position: absolute;
-  right: 0px;
-  width: 24px;
   height: 24px;
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
+  width: 24px;
 }
 
 .dropdown-list {
-  z-index: 10;
-  position: absolute;
-  top: 24px;
-  width: 100%;
-  border-top: none;
+  background-color: #fff;
   border-radius: 2px;
-  background-color: white;
   box-shadow: 0 3px 6px -1px rgb(200, 200, 200);
   max-height: 250px;
   overflow-y: scroll;
+  position: absolute;
+  top: 24px;
+  width: 100%;
+  z-index: 10;
 }
 
 @mixin dropdown-item {
-  line-height: 30px;
   display: flex;
   flex-direction: column;
+  line-height: 30px;
   text-overflow: ellipsis;
 }
 

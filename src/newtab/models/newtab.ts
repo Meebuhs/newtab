@@ -21,9 +21,11 @@ export interface IColumn {
  * @property {string} id the id of the tile. This is used as the key in the state's tile dictionary
  * @property {string} name the text which is displayed on the tile
  * @property {string} url the url which the tile leads to
- * @property {'image' | 'colour'} displayMode the display mode of the tile
+ * @property {'colour' | 'gradient' | 'image'} displayMode the display mode of the tile
  * @property {RGBColor} backgroundColour the colour of the tile background
  * @property {RGBColor} fontColour the colour of the tile font
+ * @property {string} fontSize the size of the tile font
+ * @property {object} gradient the information defining the gradient
  * @property {boolean} favicon whether the favicon should be displayed beside the tile name
  * @property {string} image the key used to retrieve the image from local storage
  */
@@ -31,9 +33,16 @@ export interface ITile {
   id: string
   name: string
   url: string
-  displayMode: 'colour' | 'image'
+  displayMode: 'colour' | 'gradient' | 'image'
   backgroundColour: RGBColor
   fontColour: RGBColor
+  fontSize: string
+  gradient: {
+    type: 'linear' | 'radial'
+    startColour: RGBColor
+    endColour: RGBColor
+    angle: string
+  }
   favicon: boolean
   image: string
 }
@@ -48,6 +57,13 @@ export const emptyTile = {
   displayMode: 'colour' as 'colour', // Suppress compiler warning
   backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
   fontColour: { r: 0, g: 0, b: 0, a: 1 },
+  fontSize: '16',
+  gradient: {
+    type: 'radial' as 'radial', // Suppress compiler warning
+    startColour: { r: 255, g: 255, b: 255, a: 1 },
+    endColour: { r: 210, g: 210, b: 210, a: 1 },
+    angle: '0',
+  },
   favicon: false,
   image: '',
 }
