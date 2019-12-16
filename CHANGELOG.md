@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 
 - Added gradient display mode for tiles.
+- Added ability to configure page background.
+  - Added colour, gradient and image display modes.
 
 ## 0.2.0 - 2019-12-13
 

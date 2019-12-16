@@ -1,5 +1,11 @@
+import { defaultBackground } from 'models/newtab'
 import { IGridState } from 'reducers/grid'
-import { getColumnOrder, getColumns, getTiles } from 'selectors/grid'
+import {
+  getBackground,
+  getColumnOrder,
+  getColumns,
+  getTiles,
+} from 'selectors/grid'
 import { testTile } from 'testObjects'
 
 const testTiles = [
@@ -34,6 +40,7 @@ const testState: IGridState = {
     },
   },
   columnOrder: ['column-0', 'column-1', 'column-2'],
+  background: defaultBackground,
 }
 
 describe('Grid selectors', () => {
@@ -50,5 +57,10 @@ describe('Grid selectors', () => {
   it('getColumnOrder should return columnOrder', () => {
     const selection = getColumnOrder.resultFunc(testState)
     expect(selection).toEqual(testState.columnOrder)
+  })
+
+  it('getBackground should return the background', () => {
+    const selection = getBackground.resultFunc(testState)
+    expect(selection).toEqual(testState.background)
   })
 })

@@ -1,4 +1,4 @@
-import { ITile } from 'models/newtab'
+import { IBackground, ITile } from 'models/newtab'
 
 export const testTile: ITile = {
   id: 'test.tile.id',
@@ -15,6 +15,18 @@ export const testTile: ITile = {
     angle: '0',
   },
   favicon: false,
+  image: 'test.image.data',
+}
+
+export const testBackground: IBackground = {
+  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
+  gradient: {
+    type: 'radial' as 'radial', // Suppress compiler warning
+    startColour: { r: 255, g: 255, b: 255, a: 1 },
+    endColour: { r: 210, g: 210, b: 210, a: 1 },
+    angle: '0',
+  },
   image: 'test.image.data',
 }
 

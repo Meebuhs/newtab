@@ -1,6 +1,7 @@
 import {
   ADD_COLUMN,
   ADD_TILE,
+  EDIT_BACKGROUND,
   EDIT_TILE,
   MOVE_TILE,
   REMOVE_COLUMN,
@@ -8,7 +9,7 @@ import {
   REORDER_COLUMN,
   REORDER_TILE,
 } from 'constants/types'
-import { IColumn, ITile } from 'models/newtab'
+import { IBackground, IColumn, ITile } from 'models/newtab'
 import { DraggableLocation } from 'react-beautiful-dnd'
 
 // Define the Action interfaces representing the return types of the action creators
@@ -60,6 +61,13 @@ export interface IMoveTileAction {
   payload: {
     droppableSource: DraggableLocation
     droppableDestination: DraggableLocation
+  }
+}
+
+export interface IEditBackgroundAction {
+  type: 'EDIT_BACKGROUND'
+  payload: {
+    background: IBackground
   }
 }
 
@@ -193,6 +201,19 @@ export function moveTile(
   }
 }
 
+/**
+ * Edits the background.
+ * @param {IBackground} background the new background to set
+ */
+export function editBackground(background: IBackground): IEditBackgroundAction {
+  return {
+    type: EDIT_BACKGROUND,
+    payload: {
+      background,
+    },
+  }
+}
+
 // Define action type for use in reducer
 export type Action =
   | IAddColumnAction
@@ -203,3 +224,4 @@ export type Action =
   | IMoveTileAction
   | IRemoveTileAction
   | IReorderTileAction
+  | IEditBackgroundAction

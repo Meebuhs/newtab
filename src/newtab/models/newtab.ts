@@ -50,7 +50,7 @@ export interface ITile {
 /**
  * The default empty configuration of a tile
  */
-export const emptyTile = {
+export const emptyTile: ITile = {
   id: '',
   name: '',
   url: 'https://',
@@ -76,16 +76,12 @@ export const emptyTile = {
  *           of the image.
  * @property {'colour' | 'gradient' | 'image'} displayMode the display mode of the background
  * @property {RGBColor} backgroundColour the colour of the tile background
- * @property {RGBColor} fontColour the colour of the tile font
- * @property {string} fontSize the size of the tile font
  * @property {object} gradient the information defining the gradient
  * @property {string} image the base64 encoding of the background image
  */
 export interface IBackground {
   displayMode: 'colour' | 'gradient' | 'image'
   backgroundColour: RGBColor
-  fontColour: RGBColor
-  fontSize: string
   gradient: {
     type: 'linear' | 'radial'
     startColour: RGBColor
@@ -93,4 +89,19 @@ export interface IBackground {
     angle: string
   }
   image: string
+}
+
+/**
+ * The default configuration of the background
+ */
+export const defaultBackground: IBackground = {
+  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
+  gradient: {
+    type: 'radial' as 'radial', // Suppress compiler warning
+    startColour: { r: 255, g: 255, b: 255, a: 1 },
+    endColour: { r: 210, g: 210, b: 210, a: 1 },
+    angle: '0',
+  },
+  image: '',
 }

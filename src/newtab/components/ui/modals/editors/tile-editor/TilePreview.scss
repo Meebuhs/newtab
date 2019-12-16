@@ -2,18 +2,18 @@
 @import '~styles/common-elements';
 
 .config-preview {
-  position: relative;
   align-items: center;
   box-sizing: border-box;
   display: flex;
   height: 150px;
   justify-content: center;
+  position: relative;
   width: calc(100% - 1px);
 }
 
 .preview-image {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 .image-preview-text {

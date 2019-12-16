@@ -2,6 +2,7 @@ import { Action } from 'actions/grid'
 import {
   ADD_COLUMN,
   ADD_TILE,
+  EDIT_BACKGROUND,
   EDIT_TILE,
   MOVE_TILE,
   REMOVE_COLUMN,
@@ -9,13 +10,14 @@ import {
   REORDER_COLUMN,
   REORDER_TILE,
 } from 'constants/types'
-import { IColumn, ITile } from 'models/newtab'
+import { defaultBackground, IBackground, IColumn, ITile } from 'models/newtab'
 
 // Define the types of the grid state structure
 export interface IGridState {
   tiles: { [id: string]: ITile }
   columns: { [id: string]: IColumn }
   columnOrder: string[]
+  background: IBackground
 }
 
 // Define the initial state of the grid
@@ -36,6 +38,7 @@ export const initialState: IGridState = {
     },
   },
   columnOrder: ['column-0', 'column-1', 'column-2'],
+  background: defaultBackground,
 }
 
 /**
@@ -220,6 +223,17 @@ export function reducer(state: IGridState = initialState, action: Action) {
             tileIds: newDestinationTileOrder,
           },
         },
+      }
+    }
+    case EDIT_BACKGROUND: {
+      /**
+       * Edits the background.
+       */
+      const background = action.payload.background
+
+      return {
+        ...state,
+        background,
       }
     }
     default:

@@ -1,46 +1,45 @@
 import { ToggleButton } from 'components/ui/elements/ToggleButton'
 import {
+  BACKGROUND_EDITOR_HEADER,
   CANCEL_BUTTON_TEXT,
   EDITOR_TOGGLE_COLOUR,
+  EDITOR_TOGGLE_GRADIENT,
   EDITOR_TOGGLE_IMAGE,
   SAVE_BUTTON_TEXT,
-  TILE_EDITOR_CREATE_HEADER,
-  TILE_EDITOR_EDIT_HEADER,
-  TILE_EDITOR_NAME_LABEL,
-  TILE_EDITOR_URL_LABEL,
 } from 'constants/strings'
 import { ColourConfig } from 'modals/editors/ColourConfig'
+import { GradientConfig } from 'modals/editors/GradientConfig'
 import { ImageConfig } from 'modals/editors/ImageConfig'
-import { emptyTile, ITile } from 'models/newtab'
+import { IBackground } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
-import './TileEditor.scss'
+import './BackgroundEditor.scss'
 
 interface IProps {
   showModal: boolean
-  tile: ITile
-  edit: boolean
+  background: IBackground
   handleCloseModal: () => void
-  handleSaveModal: (tile: ITile) => void
+  handleSaveModal: (background: IBackground) => void
 }
 
 interface IState {
-  id: string
-  name: string
-  url: string
-  displayMode: 'colour' | 'image'
+  displayMode: 'colour' | 'gradient' | 'image'
   backgroundColour: RGBColor
-  fontColour: RGBColor
-  favicon: boolean
+  gradient: {
+    type: 'linear' | 'radial'
+    startColour: RGBColor
+    endColour: RGBColor
+    angle: string
+  }
   image: string
 }
 
-export class TileEditor extends React.Component<IProps, IState> {
+export class BackgroundEditor extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
-      ...props.tile,
+      ...props.background,
     }
   }
 
@@ -50,7 +49,7 @@ export class TileEditor extends React.Component<IProps, IState> {
    */
   handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
-      this.finalise()
+      this.props.handleSaveModal({ ...this.state })
     }
   }
 
@@ -76,112 +75,102 @@ export class TileEditor extends React.Component<IProps, IState> {
   }
 
   /**
-   * Updates the value of the favicon state property.
-   * @param {boolean} value the value to set
+   * Updates the value of the gradient definition.
+   * @param {'linear' | 'radial'} type the type of gradient
+   * @param {RGBColor} startColour the starting colour of the gradient
+   * @param {RGBColor} endColour the ending colour of the gradient
+   * @param {string} angle the direction of the gradient, used for linear gradients
    */
-  updateFaviconValue = (value: boolean) => {
-    this.setState({ favicon: value })
+  updateGradientValue = (gradient: {
+    type: 'linear' | 'radial'
+    startColour: RGBColor
+    endColour: RGBColor
+    angle: string
+  }) => {
+    this.setState(prevState => ({
+      ...prevState,
+      gradient,
+    }))
   }
 
   /**
    * Changes the state of the toggle button.
-   * @param {'colour' | 'image'} key the key of the button which is selected.
+   * @param {'colour' | 'gradient' | 'image'} key the key of the button which is selected.
    */
-  handleSelectionCallback = (key: 'colour' | 'image') => {
+  handleSelectionCallback = (key: 'colour' | 'gradient' | 'image') => {
     this.setState({ displayMode: key })
   }
 
   /**
-   * Uses the state information to add a tile to the grid.
+   * Returns the appropriate display config based on the current display mode.
    */
-  finalise = () => {
-    this.props.handleSaveModal({ ...this.state })
-    if (!this.props.edit) {
-      this.setState(emptyTile)
+  getDisplayConfig = () => {
+    if (this.state.displayMode === 'colour') {
+      return (
+        <ColourConfig
+          backgroundColour={this.state.backgroundColour}
+          updateColourValue={this.updateColourValue}
+        />
+      )
+    } else if (this.state.displayMode === 'gradient') {
+      return (
+        <GradientConfig
+          gradient={this.state.gradient}
+          updateGradientValue={this.updateGradientValue}
+        />
+      )
+    } else {
+      return <ImageConfig updateStateValue={this.updateStateValue} />
     }
   }
 
   render() {
-    const header = this.props.edit
-      ? TILE_EDITOR_EDIT_HEADER
-      : TILE_EDITOR_CREATE_HEADER
-
     return (
       <Modal
         isOpen={this.props.showModal}
         onRequestClose={this.props.handleCloseModal}
         shouldCloseOnOverlayClick={true}
-        contentLabel="Tile Editor Modal"
+        contentLabel="Background Editor Modal"
         style={{
           overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
           },
           content: {
             width: '500px',
-            height: '620px',
+            height: '300px',
             margin: 'auto',
           },
         }}
       >
         <div className={'editor-container'}>
-          <h2 className={'header'}>{header}</h2>
-          <label className={'form-label'}>{TILE_EDITOR_URL_LABEL}</label>
-          <input
-            type={'text'}
-            className={'text-input'}
-            value={this.state.url}
-            onKeyPress={this.handleKeyPress}
-            autoFocus={true}
-            onChange={event => this.updateStateValue('url', event.target.value)}
-          />
-          <label className={'form-label'}>{TILE_EDITOR_NAME_LABEL}</label>
-          <input
-            type={'text'}
-            className={'text-input'}
-            value={this.state.name}
-            onKeyPress={this.handleKeyPress}
-            onChange={event =>
-              this.updateStateValue('name', event.target.value)
-            }
-          />
+          <h2 className={'header'}>{BACKGROUND_EDITOR_HEADER}</h2>
           <ToggleButton
-            labels={[EDITOR_TOGGLE_COLOUR, EDITOR_TOGGLE_IMAGE]}
-            keys={['colour', 'image']}
+            labels={[
+              EDITOR_TOGGLE_COLOUR,
+              EDITOR_TOGGLE_GRADIENT,
+              EDITOR_TOGGLE_IMAGE,
+            ]}
+            keys={['colour', 'gradient', 'image']}
             selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />
-          {this.state.displayMode === 'colour' ? (
-            <ColourConfig
-              backgroundColour={this.state.backgroundColour}
-              backgroundOnly={false}
-              fontColour={this.state.fontColour}
-              favicon={this.state.favicon}
-              updateFaviconValue={this.updateFaviconValue}
-              updateStateValue={this.updateStateValue}
-              updateColourValue={this.updateColourValue}
-            />
-          ) : (
-            <ImageConfig
-              image={this.state.image}
-              updateStateValue={this.updateStateValue}
-            />
-          )}
-          <div className={'nav-buttons'}>
-            <button
-              key={'cancel'}
-              className={'cancel-button'}
-              onClick={this.props.handleCloseModal}
-            >
-              {CANCEL_BUTTON_TEXT}
-            </button>
-            <button
-              key={'save'}
-              className={'save-button'}
-              onClick={this.finalise}
-            >
-              {SAVE_BUTTON_TEXT}
-            </button>
-          </div>
+          {this.getDisplayConfig()}
+        </div>
+        <div className={'editor-end-buttons'}>
+          <button
+            key={'cancel'}
+            className={'editor-cancel-button'}
+            onClick={this.props.handleCloseModal}
+          >
+            {CANCEL_BUTTON_TEXT}
+          </button>
+          <button
+            key={'save'}
+            className={'editor-save-button'}
+            onClick={() => this.props.handleSaveModal({ ...this.state })}
+          >
+            {SAVE_BUTTON_TEXT}
+          </button>
         </div>
       </Modal>
     )

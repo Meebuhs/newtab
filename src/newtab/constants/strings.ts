@@ -13,6 +13,9 @@ export const TILE_EDITOR_EDIT_HEADER = 'Edit a Tile'
 export const TILE_EDITOR_URL_LABEL = 'Tile url:'
 export const TILE_EDITOR_NAME_LABEL = 'Tile name:'
 
+// ui/modals/editors/background-editor
+export const BACKGROUND_EDITOR_HEADER = 'Edit the Background'
+
 // ui/modals/editors
 export const EDITOR_TOGGLE_COLOUR = 'Set a colour'
 export const EDITOR_TOGGLE_GRADIENT = 'Create a gradient'

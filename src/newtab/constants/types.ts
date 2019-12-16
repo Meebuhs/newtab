@@ -7,6 +7,7 @@ export const EDIT_TILE = 'EDIT_TILE'
 export const REMOVE_TILE = 'REMOVE_TILE'
 export const REORDER_TILE = 'REORDER_TILE'
 export const MOVE_TILE = 'MOVE_TILE'
+export const EDIT_BACKGROUND = 'EDIT_BACKGROUND'
 
 // ActionTypes for ui state
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'

@@ -2,7 +2,7 @@ import * as actions from 'actions/grid'
 import * as types from 'constants/types'
 import { DraggableLocation } from 'react-beautiful-dnd'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
-import { testTile } from 'testObjects'
+import { testBackground, testTile } from 'testObjects'
 
 const mockStore = configureStore()
 let store: MockStoreEnhanced<any, any>
@@ -78,6 +78,14 @@ describe('store', () => {
 
     const storeActions = store.getActions()
     const expectedPayload = { type: types.MOVE_TILE }
+    expect(storeActions).toEqual([expectedPayload])
+  })
+
+  it('should dispatch editBackground correctly', () => {
+    store.dispatch({ type: types.EDIT_BACKGROUND })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.EDIT_BACKGROUND }
     expect(storeActions).toEqual([expectedPayload])
   })
 })
@@ -195,5 +203,15 @@ describe('actions', () => {
     expect(actions.reorderColumn(columnOrder, startIndex, endIndex)).toEqual(
       expectedAction
     )
+  })
+
+  it('should create an action to edit the background', () => {
+    const expectedAction = {
+      type: types.EDIT_BACKGROUND,
+      payload: {
+        background: testBackground,
+      },
+    }
+    expect(actions.editBackground(testBackground)).toEqual(expectedAction)
   })
 })

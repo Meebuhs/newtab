@@ -21,3 +21,8 @@ export const getColumns = createSelector([getGridState], s => s.columns)
  * Returns the columnOrder array from the grid state
  */
 export const getColumnOrder = createSelector([getGridState], s => s.columnOrder)
+
+/**
+ * Returns the background object from the grid state
+ */
+export const getBackground = createSelector([getGridState], s => s.background)
