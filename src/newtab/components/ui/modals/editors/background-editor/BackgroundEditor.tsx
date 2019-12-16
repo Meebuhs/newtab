@@ -5,11 +5,13 @@ import {
   EDITOR_TOGGLE_COLOUR,
   EDITOR_TOGGLE_GRADIENT,
   EDITOR_TOGGLE_IMAGE,
+  EDITOR_TOGGLE_UNSPLASH,
   SAVE_BUTTON_TEXT,
 } from 'constants/strings'
 import { ColourConfig } from 'modals/editors/ColourConfig'
 import { GradientConfig } from 'modals/editors/GradientConfig'
 import { ImageConfig } from 'modals/editors/ImageConfig'
+import { UnsplashConfig } from 'modals/editors/UnsplashConfig'
 import { IBackground } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
@@ -24,7 +26,7 @@ interface IProps {
 }
 
 interface IState {
-  displayMode: 'colour' | 'gradient' | 'image'
+  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash'
   backgroundColour: RGBColor
   gradient: {
     type: 'linear' | 'radial'
@@ -33,6 +35,7 @@ interface IState {
     angle: string
   }
   image: string
+  unsplashURL: string
 }
 
 export class BackgroundEditor extends React.Component<IProps, IState> {
@@ -97,7 +100,9 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
    * Changes the state of the toggle button.
    * @param {'colour' | 'gradient' | 'image'} key the key of the button which is selected.
    */
-  handleSelectionCallback = (key: 'colour' | 'gradient' | 'image') => {
+  handleSelectionCallback = (
+    key: 'colour' | 'gradient' | 'image' | 'unsplash'
+  ) => {
     this.setState({ displayMode: key })
   }
 
@@ -119,8 +124,10 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
           updateGradientValue={this.updateGradientValue}
         />
       )
-    } else {
+    } else if (this.state.displayMode === 'image') {
       return <ImageConfig updateStateValue={this.updateStateValue} />
+    } else {
+      return <UnsplashConfig />
     }
   }
 
@@ -136,7 +143,7 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
           },
           content: {
-            width: '500px',
+            width: '700px',
             height: '300px',
             margin: 'auto',
           },
@@ -149,8 +156,9 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
               EDITOR_TOGGLE_COLOUR,
               EDITOR_TOGGLE_GRADIENT,
               EDITOR_TOGGLE_IMAGE,
+              EDITOR_TOGGLE_UNSPLASH,
             ]}
-            keys={['colour', 'gradient', 'image']}
+            keys={['colour', 'gradient', 'image', 'unsplash']}
             selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />

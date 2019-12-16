@@ -1,8 +1,10 @@
+import axios from 'axios'
 import EditableGrid from 'containers/EditableGrid'
 import Grid from 'containers/Grid'
 import Sidebar from 'containers/Sidebar'
 import { IBackground } from 'models/newtab'
 import * as React from 'react'
+import { apiKey } from 'utils/api'
 import { getGradientString, RGBColorToString } from 'utils/colour'
 import './Newtab.scss'
 
@@ -11,9 +13,49 @@ interface IProps {
   background: IBackground
 }
 
-export class Newtab extends React.Component<IProps, {}> {
+interface IState {
+  background: IBackground
+  credit: {
+    name: string
+    userName: string
+  }
+}
+
+export class Newtab extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props)
+    this.state = {
+      background: props.background,
+      credit: {
+        name: '',
+        userName: '',
+      },
+    }
+  }
+
+  componentDidMount() {
+    const apiRoot = 'https://api.unsplash.com'
+
+    axios
+      .get(
+        `${apiRoot}/photos/random?client_id=${apiKey}&collection=wallpaper&orientation=landscape`
+      )
+      .then(response => {
+        this.setState(prevState => ({
+          background: {
+            ...prevState.background,
+            unsplashURL: response.data.urls.regular,
+          },
+          credit: {
+            name: response.data.user.name,
+            userName: response.data.user.username,
+          },
+        }))
+      })
+  }
+
   getBackgroundStyle = () => {
-    const { displayMode, backgroundColour, gradient } = this.props.background
+    const { displayMode, backgroundColour, gradient } = this.state.background
 
     if (displayMode === 'colour') {
       return {
@@ -35,13 +77,28 @@ export class Newtab extends React.Component<IProps, {}> {
 
   render() {
     const { displayMode, image } = this.props.background
+    const imageSource =
+      displayMode === 'image' ? image : this.state.background.unsplashURL
+
     return (
       <div className={'newtab'} style={this.getBackgroundStyle()}>
-        {displayMode === 'image' ? (
-          <img className={'background-image'} src={image} />
-        ) : null}
+        <img className={'background-image'} src={imageSource} />
         {this.props.sidebarVisible ? <EditableGrid /> : <Grid />}
         <Sidebar />
+        {displayMode === 'unsplash' ? (
+          <div className="unsplash-credit">
+            {`Photo by `}
+            <a
+              href={`unsplash.com/@${this.state.credit.userName}?utm_source=newtab&utm_medium=referral`}
+            >
+              {this.state.credit.name}
+            </a>
+            {` on `}
+            <a href={`unsplash.com/?utm_source=newtab&utm_medium=referral`}>
+              {'Unsplash'}
+            </a>
+          </div>
+        ) : null}
       </div>
     )
   }

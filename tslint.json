@@ -25,6 +25,7 @@
     "no-conditional-assignment": true,
     "no-sparse-arrays": true,
     "no-invalid-template-strings": true,
-    "no-boolean-literal-compare": true
+    "no-boolean-literal-compare": true,
+    "no-floating-promises": false
   }
 }

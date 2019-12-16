@@ -1,0 +1,10 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.unsplash-config-container {
+  @include flex-row-parent;
+  align-items: center;
+  height: 150px;
+  justify-content: space-around;
+  width: 100%;
+}

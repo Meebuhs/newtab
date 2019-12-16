@@ -1,9 +1,12 @@
-import { ITile } from 'models/newtab'
+import { IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
 import './ImageConfig.scss'
 
 interface IProps {
-  updateStateValue: (attribute: keyof ITile, value: string) => void
+  updateStateValue: (
+    attribute: keyof IBackground | keyof ITile,
+    value: string
+  ) => void
 }
 
 interface IBase64Result {
@@ -32,7 +35,6 @@ export class ImageConfig extends React.Component<IProps, {}> {
       if (e.target.files && e.target.files[0]) {
         const file = e.target.files[0]
         if (file.type.match('image.*')) {
-          // tslint:disable-next-line
           getBase64(file).then((base64: IBase64Result) => {
             this.props.updateStateValue('image', base64.result)
           })

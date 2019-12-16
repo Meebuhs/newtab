@@ -20,7 +20,7 @@ export const BACKGROUND_EDITOR_HEADER = 'Edit the Background'
 export const EDITOR_TOGGLE_COLOUR = 'Set a colour'
 export const EDITOR_TOGGLE_GRADIENT = 'Create a gradient'
 export const EDITOR_TOGGLE_IMAGE = 'Upload an image'
-export const EDITOR_TOGGLE_EXTERNAL_IMAGES = 'Select an Image Source'
+export const EDITOR_TOGGLE_UNSPLASH = 'Unsplash'
 export const EDITOR_TOGGLE_ANIMATIONS = 'Select an Animation'
 export const EDITOR_PREVIEW_LABEL = 'Preview'
 

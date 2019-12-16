@@ -28,6 +28,7 @@ export const testBackground: IBackground = {
     angle: '0',
   },
   image: 'test.image.data',
+  unsplashURL: 'test.url',
 }
 
 export const emptyFunction = () => {

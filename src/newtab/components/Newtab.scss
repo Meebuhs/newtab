@@ -1,3 +1,6 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
 body {
   font-family: 'Open Sans', 'Ubuntu', sans-serif;
 }
@@ -12,6 +15,7 @@ body {
 }
 
 .background-image {
+  background-size: cover;
   bottom: 0;
   height: 100vh;
   left: 0;
@@ -19,4 +23,16 @@ body {
   right: 0;
   top: 0;
   width: 100vw;
+}
+
+.unsplash-credit {
+  bottom: 10px;
+  color: #fff;
+  position: absolute;
+  right: 20px;
+}
+
+.unsplash-credit a {
+  color: darken(#fff, 1);
+  text-decoration: none;
 }
