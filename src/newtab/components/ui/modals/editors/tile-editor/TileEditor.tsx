@@ -18,6 +18,7 @@ import * as React from 'react'
 import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
 import './TileEditor.scss'
+import { TilePreview } from './TilePreview'
 
 interface IProps {
   showModal: boolean
@@ -136,36 +137,19 @@ export class TileEditor extends React.Component<IProps, IState> {
     if (this.state.displayMode === 'colour') {
       return (
         <ColourConfig
-          url={this.state.url}
           backgroundColour={this.state.backgroundColour}
-          fontColour={this.state.fontColour}
-          fontSize={this.state.fontSize}
-          favicon={this.state.favicon}
           updateColourValue={this.updateColourValue}
         />
       )
     } else if (this.state.displayMode === 'gradient') {
       return (
         <GradientConfig
-          url={this.state.url}
           gradient={this.state.gradient}
-          fontColour={this.state.fontColour}
-          fontSize={this.state.fontSize}
-          favicon={this.state.favicon}
           updateGradientValue={this.updateGradientValue}
         />
       )
     } else {
-      return (
-        <ImageConfig
-          url={this.state.url}
-          image={this.state.image}
-          fontColour={this.state.fontColour}
-          fontSize={this.state.fontSize}
-          favicon={this.state.favicon}
-          updateStateValue={this.updateStateValue}
-        />
-      )
+      return <ImageConfig updateStateValue={this.updateStateValue} />
     }
   }
 
@@ -221,6 +205,7 @@ export class TileEditor extends React.Component<IProps, IState> {
             />
             {this.getDisplayConfig()}
           </div>
+          <TilePreview {...this.state} />
           <div className={'editor-end-buttons'}>
             <button
               key={'cancel'}

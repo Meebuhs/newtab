@@ -2,16 +2,11 @@
 @import '~styles/common-elements';
 
 .image-config-container {
-  @include flex-column-parent();
   border-color: darken(#fff, 1);
   border-radius: 2px;
   border-style: solid;
   border-width: 0 1px 1px;
   margin-top: -10px;
-}
-
-.image-config-top {
-  @include flex-column-child();
   height: 150px;
 }
 
@@ -21,30 +16,4 @@
   height: 100%;
   justify-content: center;
   width: 100%;
-}
-
-.image-config-bottom {
-  @include flex-column-child();
-  height: 150px;
-}
-
-.image-config-preview {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-.image {
-  height: 100%;
-  width: 100%;
-}
-
-.image-config-text {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
