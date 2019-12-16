@@ -1,0 +1,79 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  text-align: center;
+  padding-right: 10px;
+  height: 24px;
+  width: 46px;
+  line-height: 24px;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#fff, 1);
+  }
+
+  &:active {
+    background-color: darken(#fff, 2);
+  }
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-title {
+  margin: auto;
+}
+
+.dropdown-image {
+  vertical-align: middle;
+  position: absolute;
+  right: 0px;
+  width: 24px;
+  height: 24px;
+}
+
+.dropdown-list {
+  z-index: 10;
+  position: absolute;
+  top: 24px;
+  width: 100%;
+  border-top: none;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 3px 6px -1px rgb(200, 200, 200);
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+@mixin dropdown-item {
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item-unselected {
+  @include dropdown-item();
+
+  &:hover {
+    background-color: darken(#fff, 1);
+  }
+
+  &:active {
+    background-color: darken(#fff, 2);
+  }
+}
+
+.dropdown-item-selected {
+  @include dropdown-item();
+  background-color: darken(#fff, 2);
+}
