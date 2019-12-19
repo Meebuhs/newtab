@@ -85,7 +85,13 @@ export class Newtab extends React.Component<IProps, IState> {
     return (
       <div className={'newtab'} style={this.getBackgroundStyle()}>
         {displayMode === 'image' || displayMode === 'unsplash' ? (
-          <img className={'background-image'} src={imageSource} />
+          <img
+            className={'background-image'}
+            onLoad={event => {
+              event.currentTarget.classList.add('fade-in')
+            }}
+            src={imageSource}
+          />
         ) : null}
         {this.props.sidebarVisible ? <EditableGrid /> : <Grid />}
         <Sidebar />
