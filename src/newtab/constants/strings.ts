@@ -21,7 +21,7 @@ export const EDITOR_TOGGLE_COLOUR = 'Set a colour'
 export const EDITOR_TOGGLE_GRADIENT = 'Create a gradient'
 export const EDITOR_TOGGLE_IMAGE = 'Upload an image'
 export const EDITOR_TOGGLE_UNSPLASH = 'Unsplash'
-export const EDITOR_TOGGLE_ANIMATIONS = 'Select an Animation'
+export const EDITOR_TOGGLE_ANIMATION = 'Select an Animation'
 export const EDITOR_PREVIEW_LABEL = 'Preview'
 
 // ui/modals/editors/ColourConfig
@@ -42,6 +42,11 @@ export const EDITOR_IMAGE_SELECT = 'Select image'
 
 // ui/modals/editors/StreamConfig
 export const EDITOR_STREAM_SELECT = 'Select image source'
+
+// ui/modals/editors/UnsplashConfig
+export const EDITOR_UNSPLASH_SELECT = 'Unsplash query:'
+export const EDITOR_UNSPLASH_SELECT_SUB =
+  'Backgrounds will be selected from images which match the above input.'
 
 // ui/modals/editors/AnimationConfig
 export const EDITOR_ANIMATION_SELECT = 'Select an animation'

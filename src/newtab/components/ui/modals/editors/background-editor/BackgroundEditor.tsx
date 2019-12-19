@@ -36,6 +36,7 @@ interface IState {
   }
   image: string
   unsplashURL: string
+  unsplashQuery: string
 }
 
 export class BackgroundEditor extends React.Component<IProps, IState> {
@@ -127,7 +128,13 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
     } else if (this.state.displayMode === 'image') {
       return <ImageConfig updateStateValue={this.updateStateValue} />
     } else {
-      return <UnsplashConfig />
+      return (
+        <UnsplashConfig
+          updateStateValue={this.updateStateValue}
+          handleKeyPress={this.handleKeyPress}
+          unsplashQuery={this.state.unsplashQuery}
+        />
+      )
     }
   }
 

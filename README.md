@@ -54,6 +54,12 @@ yarn build
 
 Finally in chrome go to `chrome://extensions` and ensuring developer mode is enabled, load an unpacked extension and choose newtab/build.
 
+Note that in order for the unsplash rotating background functionality to work you will need to create an [unsplash](unsplash.com/?utm_source=newtab&utm_medium=referral) account and get an access key. This key must be declared in `src/utils/api.ts` as follows:
+
+```
+export const apiKey = 'YOUR_KEY_HERE'
+```
+
 ## Development
 
 ```

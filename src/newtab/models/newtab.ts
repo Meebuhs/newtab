@@ -79,6 +79,7 @@ export const emptyTile: ITile = {
  * @property {object} gradient the information defining the gradient
  * @property {string} image the base64 encoding of the background image
  * @property {string} unsplashURL the url source of the unsplash background image
+ * @property {string} unsplashQuery request images matching this query from unsplash
  */
 export interface IBackground {
   displayMode: 'colour' | 'gradient' | 'image' | 'unsplash'
@@ -91,6 +92,7 @@ export interface IBackground {
   }
   image: string
   unsplashURL: string
+  unsplashQuery: string
 }
 
 /**
@@ -107,4 +109,5 @@ export const defaultBackground: IBackground = {
   },
   image: '',
   unsplashURL: '',
+  unsplashQuery: 'wallpaper',
 }

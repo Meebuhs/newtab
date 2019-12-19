@@ -35,16 +35,17 @@ export class Newtab extends React.Component<IProps, IState> {
 
   componentDidMount() {
     const apiRoot = 'https://api.unsplash.com'
+    const query = this.state.background.unsplashQuery
 
     axios
       .get(
-        `${apiRoot}/photos/random?client_id=${apiKey}&collection=wallpaper&orientation=landscape`
+        `${apiRoot}/photos/random?client_id=${apiKey}&featured=true&orientation=landscape&query=${query}`
       )
       .then(response => {
         this.setState(prevState => ({
           background: {
             ...prevState.background,
-            unsplashURL: response.data.urls.regular,
+            unsplashURL: `${response.data.urls.raw}&h=${window.innerHeight}&w=${window.innerWidth}&auto=format`,
           },
           credit: {
             name: response.data.user.name,
@@ -52,6 +53,7 @@ export class Newtab extends React.Component<IProps, IState> {
           },
         }))
       })
+      .catch()
   }
 
   getBackgroundStyle = () => {
@@ -89,12 +91,14 @@ export class Newtab extends React.Component<IProps, IState> {
           <div className="unsplash-credit">
             {`Photo by `}
             <a
-              href={`unsplash.com/@${this.state.credit.userName}?utm_source=newtab&utm_medium=referral`}
+              href={`https://unsplash.com/@${this.state.credit.userName}?utm_source=newtab&utm_medium=referral`}
             >
               {this.state.credit.name}
             </a>
             {` on `}
-            <a href={`unsplash.com/?utm_source=newtab&utm_medium=referral`}>
+            <a
+              href={`https://unsplash.com/?utm_source=newtab&utm_medium=referral`}
+            >
               {'Unsplash'}
             </a>
           </div>

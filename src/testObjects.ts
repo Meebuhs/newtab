@@ -29,6 +29,7 @@ export const testBackground: IBackground = {
   },
   image: 'test.image.data',
   unsplashURL: 'test.url',
+  unsplashQuery: 'test.query',
 }
 
 export const emptyFunction = () => {
