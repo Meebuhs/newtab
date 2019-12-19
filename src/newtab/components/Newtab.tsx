@@ -94,7 +94,17 @@ export class Newtab extends React.Component<IProps, IState> {
             src={imageSource}
           />
         ) : null}
-        {displayMode === 'animation' ? <ParticleWrapper /> : null}
+        {displayMode === 'animation' ? (
+          <ParticleWrapper
+            animation={{
+              preset: 'float',
+              count: 150,
+              backgroundColour: '#172c3d',
+              particleColour: '#ffffff',
+              repel: true,
+            }}
+          />
+        ) : null}
         {this.props.sidebarVisible ? <EditableGrid /> : <Grid />}
         <Sidebar />
         {displayMode === 'unsplash' ? (

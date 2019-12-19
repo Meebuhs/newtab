@@ -80,7 +80,7 @@ export const emptyTile: ITile = {
  * @property {string} image the base64 encoding of the background image
  * @property {string} unsplashURL the url source of the unsplash background image
  * @property {string} unsplashQuery request images matching this query from unsplash
- * @property {string} animation the animation preset to use.
+ * @property {object} animation the animation preset and configuration to use.
  */
 export interface IBackground {
   displayMode: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
@@ -94,7 +94,13 @@ export interface IBackground {
   image: string
   unsplashURL: string
   unsplashQuery: string
-  animation: string
+  animation: {
+    preset: 'network' | 'float' | 'fall' | 'sky'
+    count: string
+    backgroundColour: string
+    particleColour: string
+    repel: boolean
+  }
 }
 
 /**
@@ -112,5 +118,11 @@ export const defaultBackground: IBackground = {
   image: '',
   unsplashURL: '',
   unsplashQuery: 'wallpaper',
-  animation: 'network' as 'network',
+  animation: {
+    preset: 'network' as 'network',
+    count: '150',
+    backgroundColour: '#e5e5e5',
+    particleColour: '#ffffff',
+    repel: true,
+  },
 }
