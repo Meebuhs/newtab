@@ -19,21 +19,22 @@ body {
   height: 100vh;
   left: 0;
   object-fit: cover;
+  opacity: 0;
   position: absolute;
   right: 0;
   top: 0;
   width: 100vw;
-  opacity: 0;
 }
 
 .fade-in {
-  animation: fadein 1s ease forwards;
+  animation: fadein 0.75s ease forwards;
 }
 
 @keyframes fadein {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

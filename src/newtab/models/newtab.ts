@@ -74,15 +74,16 @@ export const emptyTile: ITile = {
  *  - gradient: a css gradient built using the properties stored within the gradient property.
  *  - image: simply uses a user defined image as the background for the tile. The value stored is the base64 encoding
  *           of the image.
- * @property {'colour' | 'gradient' | 'image' | 'unsplash'} displayMode the display mode of the background
+ * @property {'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'} displayMode the display mode of the background
  * @property {RGBColor} backgroundColour the colour of the tile background
  * @property {object} gradient the information defining the gradient
  * @property {string} image the base64 encoding of the background image
  * @property {string} unsplashURL the url source of the unsplash background image
  * @property {string} unsplashQuery request images matching this query from unsplash
+ * @property {string} animation the animation preset to use.
  */
 export interface IBackground {
-  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash'
+  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
   backgroundColour: RGBColor
   gradient: {
     type: 'linear' | 'radial'
@@ -93,6 +94,7 @@ export interface IBackground {
   image: string
   unsplashURL: string
   unsplashQuery: string
+  animation: string
 }
 
 /**
@@ -110,4 +112,5 @@ export const defaultBackground: IBackground = {
   image: '',
   unsplashURL: '',
   unsplashQuery: 'wallpaper',
+  animation: 'network' as 'network',
 }

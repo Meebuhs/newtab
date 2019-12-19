@@ -7,6 +7,7 @@ import * as React from 'react'
 import { apiKey } from 'utils/api'
 import { getGradientString, RGBColorToString } from 'utils/colour'
 import './Newtab.scss'
+import { ParticleWrapper } from './ui/ParticleWrapper'
 
 interface IProps {
   sidebarVisible: boolean
@@ -93,6 +94,7 @@ export class Newtab extends React.Component<IProps, IState> {
             src={imageSource}
           />
         ) : null}
+        {displayMode === 'animation' ? <ParticleWrapper /> : null}
         {this.props.sidebarVisible ? <EditableGrid /> : <Grid />}
         <Sidebar />
         {displayMode === 'unsplash' ? (

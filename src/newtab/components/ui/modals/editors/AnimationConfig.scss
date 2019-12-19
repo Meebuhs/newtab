@@ -1,0 +1,26 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.animation-config-container {
+  @include flex-column-parent();
+  align-items: center;
+  border-color: darken(#fff, 1);
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  height: 150px;
+  justify-content: space-around;
+  margin-top: -10px;
+  width: 100%;
+}
+
+.animation-dropdown-container {
+  display: inline-block;
+  height: 24px;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.animation-config-form-label {
+  @include form-label();
+}

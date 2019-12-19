@@ -2,12 +2,14 @@ import { ToggleButton } from 'components/ui/elements/ToggleButton'
 import {
   BACKGROUND_EDITOR_HEADER,
   CANCEL_BUTTON_TEXT,
+  EDITOR_TOGGLE_ANIMATION,
   EDITOR_TOGGLE_COLOUR,
   EDITOR_TOGGLE_GRADIENT,
   EDITOR_TOGGLE_IMAGE,
   EDITOR_TOGGLE_UNSPLASH,
   SAVE_BUTTON_TEXT,
 } from 'constants/strings'
+import { AnimationConfig } from 'modals/editors/AnimationConfig'
 import { ColourConfig } from 'modals/editors/ColourConfig'
 import { GradientConfig } from 'modals/editors/GradientConfig'
 import { ImageConfig } from 'modals/editors/ImageConfig'
@@ -26,7 +28,7 @@ interface IProps {
 }
 
 interface IState {
-  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash'
+  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
   backgroundColour: RGBColor
   gradient: {
     type: 'linear' | 'radial'
@@ -37,6 +39,7 @@ interface IState {
   image: string
   unsplashURL: string
   unsplashQuery: string
+  animation: string
 }
 
 export class BackgroundEditor extends React.Component<IProps, IState> {
@@ -99,10 +102,10 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
 
   /**
    * Changes the state of the toggle button.
-   * @param {'colour' | 'gradient' | 'image'} key the key of the button which is selected.
+   * @param {'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'} key the key of the button which is selected.
    */
   handleSelectionCallback = (
-    key: 'colour' | 'gradient' | 'image' | 'unsplash'
+    key: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
   ) => {
     this.setState({ displayMode: key })
   }
@@ -127,12 +130,19 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
       )
     } else if (this.state.displayMode === 'image') {
       return <ImageConfig updateStateValue={this.updateStateValue} />
-    } else {
+    } else if (this.state.displayMode === 'unsplash') {
       return (
         <UnsplashConfig
           updateStateValue={this.updateStateValue}
           handleKeyPress={this.handleKeyPress}
           unsplashQuery={this.state.unsplashQuery}
+        />
+      )
+    } else if (this.state.displayMode === 'animation') {
+      return (
+        <AnimationConfig
+          updateStateValue={this.updateStateValue}
+          animation={this.state.animation}
         />
       )
     }
@@ -164,8 +174,9 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
               EDITOR_TOGGLE_GRADIENT,
               EDITOR_TOGGLE_IMAGE,
               EDITOR_TOGGLE_UNSPLASH,
+              EDITOR_TOGGLE_ANIMATION,
             ]}
-            keys={['colour', 'gradient', 'image', 'unsplash']}
+            keys={['colour', 'gradient', 'image', 'unsplash', 'animation']}
             selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />

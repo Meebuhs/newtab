@@ -3,6 +3,7 @@ import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { testBackground } from 'testObjects'
 import { getGradientString, RGBColorToString } from 'utils/colour'
+import { ParticleWrapper } from './ui/ParticleWrapper'
 
 describe('Newtab component', () => {
   it('should render the editable grid when the sidebar is visible', () => {
@@ -66,5 +67,18 @@ describe('Newtab component', () => {
     )
 
     expect(newtab.find('.background-image')).toHaveLength(1)
+  })
+
+  it('should render particle animation background', () => {
+    const background = {
+      ...testBackground,
+      displayMode: 'animation' as 'animation',
+    }
+
+    const newtab = enzyme.shallow(
+      <Newtab sidebarVisible={false} background={background} />
+    )
+
+    expect(newtab.find(ParticleWrapper)).toHaveLength(1)
   })
 })
