@@ -17,11 +17,11 @@ export const TILE_EDITOR_NAME_LABEL = 'Tile name:'
 export const BACKGROUND_EDITOR_HEADER = 'Edit the Background'
 
 // ui/modals/editors
-export const EDITOR_TOGGLE_COLOUR = 'Set a colour'
-export const EDITOR_TOGGLE_GRADIENT = 'Create a gradient'
-export const EDITOR_TOGGLE_IMAGE = 'Upload an image'
+export const EDITOR_TOGGLE_COLOUR = 'Colour'
+export const EDITOR_TOGGLE_GRADIENT = 'Gradient'
+export const EDITOR_TOGGLE_IMAGE = 'Image'
 export const EDITOR_TOGGLE_UNSPLASH = 'Unsplash'
-export const EDITOR_TOGGLE_ANIMATION = 'Select an Animation'
+export const EDITOR_TOGGLE_ANIMATION = 'Animation'
 export const EDITOR_PREVIEW_LABEL = 'Preview'
 
 // ui/modals/editors/ColourConfig
@@ -49,7 +49,7 @@ export const EDITOR_UNSPLASH_SELECT_SUB =
   'Backgrounds will be selected from images which match the above input.'
 
 // ui/modals/editors/AnimationConfig
-export const EDITOR_ANIMATION_SELECT = 'Select an animation'
+export const EDITOR_ANIMATION_SELECT = 'Select an animation:'
 
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'

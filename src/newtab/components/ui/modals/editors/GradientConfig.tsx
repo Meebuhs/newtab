@@ -6,19 +6,20 @@ import {
   EDITOR_GRADIENT_START_COLOUR_LABEL,
   EDITOR_GRADIENT_TYPE_LABEL,
 } from 'constants/strings'
+import { GRADIENT_ANGLES, GRADIENT_TYPES, GradientType } from 'constants/types'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import './GradientConfig.scss'
 
 interface IProps {
   updateGradientValue: (gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
   }) => void
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -43,9 +44,9 @@ export class GradientConfig extends React.Component<IProps, {}> {
 
   /**
    * Updates the gradient type.
-   * @param {'linear' | 'radial'} type the new type of gradient.
+   * @param {GradientType} type the new type of gradient.
    */
-  updateGradientType = (value: 'linear' | 'radial') => {
+  updateGradientType = (value: GradientType) => {
     this.props.updateGradientValue({
       ...this.props.gradient,
       type: value,
@@ -96,21 +97,6 @@ export class GradientConfig extends React.Component<IProps, {}> {
           </div>
           <div className={'gradient-detail-select'}>
             <div className={'gradient-details-container'}>
-              <div className={'gradient-detail-container'}>
-                <label
-                  className={'gradient-config-form-label'}
-                  style={{ lineHeight: '24px' }}
-                >
-                  {EDITOR_GRADIENT_TYPE_LABEL}
-                </label>
-                <div className={'gradient-config-dropdown-container'}>
-                  <Dropdown
-                    items={['linear', 'radial']}
-                    selected={this.props.gradient.type}
-                    handleSelectionCallback={this.updateGradientType}
-                  />
-                </div>
-              </div>
               {this.props.gradient.type === 'radial' ? null : (
                 <div className={'gradient-detail-container'}>
                   <label
@@ -121,13 +107,28 @@ export class GradientConfig extends React.Component<IProps, {}> {
                   </label>
                   <div className={'gradient-config-dropdown-container'}>
                     <Dropdown
-                      items={['0', '15', '30', '45', '60', '75', '90']}
+                      items={GRADIENT_ANGLES}
                       selected={this.props.gradient.angle}
                       handleSelectionCallback={this.updateGradientAngle}
                     />
                   </div>
                 </div>
               )}
+              <div className={'gradient-detail-container'}>
+                <label
+                  className={'gradient-config-form-label'}
+                  style={{ lineHeight: '24px' }}
+                >
+                  {EDITOR_GRADIENT_TYPE_LABEL}
+                </label>
+                <div className={'gradient-config-dropdown-container'}>
+                  <Dropdown
+                    items={GRADIENT_TYPES}
+                    selected={this.props.gradient.type}
+                    handleSelectionCallback={this.updateGradientType}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

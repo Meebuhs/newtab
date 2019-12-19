@@ -30,7 +30,13 @@ export const testBackground: IBackground = {
   image: 'test.image.data',
   unsplashURL: 'test.url',
   unsplashQuery: 'test.query',
-  animation: 'network' as 'network',
+  animation: {
+    preset: 'network' as 'network',
+    count: '150',
+    backgroundColour: '#e5e5e5',
+    particleColour: '#ffffff',
+    repel: true,
+  },
 }
 
 export const emptyFunction = () => {

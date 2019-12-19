@@ -1,3 +1,9 @@
+import {
+  AnimationPreset,
+  BackgroundDisplayMode,
+  GradientType,
+  TileDisplayMode,
+} from 'constants/types'
 import { RGBColor } from 'react-color'
 
 /**
@@ -21,7 +27,7 @@ export interface IColumn {
  * @property {string} id the id of the tile. This is used as the key in the state's tile dictionary
  * @property {string} name the text which is displayed on the tile
  * @property {string} url the url which the tile leads to
- * @property {'colour' | 'gradient' | 'image'} displayMode the display mode of the tile
+ * @property {TileDisplayMode} displayMode the display mode of the tile
  * @property {RGBColor} backgroundColour the colour of the tile background
  * @property {RGBColor} fontColour the colour of the tile font
  * @property {string} fontSize the size of the tile font
@@ -33,12 +39,12 @@ export interface ITile {
   id: string
   name: string
   url: string
-  displayMode: 'colour' | 'gradient' | 'image'
+  displayMode: TileDisplayMode
   backgroundColour: RGBColor
   fontColour: RGBColor
   fontSize: string
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -74,7 +80,7 @@ export const emptyTile: ITile = {
  *  - gradient: a css gradient built using the properties stored within the gradient property.
  *  - image: simply uses a user defined image as the background for the tile. The value stored is the base64 encoding
  *           of the image.
- * @property {'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'} displayMode the display mode of the background
+ * @property {BackgroundDisplayMode} displayMode the display mode of the background
  * @property {RGBColor} backgroundColour the colour of the tile background
  * @property {object} gradient the information defining the gradient
  * @property {string} image the base64 encoding of the background image
@@ -83,10 +89,10 @@ export const emptyTile: ITile = {
  * @property {object} animation the animation preset and configuration to use.
  */
 export interface IBackground {
-  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
+  displayMode: BackgroundDisplayMode
   backgroundColour: RGBColor
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -95,7 +101,7 @@ export interface IBackground {
   unsplashURL: string
   unsplashQuery: string
   animation: {
-    preset: 'network' | 'float' | 'fall' | 'sky'
+    preset: AnimationPreset
     count: string
     backgroundColour: string
     particleColour: string

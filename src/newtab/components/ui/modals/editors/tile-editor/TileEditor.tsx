@@ -8,6 +8,11 @@ import {
   TILE_EDITOR_CREATE_HEADER,
   TILE_EDITOR_EDIT_HEADER,
 } from 'constants/strings'
+import {
+  GradientType,
+  TILE_DISPLAY_MODES,
+  TileDisplayMode,
+} from 'constants/types'
 import { ColourConfig } from 'modals/editors/ColourConfig'
 import { GradientConfig } from 'modals/editors/GradientConfig'
 import { ImageConfig } from 'modals/editors/ImageConfig'
@@ -32,12 +37,12 @@ interface IState {
   id: string
   name: string
   url: string
-  displayMode: 'colour' | 'gradient' | 'image'
+  displayMode: TileDisplayMode
   backgroundColour: RGBColor
   fontColour: RGBColor
   fontSize: string
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -87,13 +92,13 @@ export class TileEditor extends React.Component<IProps, IState> {
 
   /**
    * Updates the value of the gradient definition.
-   * @param {'linear' | 'radial'} type the type of gradient
+   * @param {GradientType} type the type of gradient
    * @param {RGBColor} startColour the starting colour of the gradient
    * @param {RGBColor} endColour the ending colour of the gradient
    * @param {string} angle the direction of the gradient, used for linear gradients
    */
   updateGradientValue = (gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -114,9 +119,9 @@ export class TileEditor extends React.Component<IProps, IState> {
 
   /**
    * Changes the state of the toggle button.
-   * @param {'colour' | 'gradient' | 'image'} key the key of the button which is selected.
+   * @param {TileDisplayMode} key the key of the button which is selected.
    */
-  handleSelectionCallback = (key: 'colour' | 'gradient' | 'image') => {
+  handleSelectionCallback = (key: TileDisplayMode) => {
     this.setState({ displayMode: key })
   }
 
@@ -199,7 +204,7 @@ export class TileEditor extends React.Component<IProps, IState> {
                 EDITOR_TOGGLE_GRADIENT,
                 EDITOR_TOGGLE_IMAGE,
               ]}
-              keys={['colour', 'gradient', 'image']}
+              keys={TILE_DISPLAY_MODES}
               selectedKey={this.state.displayMode}
               handleSelectionCallback={this.handleSelectionCallback}
             />

@@ -5,6 +5,7 @@ import {
   EDITOR_FONT_COLOUR_LABEL,
   EDITOR_FONT_SIZE_LABEL,
 } from 'constants/strings'
+import { FONT_SIZES } from 'constants/types'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
@@ -46,7 +47,7 @@ export class TextConfig extends React.Component<IProps, {}> {
               </label>
               <div className={'font-size-dropdown-container'}>
                 <Dropdown
-                  items={['8', '10', '12', '14', '16', '18', '20']}
+                  items={FONT_SIZES}
                   selected={this.props.fontSize.toString()}
                   handleSelectionCallback={this.updateFontSize}
                 />

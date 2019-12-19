@@ -9,6 +9,12 @@ import {
   EDITOR_TOGGLE_UNSPLASH,
   SAVE_BUTTON_TEXT,
 } from 'constants/strings'
+import {
+  AnimationPreset,
+  BACKGROUND_DISPLAY_MODES,
+  BackgroundDisplayMode,
+  GradientType,
+} from 'constants/types'
 import { AnimationConfig } from 'modals/editors/AnimationConfig'
 import { ColourConfig } from 'modals/editors/ColourConfig'
 import { GradientConfig } from 'modals/editors/GradientConfig'
@@ -28,10 +34,10 @@ interface IProps {
 }
 
 interface IState {
-  displayMode: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
+  displayMode: BackgroundDisplayMode
   backgroundColour: RGBColor
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -39,7 +45,13 @@ interface IState {
   image: string
   unsplashURL: string
   unsplashQuery: string
-  animation: string
+  animation: {
+    preset: AnimationPreset
+    count: string
+    backgroundColour: string
+    particleColour: string
+    repel: boolean
+  }
 }
 
 export class BackgroundEditor extends React.Component<IProps, IState> {
@@ -83,13 +95,13 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
 
   /**
    * Updates the value of the gradient definition.
-   * @param {'linear' | 'radial'} type the type of gradient
+   * @param {GradientType} type the type of gradient
    * @param {RGBColor} startColour the starting colour of the gradient
    * @param {RGBColor} endColour the ending colour of the gradient
    * @param {string} angle the direction of the gradient, used for linear gradients
    */
   updateGradientValue = (gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string
@@ -102,11 +114,9 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
 
   /**
    * Changes the state of the toggle button.
-   * @param {'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'} key the key of the button which is selected.
+   * @param {BackgroundDisplayMode} key the key of the button which is selected.
    */
-  handleSelectionCallback = (
-    key: 'colour' | 'gradient' | 'image' | 'unsplash' | 'animation'
-  ) => {
+  handleSelectionCallback = (key: BackgroundDisplayMode) => {
     this.setState({ displayMode: key })
   }
 
@@ -176,7 +186,7 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
               EDITOR_TOGGLE_UNSPLASH,
               EDITOR_TOGGLE_ANIMATION,
             ]}
-            keys={['colour', 'gradient', 'image', 'unsplash', 'animation']}
+            keys={BACKGROUND_DISPLAY_MODES}
             selectedKey={this.state.displayMode}
             handleSelectionCallback={this.handleSelectionCallback}
           />

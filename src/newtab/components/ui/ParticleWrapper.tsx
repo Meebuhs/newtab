@@ -1,10 +1,11 @@
+import { AnimationPreset } from 'constants/types'
 import * as React from 'react'
 import Particles from 'react-particles-js'
 import './ParticleWrapper.scss'
 
 interface IProps {
   animation: {
-    preset: 'network' | 'float' | 'fall' | 'sky'
+    preset: AnimationPreset
     count: number
     backgroundColour: string
     particleColour: string

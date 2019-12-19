@@ -1,4 +1,5 @@
 import { EDITOR_PREVIEW_LABEL } from 'constants/strings'
+import { GradientType, TileDisplayMode } from 'constants/types'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import { getGradientString, RGBColorToString } from 'utils/colour'
@@ -7,12 +8,12 @@ import './TilePreview.scss'
 
 interface IProps {
   url: string
-  displayMode: 'colour' | 'gradient' | 'image'
+  displayMode: TileDisplayMode
   backgroundColour: RGBColor
   fontColour: RGBColor
   fontSize: string
   gradient: {
-    type: 'linear' | 'radial'
+    type: GradientType
     startColour: RGBColor
     endColour: RGBColor
     angle: string

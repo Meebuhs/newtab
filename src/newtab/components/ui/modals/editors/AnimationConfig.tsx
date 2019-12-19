@@ -1,12 +1,19 @@
 import { Dropdown } from 'components/ui/elements/Dropdown'
 import { EDITOR_ANIMATION_SELECT } from 'constants/strings'
+import { AnimationPreset } from 'constants/types'
 import { IBackground } from 'models/newtab'
 import * as React from 'react'
 import './AnimationConfig.scss'
 
 interface IProps {
   updateStateValue: (attribute: keyof IBackground, value: string) => void
-  animation: string
+  animation: {
+    preset: AnimationPreset
+    count: string
+    backgroundColour: string
+    particleColour: string
+    repel: boolean
+  }
 }
 
 export class AnimationConfig extends React.Component<IProps, {}> {
@@ -28,7 +35,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           <div className={'animation-dropdown-container'}>
             <Dropdown
               items={['network']}
-              selected={this.props.animation}
+              selected={this.props.animation.preset}
               handleSelectionCallback={this.updateAnimationSelection}
             />
           </div>
