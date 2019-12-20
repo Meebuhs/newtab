@@ -79,6 +79,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
                 </label>
                 <ColourButton
                   colour={this.props.gradient.startColour}
+                  alpha={true}
                   attribute={'startColour'}
                   updateColourValue={this.updateColourValue}
                 />
@@ -89,6 +90,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
                 </label>
                 <ColourButton
                   colour={this.props.gradient.endColour}
+                  alpha={true}
                   attribute={'endColour'}
                   updateColourValue={this.updateColourValue}
                 />

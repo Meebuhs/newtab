@@ -50,6 +50,10 @@ export const EDITOR_UNSPLASH_SELECT_SUB =
 
 // ui/modals/editors/AnimationConfig
 export const EDITOR_ANIMATION_SELECT = 'Select an animation:'
+export const EDITOR_ANIMATION_REPEL = 'Mouse repels particles:'
+export const EDITOR_ANIMATION_COUNT = 'Number of particles:'
+export const EDITOR_ANIMATION_BACKGROUND_COLOUR = 'Background colour:'
+export const EDITOR_ANIMATION_PARTICLE_COLOUR = 'Particle colour:'
 
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'

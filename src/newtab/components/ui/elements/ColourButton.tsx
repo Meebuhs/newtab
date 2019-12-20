@@ -4,6 +4,7 @@ import './ColourButton.scss'
 
 interface IProps {
   colour: RGBColor
+  alpha: boolean
   attribute: string
   updateColourValue: (attribute: string, value: RGBColor) => void
 }
@@ -67,7 +68,7 @@ export class ColourButton extends React.Component<IProps, IState> {
             <ChromePicker
               color={this.props.colour}
               onChange={this.handleChange}
-              disableAlpha={false}
+              disableAlpha={!this.props.alpha}
             />
           </div>
         ) : null}

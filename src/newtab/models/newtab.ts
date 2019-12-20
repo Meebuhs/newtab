@@ -103,8 +103,8 @@ export interface IBackground {
   animation: {
     preset: AnimationPreset
     count: string
-    backgroundColour: string
-    particleColour: string
+    backgroundColour: RGBColor
+    particleColour: RGBColor
     repel: boolean
   }
 }
@@ -127,8 +127,8 @@ export const defaultBackground: IBackground = {
   animation: {
     preset: 'network' as 'network',
     count: '150',
-    backgroundColour: '#e5e5e5',
-    particleColour: '#ffffff',
+    backgroundColour: { r: 20, g: 20, b: 20 },
+    particleColour: { r: 255, g: 255, b: 255 },
     repel: true,
   },
 }

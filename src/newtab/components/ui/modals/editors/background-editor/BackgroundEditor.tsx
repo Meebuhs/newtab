@@ -48,8 +48,8 @@ interface IState {
   animation: {
     preset: AnimationPreset
     count: string
-    backgroundColour: string
-    particleColour: string
+    backgroundColour: RGBColor
+    particleColour: RGBColor
     repel: boolean
   }
 }
@@ -113,6 +113,27 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
   }
 
   /**
+   * Updates the value of the animation definition.
+   * @param {AnimationPreset} preset the animation preset to use.
+   * @param {string} count the number of particles to render.
+   * @param {RGBColor} backgroundColour the colour used for the canvas background.
+   * @param {RGBColor} particleColour the colour used for the particles and their links.
+   * @param {boolean} repel whether the particles are repelled by the mouse.
+   */
+  updateAnimationValue = (animation: {
+    preset: AnimationPreset
+    count: string
+    backgroundColour: RGBColor
+    particleColour: RGBColor
+    repel: boolean
+  }) => {
+    this.setState(prevState => ({
+      ...prevState,
+      animation,
+    }))
+  }
+
+  /**
    * Changes the state of the toggle button.
    * @param {BackgroundDisplayMode} key the key of the button which is selected.
    */
@@ -151,7 +172,7 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
     } else if (this.state.displayMode === 'animation') {
       return (
         <AnimationConfig
-          updateStateValue={this.updateStateValue}
+          updateAnimationValue={this.updateAnimationValue}
           animation={this.state.animation}
         />
       )
@@ -178,19 +199,21 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
       >
         <div className={'editor-container'}>
           <h2 className={'header'}>{BACKGROUND_EDITOR_HEADER}</h2>
-          <ToggleButton
-            labels={[
-              EDITOR_TOGGLE_COLOUR,
-              EDITOR_TOGGLE_GRADIENT,
-              EDITOR_TOGGLE_IMAGE,
-              EDITOR_TOGGLE_UNSPLASH,
-              EDITOR_TOGGLE_ANIMATION,
-            ]}
-            keys={BACKGROUND_DISPLAY_MODES}
-            selectedKey={this.state.displayMode}
-            handleSelectionCallback={this.handleSelectionCallback}
-          />
-          {this.getDisplayConfig()}
+          <div className={'editor-content'}>
+            <ToggleButton
+              labels={[
+                EDITOR_TOGGLE_COLOUR,
+                EDITOR_TOGGLE_GRADIENT,
+                EDITOR_TOGGLE_IMAGE,
+                EDITOR_TOGGLE_UNSPLASH,
+                EDITOR_TOGGLE_ANIMATION,
+              ]}
+              keys={BACKGROUND_DISPLAY_MODES}
+              selectedKey={this.state.displayMode}
+              handleSelectionCallback={this.handleSelectionCallback}
+            />
+            {this.getDisplayConfig()}
+          </div>
         </div>
         <div className={'editor-end-buttons'}>
           <button

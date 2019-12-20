@@ -37,6 +37,7 @@ export class TextConfig extends React.Component<IProps, {}> {
               </label>
               <ColourButton
                 colour={this.props.fontColour}
+                alpha={true}
                 attribute={'fontColour'}
                 updateColourValue={this.props.updateColourValue}
               />

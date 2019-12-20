@@ -23,6 +23,7 @@ export class ColourConfig extends React.Component<IProps, {}> {
             </label>
             <ColourButton
               colour={this.props.backgroundColour}
+              alpha={true}
               attribute={'backgroundColour'}
               updateColourValue={this.props.updateColourValue}
             />

@@ -1,13 +1,32 @@
 import { RGBColor } from 'react-color'
 
 /**
- * Converts an RGBColor value to a css useable string in the form 'rgba(r, g, b, a)'
- * @param {RGBColor} value the value to convert
+ * Converts an RGBColor value to a css useable string in the form 'rgba(r, g, b, a)'.
+ * @param {RGBColor} value the value to convert.
  */
 export const RGBColorToString = (value: RGBColor) => {
   let alpha = value.a === undefined ? 1 : value.a
   alpha = alpha > 1 || alpha < 0 ? 1 : alpha
   return `rgba(${value.r}, ${value.g}, ${value.b}, ${alpha})`
+}
+
+/**
+ * Converts an RGBColor value to a hex string.
+ * @param {RGBColor} value the value to convert.
+ */
+export const RGBColorToHex = (value: RGBColor) => {
+  let hex = '#'
+
+  let hexElement = Number(value.r).toString(16)
+  hex += hexElement.length < 2 ? `0${hexElement}` : hexElement
+
+  hexElement = Number(value.g).toString(16)
+  hex += hexElement.length < 2 ? `0${hexElement}` : hexElement
+
+  hexElement = Number(value.b).toString(16)
+  hex += hexElement.length < 2 ? `0${hexElement}` : hexElement
+
+  return hex
 }
 
 /**

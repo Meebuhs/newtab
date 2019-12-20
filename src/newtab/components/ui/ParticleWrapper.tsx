@@ -1,33 +1,37 @@
 import { AnimationPreset } from 'constants/types'
 import * as React from 'react'
+import { RGBColor } from 'react-color'
 import Particles from 'react-particles-js'
+import { RGBColorToHex } from 'utils/colour'
 import './ParticleWrapper.scss'
 
 interface IProps {
   animation: {
     preset: AnimationPreset
-    count: number
-    backgroundColour: string
-    particleColour: string
+    count: string
+    backgroundColour: RGBColor
+    particleColour: RGBColor
     repel: boolean
   }
 }
 
 export class ParticleWrapper extends React.Component<IProps, {}> {
   render() {
-    const {
-      preset,
-      count,
-      backgroundColour,
-      particleColour,
-      repel,
-    } = this.props.animation
+    const { preset, repel } = this.props.animation
+    const count = parseInt(this.props.animation.count, 10)
+    const backgroundColour = RGBColorToHex(
+      this.props.animation.backgroundColour
+    )
+    const particleColour = RGBColorToHex(this.props.animation.particleColour)
 
     const parameterPresets = {
       network: {
         particles: {
           number: {
             value: count,
+          },
+          color: {
+            value: particleColour,
           },
           size: {
             value: 3,
