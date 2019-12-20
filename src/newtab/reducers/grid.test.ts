@@ -1,6 +1,7 @@
 import * as types from 'constants/types'
+import { defaultBackground } from 'models/newtab'
 import { initialState, reducer } from 'reducers/grid'
-import { testTile } from 'testObjects'
+import { testBackground, testTile } from 'testObjects'
 
 const testTiles = [
   'test.tile.id.1',
@@ -40,6 +41,7 @@ describe('Grid reducers', () => {
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2'],
+      background: defaultBackground,
     })
   })
 
@@ -67,6 +69,7 @@ describe('Grid reducers', () => {
             },
           },
           columnOrder: ['column-0', 'column-1', 'column-2'],
+          background: defaultBackground,
         },
         {
           type: types.ADD_TILE,
@@ -97,6 +100,7 @@ describe('Grid reducers', () => {
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2'],
+      background: defaultBackground,
     })
   })
 
@@ -139,6 +143,7 @@ describe('Grid reducers', () => {
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2'],
+      background: defaultBackground,
     })
   })
 
@@ -216,6 +221,7 @@ describe('Grid reducers', () => {
         'column-0': column,
       },
       columnOrder: ['column-0'],
+      background: defaultBackground,
     }
 
     const reorderedState = {
@@ -251,6 +257,7 @@ describe('Grid reducers', () => {
         'column-1': { id: 'column-1', tileIds: [testTiles[1].id] },
       },
       columnOrder: ['column-0', 'column-1'],
+      background: defaultBackground,
     }
 
     const reorderedState = {
@@ -320,6 +327,7 @@ describe('Grid reducers', () => {
         },
       },
       columnOrder: ['column-0', 'column-1', 'column-2', 'new.column'],
+      background: defaultBackground,
     })
   })
 
@@ -372,5 +380,24 @@ describe('Grid reducers', () => {
         },
       })
     ).toEqual(reorderedState)
+  })
+
+  it('should handle EDIT_BACKGROUND correctly', () => {
+    const editedBackground = {
+      ...testBackground,
+      backgroundColour: { r: 0, g: 0, b: 0, a: 1 },
+    }
+
+    expect(
+      reducer(initialState, {
+        type: types.EDIT_BACKGROUND,
+        payload: {
+          background: editedBackground,
+        },
+      })
+    ).toEqual({
+      ...initialState,
+      background: editedBackground,
+    })
   })
 })

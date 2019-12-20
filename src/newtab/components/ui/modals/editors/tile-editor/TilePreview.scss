@@ -1,0 +1,24 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.config-preview {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  position: relative;
+  width: calc(100% - 1px);
+}
+
+.preview-image {
+  height: 100%;
+  width: 100%;
+}
+
+.image-preview-text {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

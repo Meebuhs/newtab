@@ -1,5 +1,5 @@
 import { Tile } from 'components/grid/Tile'
-import { TileCreator } from 'modals/tile-creator/TileCreator'
+import { TileEditor } from 'modals/editors/tile-editor/TileEditor'
 import { ITile } from 'models/newtab'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
@@ -88,7 +88,7 @@ export class EditableTile extends React.Component<IProps, IState> {
             </div>
           )}
         </Draggable>
-        <TileCreator
+        <TileEditor
           tile={this.props.tile}
           edit={true}
           showModal={this.state.showTileEditorModal}

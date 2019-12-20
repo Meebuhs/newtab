@@ -1,6 +1,11 @@
-import { SIDEBAR_ADDCOLUMN, SIDEBAR_ADDTILE } from 'constants/strings'
-import { TileCreator } from 'modals/tile-creator/TileCreator'
-import { emptyTile, ITile } from 'models/newtab'
+import {
+  SIDEBAR_ADDCOLUMN,
+  SIDEBAR_ADDTILE,
+  SIDEBAR_EDIT_BACKGROUND,
+} from 'constants/strings'
+import { BackgroundEditor } from 'modals/editors/background-editor/BackgroundEditor'
+import { TileEditor } from 'modals/editors/tile-editor/TileEditor'
+import { emptyTile, IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
 import left from 'resources/left.png'
 import right from 'resources/right.png'
@@ -9,19 +14,25 @@ import './Sidebar.scss'
 
 interface IProps {
   sidebarVisible: boolean
+  background: IBackground
   handleAddColumn: (id: string) => void
   handleAddTile: (tile: ITile) => void
   handleToggleSidebar: () => void
+  handleEditBackground: (background: IBackground) => void
 }
 
 interface IState {
-  showTileCreatorModal: boolean
+  showTileEditorModal: boolean
+  showBackgroundEditorModal: boolean
 }
 
 export class Sidebar extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
-    this.state = { showTileCreatorModal: false }
+    this.state = {
+      showTileEditorModal: false,
+      showBackgroundEditorModal: false,
+    }
   }
 
   /**
@@ -52,26 +63,49 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
-   * Opens the TileCreator modal with an empty tile.
+   * Opens the TileEditor modal with an empty tile.
    */
-  handleOpenTileCreatorModal = () => {
-    this.setState({ showTileCreatorModal: true })
+  handleOpenTileEditorModal = () => {
+    this.setState({ showTileEditorModal: true })
   }
 
   /**
-   * Closes the TileCreator modal without saving any of the changes made.
+   * Closes the TileEditor modal without saving any of the changes made.
    */
-  handleCloseTileCreatorModal = () => {
-    this.setState({ showTileCreatorModal: false })
+  handleCloseTileEditorModal = () => {
+    this.setState({ showTileEditorModal: false })
   }
 
   /**
-   * Creates the tile defined in the TileCreator modal.
+   * Creates the tile defined in the TileEditor modal.
    * @param {ITile} tile the tile to add
    */
-  handleSaveTileCreatorModal = (tile: ITile) => {
-    this.setState({ showTileCreatorModal: false })
+  handleSaveTileEditorModal = (tile: ITile) => {
+    this.setState({ showTileEditorModal: false })
     this.addTile(tile)
+  }
+
+  /**
+   * Opens the BackgroundEditor modal with an empty tile.
+   */
+  handleOpenBackgroundEditorModal = () => {
+    this.setState({ showBackgroundEditorModal: true })
+  }
+
+  /**
+   * Closes the BackgroundEditor modal without saving any of the changes made.
+   */
+  handleCloseBackgroundEditorModal = () => {
+    this.setState({ showBackgroundEditorModal: false })
+  }
+
+  /**
+   * Saves the changes made in the background editor modal.
+   * @param {IBackground} background the background to save
+   */
+  handleSaveBackgroundEditorModal = (background: IBackground) => {
+    this.setState({ showBackgroundEditorModal: false })
+    this.props.handleEditBackground(background)
   }
 
   render() {
@@ -94,20 +128,32 @@ export class Sidebar extends React.Component<IProps, IState> {
         <div className={'sidebar'} style={{ marginLeft: sidebarMargin }}>
           <div
             className={'sidebar-function'}
-            onClick={this.handleOpenTileCreatorModal}
+            onClick={this.handleOpenTileEditorModal}
           >
             {SIDEBAR_ADDTILE}
           </div>
-          <TileCreator
+          <TileEditor
             tile={emptyTile}
             edit={false}
-            showModal={this.state.showTileCreatorModal}
-            handleCloseModal={this.handleCloseTileCreatorModal}
-            handleSaveModal={this.handleSaveTileCreatorModal}
+            showModal={this.state.showTileEditorModal}
+            handleCloseModal={this.handleCloseTileEditorModal}
+            handleSaveModal={this.handleSaveTileEditorModal}
           />
           <div className={'sidebar-function'} onClick={this.addColumn}>
             {SIDEBAR_ADDCOLUMN}
           </div>
+          <div
+            className={'sidebar-function'}
+            onClick={this.handleOpenBackgroundEditorModal}
+          >
+            {SIDEBAR_EDIT_BACKGROUND}
+          </div>
+          <BackgroundEditor
+            background={this.props.background}
+            showModal={this.state.showBackgroundEditorModal}
+            handleCloseModal={this.handleCloseBackgroundEditorModal}
+            handleSaveModal={this.handleSaveBackgroundEditorModal}
+          />
         </div>
       </>
     )

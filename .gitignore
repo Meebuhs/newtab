@@ -99,3 +99,6 @@ linters/*
 ### Webpack Production Build Output ###
 build
 dist
+
+### API keys ###
+src/utils/api.ts

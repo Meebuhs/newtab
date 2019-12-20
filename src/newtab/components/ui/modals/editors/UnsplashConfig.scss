@@ -1,0 +1,42 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.unsplash-config-container {
+  @include flex-column-parent;
+  align-items: center;
+  border-color: darken(#fff, 1);
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 0 1px 1px;
+  height: 150px;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.unsplash-select-container {
+  align-items: center;
+}
+
+.unsplash-config-form-label {
+  @include form-label();
+}
+
+.unsplash-config-text-input {
+  border: 1px solid darken(#fff, 1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  width: 100%;
+
+  &:focus {
+    border-color: colour('grey-dark');
+    outline: none;
+  }
+
+  &:hover:not(:focus) {
+    border-color: darken(#fff, 2);
+    transition: border-color 0.2s;
+  }
+}

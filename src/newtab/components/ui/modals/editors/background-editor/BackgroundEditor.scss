@@ -1,7 +1,7 @@
 @import '~styles/theme-colours';
 @import '~styles/common-elements';
 
-.tilecreator-container {
+.editor-container {
   height: auto;
 }
 
@@ -20,8 +20,8 @@
   text-align: center;
 }
 
-.text-input {
-  width: 100%;
+.editor-content {
+  margin: auto;
 }
 
 .nav-buttons {

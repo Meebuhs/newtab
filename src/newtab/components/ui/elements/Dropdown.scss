@@ -1,0 +1,76 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.dropdown-container {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 100%;
+  padding-right: 10px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 100%;
+
+  &:hover {
+    background-color: darken(#fff, 1);
+  }
+
+  &:active {
+    background-color: darken(#fff, 2);
+  }
+}
+
+.dropdown-header {
+  align-items: center;
+  display: flex;
+}
+
+.dropdown-title {
+  margin: auto;
+}
+
+.dropdown-image {
+  height: 24px;
+  position: absolute;
+  right: 0;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.dropdown-list {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px -1px rgb(200, 200, 200);
+  max-height: 250px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 24px;
+  width: 100%;
+  z-index: 10;
+}
+
+@mixin dropdown-item {
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item-unselected {
+  @include dropdown-item();
+
+  &:hover {
+    background-color: darken(#fff, 1);
+  }
+
+  &:active {
+    background-color: darken(#fff, 2);
+  }
+}
+
+.dropdown-item-selected {
+  @include dropdown-item();
+  background-color: darken(#fff, 2);
+}

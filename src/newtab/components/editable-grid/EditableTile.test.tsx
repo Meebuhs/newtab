@@ -1,6 +1,6 @@
 import { EditableTile } from 'components/editable-grid/EditableTile'
 import * as enzyme from 'enzyme'
-import { TileCreator } from 'modals/tile-creator/TileCreator'
+import { TileEditor } from 'modals/editors/tile-editor/TileEditor'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { emptyFunction, testTile } from 'testObjects'
@@ -19,7 +19,7 @@ describe('Editable tile component', () => {
     expect(tile.find(Draggable)).toHaveLength(1)
   })
 
-  it('should include the creator modal', () => {
+  it('should include the editor modal', () => {
     const tile = enzyme.shallow(
       <EditableTile
         tile={testTile}
@@ -29,6 +29,6 @@ describe('Editable tile component', () => {
       />
     )
 
-    expect(tile.find(TileCreator)).toHaveLength(1)
+    expect(tile.find(TileEditor)).toHaveLength(1)
   })
 })
