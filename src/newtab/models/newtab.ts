@@ -60,12 +60,12 @@ export const emptyTile: ITile = {
   id: '',
   name: '',
   url: 'https://',
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  displayMode: 'colour' as TileDisplayMode,
   backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
   fontColour: { r: 0, g: 0, b: 0, a: 1 },
   fontSize: '16',
   gradient: {
-    type: 'radial' as 'radial', // Suppress compiler warning
+    type: 'radial' as GradientType,
     startColour: { r: 255, g: 255, b: 255, a: 1 },
     endColour: { r: 210, g: 210, b: 210, a: 1 },
     angle: '0',
@@ -113,10 +113,10 @@ export interface IBackground {
  * The default configuration of the background
  */
 export const defaultBackground: IBackground = {
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  displayMode: 'colour' as BackgroundDisplayMode,
   backgroundColour: { r: 255, g: 255, b: 255, a: 1 },
   gradient: {
-    type: 'radial' as 'radial', // Suppress compiler warning
+    type: 'radial' as GradientType,
     startColour: { r: 255, g: 255, b: 255, a: 1 },
     endColour: { r: 210, g: 210, b: 210, a: 1 },
     angle: '0',
@@ -125,7 +125,7 @@ export const defaultBackground: IBackground = {
   unsplashURL: '',
   unsplashQuery: 'wallpaper',
   animation: {
-    preset: 'network' as 'network',
+    preset: 'network' as AnimationPreset,
     count: '150',
     backgroundColour: { r: 20, g: 20, b: 20 },
     particleColour: { r: 255, g: 255, b: 255 },

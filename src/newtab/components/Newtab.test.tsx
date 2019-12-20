@@ -1,4 +1,5 @@
 import { Newtab } from 'components/Newtab'
+import { BackgroundDisplayMode } from 'constants/types'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { testBackground } from 'testObjects'
@@ -25,7 +26,7 @@ describe('Newtab component', () => {
   it('should correctly render colour background', () => {
     const background = {
       ...testBackground,
-      displayMode: 'colour' as 'colour',
+      displayMode: 'colour' as BackgroundDisplayMode,
     }
     const newtab = enzyme.shallow(
       <Newtab sidebarVisible={false} background={background} />
@@ -40,7 +41,7 @@ describe('Newtab component', () => {
   it('should correctly render gradient background', () => {
     const background = {
       ...testBackground,
-      displayMode: 'gradient' as 'gradient',
+      displayMode: 'gradient' as BackgroundDisplayMode,
     }
     const newtab = enzyme.shallow(
       <Newtab sidebarVisible={false} background={background} />
@@ -60,7 +61,7 @@ describe('Newtab component', () => {
   it('should correctly render image background', () => {
     const background = {
       ...testBackground,
-      displayMode: 'image' as 'image',
+      displayMode: 'image' as BackgroundDisplayMode,
     }
     const newtab = enzyme.shallow(
       <Newtab sidebarVisible={false} background={background} />
@@ -72,7 +73,7 @@ describe('Newtab component', () => {
   it('should render particle animation background', () => {
     const background = {
       ...testBackground,
-      displayMode: 'animation' as 'animation',
+      displayMode: 'animation' as BackgroundDisplayMode,
     }
 
     const newtab = enzyme.shallow(

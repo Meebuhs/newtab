@@ -1,4 +1,5 @@
 import { Tile } from 'components/grid/Tile'
+import { TileDisplayMode } from 'constants/types'
 import * as enzyme from 'enzyme'
 import * as React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
@@ -7,37 +8,37 @@ import { RGBColorToString } from 'utils/colour'
 
 const colourTile = {
   ...testTile,
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  displayMode: 'colour' as TileDisplayMode,
   favicon: false,
 }
 
 const colourFaviconTile = {
   ...testTile,
-  displayMode: 'colour' as 'colour', // Suppress compiler warning
+  displayMode: 'colour' as TileDisplayMode,
   favicon: true,
 }
 
 const imageTile = {
   ...testTile,
-  displayMode: 'image' as 'image', // Suppress compiler warning
+  displayMode: 'image' as TileDisplayMode,
   favicon: false,
 }
 
 const imageFaviconTile = {
   ...testTile,
-  displayMode: 'image' as 'image', // Suppress compiler warning
+  displayMode: 'image' as TileDisplayMode,
   favicon: true,
 }
 
 const gradientTile = {
   ...testTile,
-  displayMode: 'gradient' as 'gradient', // Suppress compiler warning
+  displayMode: 'gradient' as TileDisplayMode,
   favicon: false,
 }
 
 const gradientFaviconTile = {
   ...testTile,
-  displayMode: 'gradient' as 'gradient', // Suppress compiler warning
+  displayMode: 'gradient' as TileDisplayMode,
   favicon: true,
 }
 
