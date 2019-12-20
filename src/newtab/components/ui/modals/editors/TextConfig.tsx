@@ -29,49 +29,43 @@ export class TextConfig extends React.Component<IProps, {}> {
   render() {
     return (
       <div className={'text-config-container'}>
-        <div className={'font-config-container'}>
-          <div className={'font-config-elements'}>
-            <div className={'colour-button-container'}>
-              <label className={'text-config-form-label'}>
-                {EDITOR_FONT_COLOUR_LABEL}
-              </label>
-              <ColourButton
-                colour={this.props.fontColour}
-                alpha={true}
-                attribute={'fontColour'}
-                updateColourValue={this.props.updateColourValue}
-              />
-            </div>
-            <div className={'font-size-container'}>
-              <label className={'text-config-form-label'}>
-                {EDITOR_FONT_SIZE_LABEL}
-              </label>
-              <div className={'font-size-dropdown-container'}>
-                <Dropdown
-                  items={FONT_SIZES}
-                  selected={this.props.fontSize.toString()}
-                  handleSelectionCallback={this.updateFontSize}
-                />
-              </div>
-            </div>
+        <div className={'font-colour-container'}>
+          <div className={'colour-button-container'}>
+            <label className={'text-config-form-label'}>
+              {EDITOR_FONT_COLOUR_LABEL}
+            </label>
+            <ColourButton
+              colour={this.props.fontColour}
+              alpha={true}
+              attribute={'fontColour'}
+              updateColourValue={this.props.updateColourValue}
+            />
+          </div>
+        </div>
+        <div className={'font-size-container'}>
+          <label className={'text-config-form-label'}>
+            {EDITOR_FONT_SIZE_LABEL}
+          </label>
+          <div className={'font-size-dropdown-container'}>
+            <Dropdown
+              items={FONT_SIZES}
+              selected={this.props.fontSize.toString()}
+              handleSelectionCallback={this.updateFontSize}
+            />
           </div>
         </div>
         <div className={'favicon-config-container'}>
-          <div className={'favicon-config-select'}>
-            <span>
-              <label className={'text-config-form-label'}>
-                {EDITOR_FAVICON_LABEL}
-              </label>
-              <input
-                name={'favicon'}
-                type={'checkbox'}
-                checked={this.props.favicon}
-                onChange={event =>
-                  this.props.updateFaviconValue(event.target.checked)
-                }
-              />
-            </span>
-          </div>
+          <label className={'text-config-form-label'}>
+            {EDITOR_FAVICON_LABEL}
+          </label>
+          <input
+            name={'favicon'}
+            type={'checkbox'}
+            checked={this.props.favicon}
+            onChange={event =>
+              this.props.updateFaviconValue(event.target.checked)
+            }
+          />
         </div>
       </div>
     )

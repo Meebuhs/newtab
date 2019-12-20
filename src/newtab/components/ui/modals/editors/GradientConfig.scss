@@ -2,39 +2,48 @@
 @import '~styles/common-elements';
 
 .gradient-config-container {
+  align-items: center;
   border-color: darken(#fff, 1);
   border-radius: 2px;
   border-style: solid;
   border-width: 0 1px 1px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   height: 150px;
+  justify-items: center;
   margin-top: -10px;
 }
 
-.gradient-select-container {
-  @include flex-row-parent();
-  height: 100%;
+.gradient-start-colour-container {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
-.gradient-colour-select,
-.gradient-detail-select {
-  @include flex-row-child();
-  height: 100%;
+.gradient-end-colour-container {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.gradient-angle-container {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.gradient-type-container-radial {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+.gradient-type-container-linear {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 .gradient-config-dropdown-container {
   display: inline-block;
   height: 24px;
   width: 80px;
-}
-
-.gradient-colours-container,
-.gradient-details-container {
-  @include flex-column-parent();
-  align-items: center;
-  height: 80%;
-  justify-content: space-around;
-  padding-top: 15px;
-  width: 100%;
 }
 
 .gradient-config-form-label {

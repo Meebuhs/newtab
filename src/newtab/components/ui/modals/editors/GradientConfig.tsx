@@ -67,71 +67,61 @@ export class GradientConfig extends React.Component<IProps, {}> {
   render() {
     return (
       <div className={'gradient-config-container'}>
-        <div className={'gradient-select-container'}>
-          <div className={'gradient-colour-select'}>
-            <div className={'gradient-colours-container'}>
-              <div className={'gradient-colour-container'}>
-                <label
-                  className={'gradient-config-form-label'}
-                  style={{ lineHeight: '24px' }}
-                >
-                  {EDITOR_GRADIENT_START_COLOUR_LABEL}
-                </label>
-                <ColourButton
-                  colour={this.props.gradient.startColour}
-                  alpha={true}
-                  attribute={'startColour'}
-                  updateColourValue={this.updateColourValue}
-                />
-              </div>
-              <div className={'gradient-colour-container'}>
-                <label className={'gradient-config-form-label'}>
-                  {EDITOR_GRADIENT_END_COLOUR_LABEL}
-                </label>
-                <ColourButton
-                  colour={this.props.gradient.endColour}
-                  alpha={true}
-                  attribute={'endColour'}
-                  updateColourValue={this.updateColourValue}
-                />
-              </div>
+        <div className={'gradient-start-colour-container'}>
+          <label
+            className={'gradient-config-form-label'}
+            style={{ lineHeight: '24px' }}
+          >
+            {EDITOR_GRADIENT_START_COLOUR_LABEL}
+          </label>
+          <ColourButton
+            colour={this.props.gradient.startColour}
+            alpha={true}
+            attribute={'startColour'}
+            updateColourValue={this.updateColourValue}
+          />
+        </div>
+        <div className={'gradient-end-colour-container'}>
+          <label className={'gradient-config-form-label'}>
+            {EDITOR_GRADIENT_END_COLOUR_LABEL}
+          </label>
+          <ColourButton
+            colour={this.props.gradient.endColour}
+            alpha={true}
+            attribute={'endColour'}
+            updateColourValue={this.updateColourValue}
+          />
+        </div>
+        {this.props.gradient.type === 'radial' ? null : (
+          <div className={'gradient-angle-container'}>
+            <label
+              className={'gradient-config-form-label'}
+              style={{ lineHeight: '24px' }}
+            >
+              {EDITOR_GRADIENT_ANGLE_LABEL}
+            </label>
+            <div className={'gradient-config-dropdown-container'}>
+              <Dropdown
+                items={GRADIENT_ANGLES}
+                selected={this.props.gradient.angle}
+                handleSelectionCallback={this.updateGradientAngle}
+              />
             </div>
           </div>
-          <div className={'gradient-detail-select'}>
-            <div className={'gradient-details-container'}>
-              {this.props.gradient.type === 'radial' ? null : (
-                <div className={'gradient-detail-container'}>
-                  <label
-                    className={'gradient-config-form-label'}
-                    style={{ lineHeight: '24px' }}
-                  >
-                    {EDITOR_GRADIENT_ANGLE_LABEL}
-                  </label>
-                  <div className={'gradient-config-dropdown-container'}>
-                    <Dropdown
-                      items={GRADIENT_ANGLES}
-                      selected={this.props.gradient.angle}
-                      handleSelectionCallback={this.updateGradientAngle}
-                    />
-                  </div>
-                </div>
-              )}
-              <div className={'gradient-detail-container'}>
-                <label
-                  className={'gradient-config-form-label'}
-                  style={{ lineHeight: '24px' }}
-                >
-                  {EDITOR_GRADIENT_TYPE_LABEL}
-                </label>
-                <div className={'gradient-config-dropdown-container'}>
-                  <Dropdown
-                    items={GRADIENT_TYPES}
-                    selected={this.props.gradient.type}
-                    handleSelectionCallback={this.updateGradientType}
-                  />
-                </div>
-              </div>
-            </div>
+        )}
+        <div className={`gradient-type-container-${this.props.gradient.type}`}>
+          <label
+            className={'gradient-config-form-label'}
+            style={{ lineHeight: '24px' }}
+          >
+            {EDITOR_GRADIENT_TYPE_LABEL}
+          </label>
+          <div className={'gradient-config-dropdown-container'}>
+            <Dropdown
+              items={GRADIENT_TYPES}
+              selected={this.props.gradient.type}
+              handleSelectionCallback={this.updateGradientType}
+            />
           </div>
         </div>
       </div>
