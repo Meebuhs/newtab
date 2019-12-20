@@ -41,7 +41,7 @@ export class ParticleWrapper extends React.Component<IProps, {}> {
           },
           move: {
             bounce: false,
-            speed: 2,
+            speed: 1,
           },
         },
         interactivity: {

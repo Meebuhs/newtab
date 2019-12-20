@@ -1,6 +1,6 @@
 {
   "name": "newtab",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A customisable replacement for chrome's new tab page",
   "main": "newtab.js",
   "repository": "https://github.com/Meebuhs/newtab",
