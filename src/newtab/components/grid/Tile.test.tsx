@@ -56,7 +56,7 @@ describe('Tile component', () => {
     )
     expect(tile.find('.tile').get(0).props.style).toHaveProperty(
       'fontSize',
-      colourTile.fontSize
+      `${colourTile.fontSize}px`
     )
     expect(tile.find('.tile-image')).toHaveLength(0)
   })

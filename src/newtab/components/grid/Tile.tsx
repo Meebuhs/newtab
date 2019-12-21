@@ -35,7 +35,7 @@ export class Tile extends React.Component<IProps, {}> {
           style={{
             backgroundColor: RGBColorToString(backgroundColour),
             color: RGBColorToString(fontColour),
-            fontSize,
+            fontSize: `${fontSize}px`,
           }}
         >
           <div className={'tile-overlay'} />
@@ -52,7 +52,7 @@ export class Tile extends React.Component<IProps, {}> {
           key={id}
           style={{
             color: RGBColorToString(fontColour),
-            fontSize,
+            fontSize: `${fontSize}px`,
             background: getGradientString(
               gradient.startColour,
               gradient.endColour,
@@ -75,7 +75,7 @@ export class Tile extends React.Component<IProps, {}> {
           key={id}
           style={{
             color: RGBColorToString(fontColour),
-            fontSize,
+            fontSize: `${fontSize}px`,
           }}
         >
           <div className={'tile-overlay'} />
