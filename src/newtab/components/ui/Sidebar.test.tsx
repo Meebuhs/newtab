@@ -57,6 +57,6 @@ describe('Sidebar component', () => {
         handleEditBackground={emptyFunction}
       />
     )
-    expect(sidebar.find('.sidebar-function')).toHaveLength(3)
+    expect(sidebar.find('.sidebar-function')).toHaveLength(4)
   })
 })

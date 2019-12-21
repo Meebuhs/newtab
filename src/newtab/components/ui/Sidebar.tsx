@@ -2,13 +2,16 @@ import {
   SIDEBAR_ADDCOLUMN,
   SIDEBAR_ADDTILE,
   SIDEBAR_EDIT_BACKGROUND,
+  SIDEBAR_SETTINGS,
 } from 'constants/strings'
 import { BackgroundEditor } from 'modals/editors/background-editor/BackgroundEditor'
 import { TileEditor } from 'modals/editors/tile-editor/TileEditor'
+import { Settings } from 'modals/Settings'
 import { emptyTile, IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
+import { IGridState } from 'reducers/grid'
 import left from 'resources/left.png'
-import right from 'resources/right.png'
+import options from 'resources/options.png'
 import { getHashCode } from 'utils/hashcode'
 import './Sidebar.scss'
 
@@ -24,6 +27,7 @@ interface IProps {
 interface IState {
   showTileEditorModal: boolean
   showBackgroundEditorModal: boolean
+  showSettingsModal: boolean
 }
 
 export class Sidebar extends React.Component<IProps, IState> {
@@ -32,6 +36,7 @@ export class Sidebar extends React.Component<IProps, IState> {
     this.state = {
       showTileEditorModal: false,
       showBackgroundEditorModal: false,
+      showSettingsModal: false,
     }
   }
 
@@ -86,7 +91,7 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
-   * Opens the BackgroundEditor modal with an empty tile.
+   * Opens the BackgroundEditor modal.
    */
   handleOpenBackgroundEditorModal = () => {
     this.setState({ showBackgroundEditorModal: true })
@@ -100,12 +105,34 @@ export class Sidebar extends React.Component<IProps, IState> {
   }
 
   /**
-   * Saves the changes made in the background editor modal.
+   * Saves the changes made in the BackgroundEditor modal.
    * @param {IBackground} background the background to save
    */
   handleSaveBackgroundEditorModal = (background: IBackground) => {
     this.setState({ showBackgroundEditorModal: false })
     this.props.handleEditBackground(background)
+  }
+
+  /**
+   * Opens the Settings modal.
+   */
+  handleOpenSettingsModal = () => {
+    this.setState({ showSettingsModal: true })
+  }
+
+  /**
+   * Closes the Settings modal without saving any of the changes made.
+   */
+  handleCloseSettingsModal = () => {
+    this.setState({ showSettingsModal: false })
+  }
+
+  /**
+   * Performs the load operation with the grid state provided in the Settings modal.
+   * @param {IGridState} grid the grid state to apply.
+   */
+  handleSaveSettingsModal = (grid: IGridState) => {
+    this.setState({ showSettingsModal: false })
   }
 
   render() {
@@ -122,7 +149,7 @@ export class Sidebar extends React.Component<IProps, IState> {
           {this.props.sidebarVisible ? (
             <img className={'button-icon'} src={left} />
           ) : (
-            <img className={'button-icon'} src={right} />
+            <img className={'button-icon'} src={options} />
           )}
         </button>
         <div className={'sidebar'} style={{ marginLeft: sidebarMargin }}>
@@ -153,6 +180,17 @@ export class Sidebar extends React.Component<IProps, IState> {
             showModal={this.state.showBackgroundEditorModal}
             handleCloseModal={this.handleCloseBackgroundEditorModal}
             handleSaveModal={this.handleSaveBackgroundEditorModal}
+          />
+          <div
+            className={'sidebar-function'}
+            onClick={this.handleOpenSettingsModal}
+          >
+            {SIDEBAR_SETTINGS}
+          </div>
+          <Settings
+            showModal={this.state.showSettingsModal}
+            handleCloseModal={this.handleCloseSettingsModal}
+            handleSaveModal={this.handleSaveSettingsModal}
           />
         </div>
       </>

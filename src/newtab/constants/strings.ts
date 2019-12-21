@@ -55,7 +55,13 @@ export const EDITOR_ANIMATION_COUNT = 'Number of particles:'
 export const EDITOR_ANIMATION_BACKGROUND_COLOUR = 'Background colour:'
 export const EDITOR_ANIMATION_PARTICLE_COLOUR = 'Particle colour:'
 
+// ui/modals/Settings
+export const SETTINGS_HEADER = 'Settings'
+export const SETTINGS_TOGGLE_SAVE = 'Save'
+export const SETTINGS_TOGGLE_LOAD = 'Load'
+
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'
 export const SIDEBAR_ADDCOLUMN = 'Add Column'
 export const SIDEBAR_EDIT_BACKGROUND = 'Edit Background'
+export const SIDEBAR_SETTINGS = 'Import/Export'
