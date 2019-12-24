@@ -1,0 +1,57 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.checkbox-container {
+  display: inline-block;
+  vertical-align: middle;
+  height: 16px;
+}
+
+.checkbox-box,
+%checkbox-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  transition: all 150ms;
+}
+
+.checkbox-box-checked {
+  @extend %checkbox-box;
+  background: colour('highlight');
+
+  &:hover {
+    background-color: darken(colour('highlight'), 1);
+  }
+
+  &:active {
+    background-color: darken(colour('highlight'), 2);
+  }
+
+  .checkbox-tick {
+    visibility: visible;
+  }
+}
+
+.checkbox-box-unchecked {
+  @extend %checkbox-box;
+  background: darken(#fff, 1);
+
+  &:hover {
+    background-color: darken(#fff, 2);
+  }
+
+  &:active {
+    background-color: darken(#fff, 3);
+  }
+
+  .checkbox-tick {
+    visibility: hidden;
+  }
+}
+
+.checkbox-tick {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+}

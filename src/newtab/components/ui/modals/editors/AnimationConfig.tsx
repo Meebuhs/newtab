@@ -1,3 +1,4 @@
+import { Checkbox } from 'components/ui/elements/Checkbox'
 import { ColourButton } from 'components/ui/elements/ColourButton'
 import { Dropdown } from 'components/ui/elements/Dropdown'
 import {
@@ -69,8 +70,15 @@ export class AnimationConfig extends React.Component<IProps, {}> {
    * Updates the animation repel value.
    * @param {boolean} repel whether the the particles will be repelled by the mouse.
    */
-  updateRepelValue = (repel: boolean) => {
-    this.props.updateAnimationValue({ ...this.props.animation, repel })
+  updateRepelValue = (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
+    if (event.target) {
+      this.props.updateAnimationValue({
+        ...this.props.animation,
+        repel: !this.props.animation.repel,
+      })
+    }
   }
 
   render() {
@@ -126,11 +134,9 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           <label className={'animation-config-form-label'}>
             {EDITOR_ANIMATION_REPEL}
           </label>
-          <input
-            name={'repel'}
-            type={'checkbox'}
+          <Checkbox
             checked={this.props.animation.repel}
-            onChange={event => this.updateRepelValue(event.target.checked)}
+            handleToggle={this.updateRepelValue}
           />
         </div>
       </div>

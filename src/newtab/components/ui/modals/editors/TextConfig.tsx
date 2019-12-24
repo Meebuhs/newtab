@@ -1,3 +1,4 @@
+import { Checkbox } from 'components/ui/elements/Checkbox'
 import { ColourButton } from 'components/ui/elements/ColourButton'
 import { Dropdown } from 'components/ui/elements/Dropdown'
 import {
@@ -24,6 +25,14 @@ interface IProps {
 export class TextConfig extends React.Component<IProps, {}> {
   updateFontSize = (size: string) => {
     this.props.updateStateValue('fontSize', size)
+  }
+
+  updateFaviconValue = (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
+    if (event.target) {
+      this.props.updateFaviconValue(!this.props.favicon)
+    }
   }
 
   render() {
@@ -58,13 +67,9 @@ export class TextConfig extends React.Component<IProps, {}> {
           <label className={'text-config-form-label'}>
             {EDITOR_FAVICON_LABEL}
           </label>
-          <input
-            name={'favicon'}
-            type={'checkbox'}
+          <Checkbox
             checked={this.props.favicon}
-            onChange={event =>
-              this.props.updateFaviconValue(event.target.checked)
-            }
+            handleToggle={this.updateFaviconValue}
           />
         </div>
       </div>
