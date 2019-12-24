@@ -3,12 +3,12 @@ import {
   CANCEL_BUTTON_TEXT,
   EXPORT_BUTTON_TEXT,
   FILE_SELECT_BUTTON_TEXT,
-  FILE_SELECT_WARNING,
   IMPORT_BUTTON_TEXT,
   NO_FILE_SELECTED_LABEL,
   SETTINGS_EXPORT_LABEL,
   SETTINGS_HEADER,
   SETTINGS_IMPORT_LABEL,
+  SETTINGS_INVALID_FILE_LABEL,
   SETTINGS_TOGGLE_EXPORT,
   SETTINGS_TOGGLE_IMPORT,
 } from 'constants/strings'
@@ -408,7 +408,7 @@ export class Settings extends React.Component<IProps, IState> {
                   </button>
                   {this.state.errored ? (
                     <div className="settings-warning">
-                      {FILE_SELECT_WARNING}
+                      {SETTINGS_INVALID_FILE_LABEL}
                     </div>
                   ) : null}
                 </div>

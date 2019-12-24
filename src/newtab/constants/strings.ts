@@ -1,6 +1,7 @@
 // common
 export const SAVE_BUTTON_TEXT = 'Save'
 export const CANCEL_BUTTON_TEXT = 'Cancel'
+export const NO_FILE_SELECTED_LABEL = 'No file selected.'
 
 // grid/Instructions
 export const INSTRUCTION_HEADER = "There's more to this!"
@@ -31,7 +32,7 @@ export const EDITOR_FONT_SIZE_LABEL = 'Font size:'
 export const EDITOR_FAVICON_LABEL = 'Display favicon'
 
 // ui/modals/editors/GradientConfig
-export const EDITOR_CREATE_GRADIENT = 'Create gradient'
+export const EDITOR_CREATE_GRADIENT_HEADER = 'Create gradient'
 export const EDITOR_GRADIENT_TYPE_LABEL = 'Gradient type:'
 export const EDITOR_GRADIENT_START_COLOUR_LABEL = 'Start colour:'
 export const EDITOR_GRADIENT_END_COLOUR_LABEL = 'End colour:'
@@ -49,11 +50,11 @@ export const EDITOR_UNSPLASH_SELECT_SUB =
   'Backgrounds will be selected from images which match the above input.'
 
 // ui/modals/editors/AnimationConfig
-export const EDITOR_ANIMATION_SELECT = 'Select an animation:'
-export const EDITOR_ANIMATION_REPEL = 'Mouse repels particles:'
-export const EDITOR_ANIMATION_COUNT = 'Number of particles:'
-export const EDITOR_ANIMATION_BACKGROUND_COLOUR = 'Background colour:'
-export const EDITOR_ANIMATION_PARTICLE_COLOUR = 'Particle colour:'
+export const EDITOR_ANIMATION_SELECT_LABEL = 'Select an animation:'
+export const EDITOR_ANIMATION_REPEL_LABEL = 'Mouse repels particles:'
+export const EDITOR_ANIMATION_COUNT_LABEL = 'Number of particles:'
+export const EDITOR_ANIMATION_BACKGROUND_COLOUR_LABEL = 'Background colour:'
+export const EDITOR_ANIMATION_PARTICLE_COLOUR_LABEL = 'Particle colour:'
 
 // ui/modals/Settings
 export const SETTINGS_HEADER = 'Settings'
@@ -63,14 +64,15 @@ export const SETTINGS_EXPORT_LABEL =
   'Export the current grid settings to a json file'
 export const SETTINGS_IMPORT_LABEL =
   'Select the settings file you would like to import.'
-export const NO_FILE_SELECTED_LABEL = 'No file selected.'
+export const SETTINGS_VALID_FILE_LABEL =
+  'This grid is correctly formatted and ready to load.'
+export const SETTINGS_INVALID_FILE_LABEL = 'Load failed: corrupt file'
 export const FILE_SELECT_BUTTON_TEXT = 'Select File'
-export const FILE_SELECT_WARNING = 'Load failed: corrupt file'
 export const EXPORT_BUTTON_TEXT = 'Export'
 export const IMPORT_BUTTON_TEXT = 'Import'
 
 // ui/modal/ImportSettingsConfirmation
-export const SETTINGS_IMPORT_CONFIRM = 'Confirm Settings Import'
+export const SETTINGS_IMPORT_CONFIRM_HEADER = 'Confirm Settings Import'
 export const SETTINGS_IMPORT_CONFIRM_LABEL =
   'Are you sure you want to load this grid? Note that the current grid will be lost.'
 

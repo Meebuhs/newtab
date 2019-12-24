@@ -2,11 +2,11 @@ import { Checkbox } from 'components/ui/elements/Checkbox'
 import { ColourButton } from 'components/ui/elements/ColourButton'
 import { Dropdown } from 'components/ui/elements/Dropdown'
 import {
-  EDITOR_ANIMATION_BACKGROUND_COLOUR,
-  EDITOR_ANIMATION_COUNT,
-  EDITOR_ANIMATION_PARTICLE_COLOUR,
-  EDITOR_ANIMATION_REPEL,
-  EDITOR_ANIMATION_SELECT,
+  EDITOR_ANIMATION_BACKGROUND_COLOUR_LABEL,
+  EDITOR_ANIMATION_COUNT_LABEL,
+  EDITOR_ANIMATION_PARTICLE_COLOUR_LABEL,
+  EDITOR_ANIMATION_REPEL_LABEL,
+  EDITOR_ANIMATION_SELECT_LABEL,
 } from 'constants/strings'
 import {
   ANIMATION_PARTICLE_COUNTS,
@@ -85,7 +85,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
     return (
       <div className={'animation-config-container'}>
         <div className={'animation-particle-count-config'}>
-          <label className={'form-label'}>{EDITOR_ANIMATION_COUNT}</label>
+          <label className={'form-label'}>{EDITOR_ANIMATION_COUNT_LABEL}</label>
           <div className={'animation-dropdown-container'}>
             <Dropdown
               items={ANIMATION_PARTICLE_COUNTS}
@@ -95,7 +95,9 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           </div>
         </div>
         <div className={'animation-preset-config'}>
-          <label className={'form-label'}>{EDITOR_ANIMATION_SELECT}</label>
+          <label className={'form-label'}>
+            {EDITOR_ANIMATION_SELECT_LABEL}
+          </label>
           <div className={'animation-dropdown-container'}>
             <Dropdown
               items={ANIMATION_PRESETS}
@@ -106,7 +108,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
         </div>
         <div className={'animation-background-colour-config'}>
           <label className={'form-label'}>
-            {EDITOR_ANIMATION_BACKGROUND_COLOUR}
+            {EDITOR_ANIMATION_BACKGROUND_COLOUR_LABEL}
           </label>
           <ColourButton
             colour={this.props.animation.backgroundColour}
@@ -117,7 +119,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
         </div>
         <div className={'animation-particle-colour-config'}>
           <label className={'form-label'}>
-            {EDITOR_ANIMATION_PARTICLE_COLOUR}
+            {EDITOR_ANIMATION_PARTICLE_COLOUR_LABEL}
           </label>
           <ColourButton
             colour={this.props.animation.particleColour}
@@ -127,7 +129,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           />
         </div>
         <div className={'animation-repel-config'}>
-          <label className={'form-label'}>{EDITOR_ANIMATION_REPEL}</label>
+          <label className={'form-label'}>{EDITOR_ANIMATION_REPEL_LABEL}</label>
           <Checkbox
             checked={this.props.animation.repel}
             handleToggle={this.updateRepelValue}

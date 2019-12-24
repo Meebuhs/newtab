@@ -1,8 +1,9 @@
 import {
   CANCEL_BUTTON_TEXT,
   SAVE_BUTTON_TEXT,
-  SETTINGS_IMPORT_CONFIRM,
+  SETTINGS_IMPORT_CONFIRM_HEADER,
   SETTINGS_IMPORT_CONFIRM_LABEL,
+  SETTINGS_VALID_FILE_LABEL,
 } from 'constants/strings'
 import * as React from 'react'
 import Modal from 'react-modal'
@@ -54,19 +55,16 @@ export class ImportSettingsConfirmation extends React.Component<IProps, {}> {
         }}
       >
         <div className={'import-confirmation-container'}>
-          <h2 className={'header'}>{SETTINGS_IMPORT_CONFIRM}</h2>
+          <h2 className={'header'}>{SETTINGS_IMPORT_CONFIRM_HEADER}</h2>
           <div className={'import-confirmation-content'}>
             {SETTINGS_IMPORT_CONFIRM_LABEL}
             {this.props.missingProperties.length > 0 ? (
               <div className={'settings-warning'}>
-                {'The loader has changed the ' +
-                  this.constructPropertyString() +
-                  ' of this activity. Ensure' +
-                  ' this is the file you intended to load before continuing'}
+                {`The loader has changed the ${this.constructPropertyString()} of this activity. Ensure this is the file you intended to load before continuing`}
               </div>
             ) : (
               <div className={'settings-valid'}>
-                {'This grid is correctly formatted and ready to load.'}
+                {SETTINGS_VALID_FILE_LABEL}
               </div>
             )}
           </div>
