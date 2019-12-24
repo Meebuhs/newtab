@@ -22,7 +22,6 @@ import { emptyTile, ITile } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
-import './TileEditor.scss'
 import { TilePreview } from './TilePreview'
 
 interface IProps {
@@ -211,17 +210,17 @@ export class TileEditor extends React.Component<IProps, IState> {
             {this.getDisplayConfig()}
           </div>
           <TilePreview {...this.state} />
-          <div className={'editor-end-buttons'}>
+          <div className={'modal-end-buttons'}>
             <button
               key={'cancel'}
-              className={'editor-cancel-button'}
+              className={'modal-cancel-button'}
               onClick={this.props.handleCloseModal}
             >
               {CANCEL_BUTTON_TEXT}
             </button>
             <button
               key={'save'}
-              className={'editor-save-button'}
+              className={'modal-save-button'}
               onClick={this.finalise}
             >
               {SAVE_BUTTON_TEXT}

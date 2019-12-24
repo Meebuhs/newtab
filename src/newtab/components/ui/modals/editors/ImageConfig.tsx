@@ -1,4 +1,7 @@
-import { FILE_SELECT_BUTTON_TEXT } from 'constants/strings'
+import {
+  FILE_SELECT_BUTTON_TEXT,
+  NO_FILE_SELECTED_LABEL,
+} from 'constants/strings'
 import { IFileSelectorEvent } from 'constants/types'
 import { IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
@@ -98,10 +101,12 @@ export class ImageConfig extends React.Component<IProps, IState> {
     return (
       <div className={'image-config-container'}>
         <div className={'image-select-container'}>
-          {this.state.fileName}
+          {this.state.fileName === ''
+            ? NO_FILE_SELECTED_LABEL
+            : this.state.fileName}
           <button
             key={'file-select'}
-            className={'settings-file-button'}
+            className={'file-button'}
             onClick={this.handleFileSelect}
           >
             {FILE_SELECT_BUTTON_TEXT}

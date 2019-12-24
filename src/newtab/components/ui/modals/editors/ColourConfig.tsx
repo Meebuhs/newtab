@@ -15,10 +15,7 @@ export class ColourConfig extends React.Component<IProps, {}> {
       <div className={'colour-config-container'}>
         <div className={'colour-select-container'}>
           <div className={'colour-select'}>
-            <label
-              className={'colour-config-form-label'}
-              style={{ lineHeight: '24px' }}
-            >
+            <label className={'form-label'} style={{ lineHeight: '24px' }}>
               {EDITOR_BACKGROUND_COLOUR_LABEL}
             </label>
             <ColourButton

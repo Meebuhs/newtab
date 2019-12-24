@@ -1,8 +1,7 @@
 @import '~styles/theme-colours';
-@import '~styles/common-elements';
 
 .dropdown-container {
-  background-color: #fff;
+  background-color: colour('white');
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -14,11 +13,11 @@
   width: 100%;
 
   &:hover {
-    background-color: darken(#fff, 1);
+    background-color: darken(colour('white'), 1);
   }
 
   &:active {
-    background-color: darken(#fff, 2);
+    background-color: darken(colour('white'), 2);
   }
 }
 
@@ -40,9 +39,9 @@
 }
 
 .dropdown-list {
-  background-color: #fff;
+  background-color: colour('white');
   border-radius: 2px;
-  box-shadow: 0 3px 6px -1px rgb(200, 200, 200);
+  box-shadow: 0 3px 6px -1px darken(colour('white'), 2);
   max-height: 250px;
   overflow-y: scroll;
   position: absolute;
@@ -62,15 +61,15 @@
   @include dropdown-item();
 
   &:hover {
-    background-color: darken(#fff, 1);
+    background-color: darken(colour('white'), 1);
   }
 
   &:active {
-    background-color: darken(#fff, 2);
+    background-color: darken(colour('white'), 2);
   }
 }
 
 .dropdown-item-selected {
   @include dropdown-item();
-  background-color: darken(#fff, 2);
+  background-color: darken(colour('white'), 2);
 }

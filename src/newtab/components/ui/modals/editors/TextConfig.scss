@@ -1,9 +1,8 @@
 @import '~styles/theme-colours';
-@import '~styles/common-elements';
 
 .text-config-container {
   align-items: center;
-  border: 1px solid darken(#fff, 1);
+  border: 1px solid darken(colour('white'), 1);
   border-radius: 2px;
   display: grid;
   grid-template-columns: auto auto;
@@ -15,10 +14,6 @@
 .font-colour-container {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-}
-
-.text-config-form-label {
-  @include form-label();
 }
 
 .font-size-container {

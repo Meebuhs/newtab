@@ -85,9 +85,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
     return (
       <div className={'animation-config-container'}>
         <div className={'animation-particle-count-config'}>
-          <label className={'animation-config-form-label'}>
-            {EDITOR_ANIMATION_COUNT}
-          </label>
+          <label className={'form-label'}>{EDITOR_ANIMATION_COUNT}</label>
           <div className={'animation-dropdown-container'}>
             <Dropdown
               items={ANIMATION_PARTICLE_COUNTS}
@@ -97,9 +95,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           </div>
         </div>
         <div className={'animation-preset-config'}>
-          <label className={'animation-config-form-label'}>
-            {EDITOR_ANIMATION_SELECT}
-          </label>
+          <label className={'form-label'}>{EDITOR_ANIMATION_SELECT}</label>
           <div className={'animation-dropdown-container'}>
             <Dropdown
               items={ANIMATION_PRESETS}
@@ -109,7 +105,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           </div>
         </div>
         <div className={'animation-background-colour-config'}>
-          <label className={'animation-config-form-label'}>
+          <label className={'form-label'}>
             {EDITOR_ANIMATION_BACKGROUND_COLOUR}
           </label>
           <ColourButton
@@ -120,7 +116,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           />
         </div>
         <div className={'animation-particle-colour-config'}>
-          <label className={'animation-config-form-label'}>
+          <label className={'form-label'}>
             {EDITOR_ANIMATION_PARTICLE_COLOUR}
           </label>
           <ColourButton
@@ -131,9 +127,7 @@ export class AnimationConfig extends React.Component<IProps, {}> {
           />
         </div>
         <div className={'animation-repel-config'}>
-          <label className={'animation-config-form-label'}>
-            {EDITOR_ANIMATION_REPEL}
-          </label>
+          <label className={'form-label'}>{EDITOR_ANIMATION_REPEL}</label>
           <Checkbox
             checked={this.props.animation.repel}
             handleToggle={this.updateRepelValue}

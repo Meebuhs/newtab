@@ -1,5 +1,4 @@
 @import '~styles/theme-colours';
-@import '~styles/common-elements';
 
 body {
   font-family: 'Open Sans', 'Ubuntu', sans-serif;
@@ -42,12 +41,12 @@ body {
 
 .unsplash-credit {
   bottom: 10px;
-  color: #fff;
+  color: colour('white');
   position: absolute;
   right: 20px;
 }
 
 .unsplash-credit a {
-  color: darken(#fff, 1);
+  color: darken(colour('white'), 1);
   text-decoration: none;
 }

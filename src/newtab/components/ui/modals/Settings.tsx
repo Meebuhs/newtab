@@ -5,7 +5,7 @@ import {
   FILE_SELECT_BUTTON_TEXT,
   FILE_SELECT_WARNING,
   IMPORT_BUTTON_TEXT,
-  SETTINGS_EMPTY_IMPORT_LABEL,
+  NO_FILE_SELECTED_LABEL,
   SETTINGS_EXPORT_LABEL,
   SETTINGS_HEADER,
   SETTINGS_IMPORT_LABEL,
@@ -396,34 +396,34 @@ export class Settings extends React.Component<IProps, IState> {
                   {SETTINGS_IMPORT_LABEL}
                   <div className={'settings-filename'}>
                     {this.state.newGrid === initialState
-                      ? SETTINGS_EMPTY_IMPORT_LABEL
+                      ? NO_FILE_SELECTED_LABEL
                       : this.state.fileName}
                   </div>
                   <button
                     key={'file-select'}
-                    className={'settings-file-button'}
+                    className={'file-button'}
                     onClick={this.handleFileSelect}
                   >
                     {FILE_SELECT_BUTTON_TEXT}
                   </button>
                   {this.state.errored ? (
-                    <div className="settings-warning-text">
+                    <div className="settings-warning">
                       {FILE_SELECT_WARNING}
                     </div>
                   ) : null}
                 </div>
               )}
-              <div className={'settings-end-buttons'}>
+              <div className={'modal-end-buttons'}>
                 <button
                   key={'cancel'}
-                  className={'settings-cancel-button'}
+                  className={'modal-cancel-button'}
                   onClick={this.props.handleCloseModal}
                 >
                   {CANCEL_BUTTON_TEXT}
                 </button>
                 <button
                   key={'save'}
-                  className={`settings-save-button${
+                  className={`modal-save-button${
                     this.state.newGrid === initialState &&
                     this.state.currentOperation === 'import'
                       ? '-disabled'

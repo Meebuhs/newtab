@@ -1,13 +1,15 @@
 @import './theme-colours';
 
 $sidebar-width: 18%;
+$column-width-percentage: 92%;
 
 @mixin button($width, $height, $highlight) {
-  $background: if($highlight, colour('highlight'), #fff);
+  $background: if($highlight, colour('highlight'), colour('white'));
   background-color: $background;
-  border: 1px solid if($highlight, colour('highlight'), darken(#fff, 2));
+  border: 1px solid
+    if($highlight, colour('highlight'), darken(colour('white'), 2));
   border-radius: 2px;
-  color: if($highlight, #fff, colour('grey-dark'));
+  color: if($highlight, colour('white'), colour('grey-dark'));
   cursor: pointer;
   display: block;
   height: $height;
@@ -57,4 +59,62 @@ $sidebar-width: 18%;
   font-weight: bold;
   margin-right: 10px;
   width: 100%;
+}
+
+.header {
+  border-bottom: 1px solid darken(colour('white'), 1);
+  font-size: 1.25rem;
+  height: auto;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.text-input {
+  border: 1px solid darken(colour('white'), 1);
+  border-radius: 2px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  width: 100%;
+
+  &:focus {
+    border-color: colour('grey-dark');
+    outline: none;
+  }
+
+  &:hover:not(:focus) {
+    border-color: darken(colour('white'), 2);
+    transition: border-color 0.2s;
+  }
+}
+
+.modal-end-buttons {
+  bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - 40px);
+}
+
+.modal-save-button {
+  @include button(100px, 30px, true);
+}
+
+.modal-cancel-button {
+  @include button(100px, 30px, false);
+}
+
+.file-button {
+  @include button(100px, 30px, false);
+  align-self: center;
+  margin-top: 5px;
 }

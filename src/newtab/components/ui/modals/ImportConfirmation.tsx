@@ -70,17 +70,17 @@ export class ImportSettingsConfirmation extends React.Component<IProps, {}> {
               </div>
             )}
           </div>
-          <div className={'settings-end-buttons'}>
+          <div className={'modal-end-buttons'}>
             <button
               key={'cancel'}
-              className={'settings-cancel-button'}
+              className={'modal-cancel-button'}
               onClick={() => this.props.setModalVisibility(false)}
             >
               {CANCEL_BUTTON_TEXT}
             </button>
             <button
               key={'save'}
-              className={'settings-save-button'}
+              className={'modal-save-button'}
               onClick={this.importGrid}
             >
               {SAVE_BUTTON_TEXT}

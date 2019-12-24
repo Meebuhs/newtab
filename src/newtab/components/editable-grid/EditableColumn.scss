@@ -1,9 +1,8 @@
-@import '~components/grid/Column';
 @import '~styles/common-elements';
 
 .handle,
 %handle {
-  border: 1px solid darken(#fff, 2);
+  border: 1px solid darken(colour('white'), 2);
   border-radius: 5px;
   margin: auto auto 10px;
   min-height: 40px;
@@ -11,13 +10,13 @@
   width: $column-width-percentage;
 
   &:hover {
-    background-color: darken(#fff, 1);
+    background-color: darken(colour('white'), 1);
   }
 }
 
 .handle-dragging {
   @extend %handle;
-  background-color: darken(#fff, 1);
+  background-color: darken(colour('white'), 1);
 }
 
 .remove-column {

@@ -1,19 +1,18 @@
 @import '~styles/theme-colours';
-@import '~styles/common-elements';
 
 .checkbox-container {
   display: inline-block;
-  vertical-align: middle;
   height: 16px;
+  vertical-align: middle;
 }
 
 .checkbox-box,
 %checkbox-box {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
   border-radius: 3px;
+  display: inline-block;
+  height: 16px;
   transition: all 150ms;
+  width: 16px;
 }
 
 .checkbox-box-checked {
@@ -35,14 +34,14 @@
 
 .checkbox-box-unchecked {
   @extend %checkbox-box;
-  background: darken(#fff, 1);
+  background: darken(colour('white'), 1);
 
   &:hover {
-    background-color: darken(#fff, 2);
+    background-color: darken(colour('white'), 2);
   }
 
   &:active {
-    background-color: darken(#fff, 3);
+    background-color: darken(colour('white'), 3);
   }
 
   .checkbox-tick {
@@ -52,6 +51,6 @@
 
 .checkbox-tick {
   fill: none;
-  stroke: white;
+  stroke: colour('white');
   stroke-width: 2px;
 }

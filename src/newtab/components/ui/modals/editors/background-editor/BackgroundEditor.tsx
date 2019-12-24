@@ -24,7 +24,6 @@ import { IBackground } from 'models/newtab'
 import * as React from 'react'
 import { RGBColor } from 'react-color'
 import Modal from 'react-modal'
-import './BackgroundEditor.scss'
 
 interface IProps {
   showModal: boolean
@@ -215,17 +214,17 @@ export class BackgroundEditor extends React.Component<IProps, IState> {
             {this.getDisplayConfig()}
           </div>
         </div>
-        <div className={'editor-end-buttons'}>
+        <div className={'modal-end-buttons'}>
           <button
             key={'cancel'}
-            className={'editor-cancel-button'}
+            className={'modal-cancel-button'}
             onClick={this.props.handleCloseModal}
           >
             {CANCEL_BUTTON_TEXT}
           </button>
           <button
             key={'save'}
-            className={'editor-save-button'}
+            className={'modal-save-button'}
             onClick={() => this.props.handleSaveModal({ ...this.state })}
           >
             {SAVE_BUTTON_TEXT}

@@ -68,10 +68,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
     return (
       <div className={'gradient-config-container'}>
         <div className={'gradient-start-colour-container'}>
-          <label
-            className={'gradient-config-form-label'}
-            style={{ lineHeight: '24px' }}
-          >
+          <label className={'form-label'} style={{ lineHeight: '24px' }}>
             {EDITOR_GRADIENT_START_COLOUR_LABEL}
           </label>
           <ColourButton
@@ -82,7 +79,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
           />
         </div>
         <div className={'gradient-end-colour-container'}>
-          <label className={'gradient-config-form-label'}>
+          <label className={'form-label'}>
             {EDITOR_GRADIENT_END_COLOUR_LABEL}
           </label>
           <ColourButton
@@ -94,10 +91,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
         </div>
         {this.props.gradient.type === 'radial' ? null : (
           <div className={'gradient-angle-container'}>
-            <label
-              className={'gradient-config-form-label'}
-              style={{ lineHeight: '24px' }}
-            >
+            <label className={'form-label'} style={{ lineHeight: '24px' }}>
               {EDITOR_GRADIENT_ANGLE_LABEL}
             </label>
             <div className={'gradient-config-dropdown-container'}>
@@ -110,10 +104,7 @@ export class GradientConfig extends React.Component<IProps, {}> {
           </div>
         )}
         <div className={`gradient-type-container-${this.props.gradient.type}`}>
-          <label
-            className={'gradient-config-form-label'}
-            style={{ lineHeight: '24px' }}
-          >
+          <label className={'form-label'} style={{ lineHeight: '24px' }}>
             {EDITOR_GRADIENT_TYPE_LABEL}
           </label>
           <div className={'gradient-config-dropdown-container'}>

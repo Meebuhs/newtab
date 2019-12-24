@@ -17,12 +17,10 @@ export class UnsplashConfig extends React.Component<IProps, {}> {
     return (
       <div className={'unsplash-config-container'}>
         <div className={'unsplash-select-container'}>
-          <label className={'unsplash-config-form-label'}>
-            {EDITOR_UNSPLASH_SELECT}
-          </label>
+          <label className={'form-label'}>{EDITOR_UNSPLASH_SELECT}</label>
           <input
             type={'text'}
-            className={'unsplash-config-text-input'}
+            className={'text-input'}
             value={this.props.unsplashQuery}
             onKeyPress={this.props.handleKeyPress}
             autoFocus={true}
@@ -32,9 +30,7 @@ export class UnsplashConfig extends React.Component<IProps, {}> {
           />
         </div>
         <div className={'unsplash-config-subtext-container'}>
-          <label className={'unsplash-config-form-label'}>
-            {EDITOR_UNSPLASH_SELECT_SUB}
-          </label>
+          <label className={'form-label'}>{EDITOR_UNSPLASH_SELECT_SUB}</label>
         </div>
       </div>
     )

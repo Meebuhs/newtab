@@ -63,7 +63,7 @@ export const SETTINGS_EXPORT_LABEL =
   'Export the current grid settings to a json file'
 export const SETTINGS_IMPORT_LABEL =
   'Select the settings file you would like to import.'
-export const SETTINGS_EMPTY_IMPORT_LABEL = 'No file selected.'
+export const NO_FILE_SELECTED_LABEL = 'No file selected.'
 export const FILE_SELECT_BUTTON_TEXT = 'Select File'
 export const FILE_SELECT_WARNING = 'Load failed: corrupt file'
 export const EXPORT_BUTTON_TEXT = 'Export'

@@ -18,43 +18,21 @@
   margin-top: 15px;
 }
 
-.settings-file-button {
-  @include button(100px, 30px, false);
-  align-self: center;
-  margin-top: 5px;
-}
-
-.settings-warning-text {
-  color: #f00;
+.settings-warning {
+  color: colour('warning-red');
   text-align: center;
   width: 100%;
 }
 
-.settings-end-buttons {
-  bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  width: calc(100% - 40px);
-}
-
-.settings-save-button {
-  @include button(100px, 30px, true);
-}
-
-.settings-save-button-disabled {
+.modal-save-button-disabled {
   @include button(100px, 30px, false);
-  background-color: darken(#fff, 2);
+  background-color: darken(colour('white'), 2);
 
   &:hover {
-    background-color: darken(#fff, 2);
+    background-color: darken(colour('white'), 2);
   }
 
   &:active {
-    background-color: darken(#fff, 2);
+    background-color: darken(colour('white'), 2);
   }
-}
-
-.settings-cancel-button {
-  @include button(100px, 30px, false);
 }

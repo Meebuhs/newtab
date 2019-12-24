@@ -40,9 +40,7 @@ export class TextConfig extends React.Component<IProps, {}> {
       <div className={'text-config-container'}>
         <div className={'font-colour-container'}>
           <div className={'colour-button-container'}>
-            <label className={'text-config-form-label'}>
-              {EDITOR_FONT_COLOUR_LABEL}
-            </label>
+            <label className={'form-label'}>{EDITOR_FONT_COLOUR_LABEL}</label>
             <ColourButton
               colour={this.props.fontColour}
               alpha={true}
@@ -52,9 +50,7 @@ export class TextConfig extends React.Component<IProps, {}> {
           </div>
         </div>
         <div className={'font-size-container'}>
-          <label className={'text-config-form-label'}>
-            {EDITOR_FONT_SIZE_LABEL}
-          </label>
+          <label className={'form-label'}>{EDITOR_FONT_SIZE_LABEL}</label>
           <div className={'font-size-dropdown-container'}>
             <Dropdown
               items={FONT_SIZES}
@@ -64,9 +60,7 @@ export class TextConfig extends React.Component<IProps, {}> {
           </div>
         </div>
         <div className={'favicon-config-container'}>
-          <label className={'text-config-form-label'}>
-            {EDITOR_FAVICON_LABEL}
-          </label>
+          <label className={'form-label'}>{EDITOR_FAVICON_LABEL}</label>
           <Checkbox
             checked={this.props.favicon}
             handleToggle={this.updateFaviconValue}
