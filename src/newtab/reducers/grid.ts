@@ -4,6 +4,7 @@ import {
   ADD_TILE,
   EDIT_BACKGROUND,
   EDIT_TILE,
+  IMPORT_GRID,
   MOVE_TILE,
   REMOVE_COLUMN,
   REMOVE_TILE,
@@ -234,6 +235,16 @@ export function reducer(state: IGridState = initialState, action: Action) {
       return {
         ...state,
         background,
+      }
+    }
+    case IMPORT_GRID: {
+      /**
+       * Imports a grid.
+       */
+      const grid = action.payload.grid
+
+      return {
+        ...grid,
       }
     }
     default:

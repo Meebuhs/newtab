@@ -3,6 +3,7 @@ import {
   ADD_TILE,
   EDIT_BACKGROUND,
   EDIT_TILE,
+  IMPORT_GRID,
   MOVE_TILE,
   REMOVE_COLUMN,
   REMOVE_TILE,
@@ -11,6 +12,7 @@ import {
 } from 'constants/types'
 import { IBackground, IColumn, ITile } from 'models/newtab'
 import { DraggableLocation } from 'react-beautiful-dnd'
+import { IGridState } from 'reducers/grid'
 
 // Define the Action interfaces representing the return types of the action creators
 export interface IAddColumnAction {
@@ -68,6 +70,13 @@ export interface IEditBackgroundAction {
   type: 'EDIT_BACKGROUND'
   payload: {
     background: IBackground
+  }
+}
+
+export interface IImportGridAction {
+  type: 'IMPORT_GRID'
+  payload: {
+    grid: IGridState
   }
 }
 
@@ -214,6 +223,19 @@ export function editBackground(background: IBackground): IEditBackgroundAction {
   }
 }
 
+/**
+ * Imports a grid, overriding the current configuration.
+ * @param {IGridState} grid the grid configuration to set
+ */
+export function importGrid(grid: IGridState): IImportGridAction {
+  return {
+    type: IMPORT_GRID,
+    payload: {
+      grid,
+    },
+  }
+}
+
 // Define action type for use in reducer
 export type Action =
   | IAddColumnAction
@@ -225,3 +247,4 @@ export type Action =
   | IRemoveTileAction
   | IReorderTileAction
   | IEditBackgroundAction
+  | IImportGridAction

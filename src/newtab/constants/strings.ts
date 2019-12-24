@@ -57,11 +57,25 @@ export const EDITOR_ANIMATION_PARTICLE_COLOUR = 'Particle colour:'
 
 // ui/modals/Settings
 export const SETTINGS_HEADER = 'Settings'
-export const SETTINGS_TOGGLE_SAVE = 'Save'
-export const SETTINGS_TOGGLE_LOAD = 'Load'
+export const SETTINGS_TOGGLE_EXPORT = 'Export'
+export const SETTINGS_TOGGLE_IMPORT = 'Import'
+export const SETTINGS_EXPORT_LABEL =
+  'Export the current grid settings to a json file'
+export const SETTINGS_IMPORT_LABEL =
+  'Select the settings file you would like to import.'
+export const SETTINGS_EMPTY_IMPORT_LABEL = 'No file selected.'
+export const FILE_SELECT_BUTTON_TEXT = 'Select File'
+export const FILE_SELECT_WARNING = 'Load failed: corrupt file'
+export const EXPORT_BUTTON_TEXT = 'Export'
+export const IMPORT_BUTTON_TEXT = 'Import'
+
+// ui/modal/ImportSettingsConfirmation
+export const SETTINGS_IMPORT_CONFIRM = 'Confirm Settings Import'
+export const SETTINGS_IMPORT_CONFIRM_LABEL =
+  'Are you sure you want to load this grid? Note that the current grid will be lost.'
 
 // ui/Sidebar
 export const SIDEBAR_ADDTILE = 'Add Tile'
 export const SIDEBAR_ADDCOLUMN = 'Add Column'
 export const SIDEBAR_EDIT_BACKGROUND = 'Edit Background'
-export const SIDEBAR_SETTINGS = 'Import/Export'
+export const SIDEBAR_SETTINGS = 'Import/Export Settings'

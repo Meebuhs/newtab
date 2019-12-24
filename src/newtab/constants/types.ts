@@ -8,6 +8,7 @@ export const REMOVE_TILE = 'REMOVE_TILE'
 export const REORDER_TILE = 'REORDER_TILE'
 export const MOVE_TILE = 'MOVE_TILE'
 export const EDIT_BACKGROUND = 'EDIT_BACKGROUND'
+export const IMPORT_GRID = 'IMPORT_GRID'
 
 // ActionTypes for ui state
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
@@ -22,7 +23,7 @@ export type BackgroundDisplayMode =
   | 'animation'
 export type GradientType = 'linear' | 'radial'
 export type AnimationPreset = 'network' | 'float' | 'fall' | 'sky'
-export type SettingsOperations = 'save' | 'load'
+export type SettingsOperations = 'import' | 'export'
 
 // Key sets for ui components
 export const TILE_DISPLAY_MODES = ['colour', 'gradient', 'image']
@@ -38,4 +39,4 @@ export const GRADIENT_ANGLES = ['0', '45', '90', '135']
 export const ANIMATION_PRESETS = ['network', 'float', 'fall', 'sky']
 export const ANIMATION_PARTICLE_COUNTS = ['50', '100', '150', '200', '250']
 export const FONT_SIZES = ['8', '10', '12', '14', '16', '18', '20', '22', '24']
-export const SETTINGS_OPERATIONS = ['save', 'load']
+export const SETTINGS_OPERATIONS = ['export', 'import']

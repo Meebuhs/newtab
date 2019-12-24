@@ -58,7 +58,7 @@ export class Newtab extends React.Component<IProps, IState> {
   }
 
   getBackgroundStyle = () => {
-    const { displayMode, backgroundColour, gradient } = this.state.background
+    const { displayMode, backgroundColour, gradient } = this.props.background
 
     if (displayMode === 'colour') {
       return {

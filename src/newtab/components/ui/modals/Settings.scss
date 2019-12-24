@@ -1,0 +1,60 @@
+@import '~styles/theme-colours';
+@import '~styles/common-elements';
+
+.settings-content-container {
+  align-items: center;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  width: 100%;
+}
+
+.settings-import-container {
+  @include flex-column-parent();
+}
+
+.settings-filename {
+  align-self: center;
+  margin-top: 15px;
+}
+
+.settings-file-button {
+  @include button(100px, 30px, false);
+  align-self: center;
+  margin-top: 5px;
+}
+
+.settings-warning-text {
+  color: #f00;
+  text-align: center;
+  width: 100%;
+}
+
+.settings-end-buttons {
+  bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: calc(100% - 40px);
+}
+
+.settings-save-button {
+  @include button(100px, 30px, true);
+}
+
+.settings-save-button-disabled {
+  @include button(100px, 30px, false);
+  background-color: darken(#fff, 2);
+
+  &:hover {
+    background-color: darken(#fff, 2);
+  }
+
+  &:active {
+    background-color: darken(#fff, 2);
+  }
+}
+
+.settings-cancel-button {
+  @include button(100px, 30px, false);
+}

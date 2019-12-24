@@ -1,5 +1,6 @@
 import { AnimationPreset, GradientType, TileDisplayMode } from 'constants/types'
 import { IBackground, ITile } from 'models/newtab'
+import { IGridState } from 'reducers/grid'
 
 export const testTile: ITile = {
   id: 'test.tile.id',
@@ -38,6 +39,26 @@ export const testBackground: IBackground = {
     particleColour: { r: 255, g: 255, b: 255 },
     repel: true,
   },
+}
+
+export const testGrid: IGridState = {
+  tiles: { testTile },
+  columns: {
+    'column-0': {
+      id: 'column-0',
+      tileIds: [testTile.id],
+    },
+    'column-1': {
+      id: 'column-1',
+      tileIds: [],
+    },
+    'column-2': {
+      id: 'column-2',
+      tileIds: [],
+    },
+  },
+  columnOrder: ['column-0', 'column-1', 'column-2'],
+  background: testBackground,
 }
 
 export const emptyFunction = () => {

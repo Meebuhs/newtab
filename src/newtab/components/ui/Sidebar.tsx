@@ -17,11 +17,13 @@ import './Sidebar.scss'
 
 interface IProps {
   sidebarVisible: boolean
+  grid: IGridState
   background: IBackground
   handleAddColumn: (id: string) => void
   handleAddTile: (tile: ITile) => void
   handleToggleSidebar: () => void
   handleEditBackground: (background: IBackground) => void
+  handleImportGrid: (grid: IGridState) => void
 }
 
 interface IState {
@@ -65,6 +67,11 @@ export class Sidebar extends React.Component<IProps, IState> {
       tile.id = getHashCode([tile.name, Date.now()].join('.'))
     }
     this.props.handleAddTile(tile)
+  }
+
+  importGrid = (grid: IGridState) => {
+    this.props.handleImportGrid(grid)
+    window.location.reload()
   }
 
   /**
@@ -189,6 +196,8 @@ export class Sidebar extends React.Component<IProps, IState> {
           </div>
           <Settings
             showModal={this.state.showSettingsModal}
+            grid={this.props.grid}
+            importGrid={this.importGrid}
             handleCloseModal={this.handleCloseSettingsModal}
             handleSaveModal={this.handleSaveSettingsModal}
           />

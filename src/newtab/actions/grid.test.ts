@@ -1,6 +1,7 @@
 import * as actions from 'actions/grid'
 import * as types from 'constants/types'
 import { DraggableLocation } from 'react-beautiful-dnd'
+import { initialState as initialGridState } from 'reducers/grid'
 import configureStore, { MockStoreEnhanced } from 'redux-mock-store'
 import { testBackground, testTile } from 'testObjects'
 
@@ -86,6 +87,14 @@ describe('store', () => {
 
     const storeActions = store.getActions()
     const expectedPayload = { type: types.EDIT_BACKGROUND }
+    expect(storeActions).toEqual([expectedPayload])
+  })
+
+  it('should dispatch importGrid correctly', () => {
+    store.dispatch({ type: types.IMPORT_GRID })
+
+    const storeActions = store.getActions()
+    const expectedPayload = { type: types.IMPORT_GRID }
     expect(storeActions).toEqual([expectedPayload])
   })
 })
@@ -213,5 +222,15 @@ describe('actions', () => {
       },
     }
     expect(actions.editBackground(testBackground)).toEqual(expectedAction)
+  })
+
+  it('should create an action to import a grid', () => {
+    const expectedAction = {
+      type: types.IMPORT_GRID,
+      payload: {
+        grid: initialGridState,
+      },
+    }
+    expect(actions.importGrid(initialGridState)).toEqual(expectedAction)
   })
 })
