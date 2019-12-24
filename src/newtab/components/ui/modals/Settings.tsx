@@ -12,31 +12,18 @@ import {
   SETTINGS_TOGGLE_EXPORT,
   SETTINGS_TOGGLE_IMPORT,
 } from 'constants/strings'
-import { SETTINGS_OPERATIONS, SettingsOperations } from 'constants/types'
+import {
+  IFileReaderEvent,
+  IFileSelectorEvent,
+  SETTINGS_OPERATIONS,
+  SettingsOperations,
+} from 'constants/types'
 import { defaultBackground, emptyTile, IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
 import Modal from 'react-modal'
 import { IGridState, initialState } from 'reducers/grid'
 import { ImportSettingsConfirmation } from './ImportConfirmation'
 import './Settings.scss'
-
-interface IFileReaderEventTarget extends EventTarget {
-  result: string
-}
-
-interface IFileReaderEvent extends Event {
-  target: IFileReaderEventTarget
-  getMessage(): string
-}
-
-interface IFileSelectorEventTarget extends EventTarget {
-  files: FileList
-}
-
-interface IFileSelectorEvent extends Event {
-  target: IFileSelectorEventTarget
-  getMessage(): string
-}
 
 interface IProps {
   showModal: boolean

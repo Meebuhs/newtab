@@ -1,3 +1,5 @@
+import { FILE_SELECT_BUTTON_TEXT } from 'constants/strings'
+import { IFileSelectorEvent } from 'constants/types'
 import { IBackground, ITile } from 'models/newtab'
 import * as React from 'react'
 import './ImageConfig.scss'
@@ -7,6 +9,10 @@ interface IProps {
     attribute: keyof IBackground | keyof ITile,
     value: string
   ) => void
+}
+
+interface IState {
+  fileName: string
 }
 
 interface IBase64Result {
@@ -26,14 +32,49 @@ const getBase64 = (file: any) => {
   })
 }
 
-export class ImageConfig extends React.Component<IProps, {}> {
+export class ImageConfig extends React.Component<IProps, IState> {
+  fileSelector: HTMLInputElement
+
+  constructor(props: IProps) {
+    super(props)
+    this.state = {
+      fileName: '',
+    }
+  }
+
+  componentDidMount() {
+    this.initialiseFileInput()
+  }
+
+  /**
+   * Initialises the file selector and reader.
+   */
+  initialiseFileInput = () => {
+    this.fileSelector = this.buildFileSelector()
+    this.setState({
+      fileName: '',
+    })
+  }
+
+  /**
+   * Constructs and returns the file input element which accepts json file representations of activities.
+   */
+  buildFileSelector = () => {
+    const fileSelector = document.createElement('input')
+    fileSelector.setAttribute('type', 'file')
+    fileSelector.setAttribute('accept', 'image/png,image/jpeg')
+    fileSelector.addEventListener('change', this.imageUpload)
+    return fileSelector
+  }
+
   /**
    * Accepts a file upload and if it is an image, converts it for storage
    */
-  imageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target) {
-      if (e.target.files && e.target.files[0]) {
-        const file = e.target.files[0]
+  imageUpload = (event: IFileSelectorEvent) => {
+    if (event.target) {
+      if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0]
+        this.setState({ fileName: file.name })
         if (file.type.match('image.*')) {
           getBase64(file).then((base64: IBase64Result) => {
             this.props.updateStateValue('image', base64.result)
@@ -43,11 +84,28 @@ export class ImageConfig extends React.Component<IProps, {}> {
     }
   }
 
+  /**
+   * Button onclick event which triggers the file select.
+   */
+  handleFileSelect = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.preventDefault()
+    this.fileSelector.click()
+  }
+
   render() {
     return (
       <div className={'image-config-container'}>
         <div className={'image-select-container'}>
-          <input type="file" id="image-upload" onChange={this.imageUpload} />
+          {this.state.fileName}
+          <button
+            key={'file-select'}
+            className={'settings-file-button'}
+            onClick={this.handleFileSelect}
+          >
+            {FILE_SELECT_BUTTON_TEXT}
+          </button>
         </div>
       </div>
     )

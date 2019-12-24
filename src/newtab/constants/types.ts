@@ -25,6 +25,25 @@ export type GradientType = 'linear' | 'radial'
 export type AnimationPreset = 'network' | 'float' | 'fall' | 'sky'
 export type SettingsOperations = 'import' | 'export'
 
+// File event types
+export interface IFileReaderEventTarget extends EventTarget {
+  result: string
+}
+
+export interface IFileReaderEvent extends Event {
+  target: IFileReaderEventTarget
+  getMessage(): string
+}
+
+export interface IFileSelectorEventTarget extends EventTarget {
+  files: FileList
+}
+
+export interface IFileSelectorEvent extends Event {
+  target: IFileSelectorEventTarget
+  getMessage(): string
+}
+
 // Key sets for ui components
 export const TILE_DISPLAY_MODES = ['colour', 'gradient', 'image']
 export const BACKGROUND_DISPLAY_MODES = [
