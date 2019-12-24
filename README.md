@@ -1,8 +1,14 @@
 # Newtab
 
+<p align="center">
+  <img src="docs/newtab-stack-horizontal.png" width="50%">
+</p>
+
 A customisable replacement for chrome's new tab page.
 
-![Newtab](docs/newtab-stack-horizontal.png)
+<p align="center">
+  <img src="docs/newtab-demo.gif">
+</p>
 
 Built with:
 
@@ -34,7 +40,7 @@ Tested with:
 
 ### Download
 
-The extension will be available on the chrome web store after the first release.
+[Available on the chrome web store](https://chrome.google.com/webstore/detail/new-new-tab-page/eonojphadknncejoaegdigoaonfpjbmo)
 
 ### Build
 
